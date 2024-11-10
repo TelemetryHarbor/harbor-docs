@@ -23,7 +23,7 @@ To send a single data point to Telemetry Harbor:
 
 Here's an example of how to perform a single data push:
 
-```import requests
+<code>import requests
 import json
 from datetime import datetime
 
@@ -38,7 +38,7 @@ data = {
 
 response = requests.post(url, headers=headers, json=data)
 print(response.json())
-```
+</code>
 Remember to replace "your_api_key" with your actual Telemetry Harbor API key.
 
 ## Batch Data Push
@@ -53,7 +53,7 @@ For sending multiple data points in one request:
 
 Here's an example of how to perform a batch data push:
 
-```import requests
+<code>import requests
 from datetime import datetime
 
 url = "http://example.hive.telemetryhive.com/api/v1/ingest/batch"
@@ -74,12 +74,12 @@ data = [
 ]
 
 response = requests.post(url, headers=headers, json=data)
-print(response.json())```
+print(response.json())</code>
 
 ## Error Handling
 
 It's important to implement proper error handling in your code. Here's an example of how you might add error handling:
-```
+<code>
 import requests
 from datetime import datetime
 
@@ -104,30 +104,30 @@ except requests.exceptions.Timeout as errt:
     print("Timeout Error:", errt)
 except requests.exceptions.RequestException as err:
     print("Something went wrong:", err)
-```
+</code>
 ## Best Practices
 
 - Use environment variables to store your API key:
 
-```import os
+<code>import os
 
 api_key = os.environ.get('TELEMETRY_HARBOR_API_KEY')
-headers = {"X-API-Key": api_key}```
+headers = {"X-API-Key": api_key}</code>
 
 - Implement retry logic for failed requests:
 
-```from requests.adapters import HTTPAdapter
+<code>from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 
 session = requests.Session()
 retries = Retry(total=5, backoff_factor=0.1, status_forcelist=[500, 502, 503, 504])
 session.mount('http://', HTTPAdapter(max_retries=retries))
 
-response = session.post(url, headers=headers, json=data)```
+response = session.post(url, headers=headers, json=data)</code>
 
 - Consider using asynchronous requests for improved performance in high-volume scenarios:
 
-```import asyncio
+<code>import asyncio
 import aiohttp
 
 async def send_data(session, url, headers, data):
@@ -143,6 +143,6 @@ async def main():
         responses = await asyncio.gather(*tasks)
         print(responses)
 
-asyncio.run(main())```
+asyncio.run(main())</code>
 
 These best practices will help you create more robust and efficient data ingestion scripts for Telemetry Harbor.
