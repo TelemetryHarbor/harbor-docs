@@ -27,16 +27,19 @@ Here's an example of how to perform a single data push using Rust:
 
 First, add the following dependencies to your `Cargo.toml`:
 
-<code>[dependencies]
+```
+[dependencies]
 reqwest = { version = "0.11", features = ["json"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 tokio = { version = "1.0", features = ["full"] }
-chrono = "0.4"</code>
+chrono = "0.4"
+```
 
 Now, here's the Rust code for sending a single data point:
 
-<code>use chrono::{DateTime, Utc};
+```
+use chrono::{DateTime, Utc};
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 use std::error::Error;
@@ -106,7 +109,8 @@ async fn main() -> Result<(), Box<dyn Error>> {
     }
 
     Ok(())
-}</code>
+}
+```
 
 Remember to replace "your_api_key" with your actual Telemetry Harbor API key.
 
@@ -121,7 +125,7 @@ For sending multiple data points in one request:
 
 Here's an example of how to perform a batch data push using Rust:
 
-<code>
+```
 use chrono::{DateTime, Utc};
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
@@ -201,13 +205,13 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     Ok(())
 }
-</code>
+```
 
 ## Error Handling
 
 It's important to implement proper error handling in your Rust code. Here's an example of how you might add more comprehensive error handling:
 
-<code>
+```
 use chrono::{DateTime, Utc};
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
@@ -291,12 +295,12 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     Ok(())
 }
-</code>
+```
 ## Best Practices
 
 - Use environment variables to store your API key:
 
-<code>
+```
 use std::env;
 
 fn main() -> Result<(), Box<dyn Error>> {
@@ -304,11 +308,11 @@ fn main() -> Result<(), Box<dyn Error>> {
         .expect("TELEMETRY_HARBOR_API_KEY environment variable not set");
     // ... rest of the code
 }
-</code>
+```
 
 - Implement retry logic for failed requests:
 
-<code>
+```
 use backoff::ExponentialBackoff;
 use backoff::future::retry;
 
@@ -328,11 +332,11 @@ impl TelemetryHarborClient {
         retry(ExponentialBackoff::default(), operation).await
     }
 }
-</code>
+```
 
 - Use async streams for efficient batch processing:
 
-<code>
+```
 use futures::stream::{self, StreamExt};
 
 impl TelemetryHarborClient {
@@ -350,6 +354,6 @@ impl TelemetryHarborClient {
         Ok(())
     }
 }
-</code>
+```
 
 These best practices will help you create more robust and efficient data ingestion scripts for Telemetry Harbor using Rust.

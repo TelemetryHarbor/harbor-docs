@@ -23,7 +23,8 @@ To send a single data point to Telemetry Harbor using Go:
 
 Here's an example of how to perform a single data push using Go:
 
-```package main
+```
+package main
 
 import (
     "bytes"
@@ -75,7 +76,8 @@ func main() {
     defer resp.Body.Close()
 
     fmt.Println("Response Status:", resp.Status)
-}```
+}
+```
 
 Remember to replace "your_api_key" with your actual Telemetry Harbor API key.
 
@@ -91,7 +93,8 @@ For sending multiple data points in one request:
 
 Here's an example of how to perform a batch data push using Go:
 
-```package main
+```
+package main
 
 import (
     "bytes"
@@ -151,7 +154,8 @@ func main() {
     defer resp.Body.Close()
 
     fmt.Println("Response Status:", resp.Status)
-}```
+}
+```
 
 ## Error Handling
 
@@ -222,13 +226,15 @@ func main() {
         fmt.Printf("Server responded with error code: %d\n", resp.StatusCode)
         fmt.Println("Response body:", string(body))
     }
-}```
+}
+```
 
 ## Best Practices
 
 - Use environment variables to store your API key:
 
-```package main
+```
+package main
 
 import (
     "fmt"
@@ -247,7 +253,8 @@ func main() {
 
 - Implement retry logic for failed requests:
 
-```package main
+```
+package main
 
 import (
     "bytes"
@@ -300,11 +307,13 @@ func main() {
     }
 
     fmt.Println("Failed to send data after", maxRetries, "attempts")
-}```
+}
+```
 
 - Use goroutines for concurrent data sending:
 
-```package main
+```
+package main
 
 import (
     "bytes"
@@ -362,6 +371,7 @@ func main() {
 
     wg.Wait()
     fmt.Println("All data sent")
-}```
+}
+```
 
 These best practices will help you create more robust and efficient data ingestion scripts for Telemetry Harbor using Go.

@@ -95,7 +95,8 @@ public class TelemetryBatchClient {
         System.out.println("Response Code: " + response.statusCode());
         System.out.println("Response Body: " + response.body());
     }
-}```
+}
+```
 
 ## Error Handling
 
@@ -142,7 +143,8 @@ public class TelemetryClientWithErrorHandling {
             System.out.println("An unexpected error occurred: " + e.getMessage());
         }
     }
-}```
+}
+```
 
 ## Best Practices
 
@@ -152,7 +154,8 @@ public class TelemetryClientWithErrorHandling {
 ```
 - Implement retry logic for failed requests:
 
-```import java.net.http.HttpClient;
+```
+import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.URI;
@@ -200,11 +203,13 @@ public class TelemetryClientWithRetry {
             }
         }
     }
-}```
+}
+```
 
 - Consider using a JSON library like Jackson or Gson for more robust JSON handling:
 
-```import com.fasterxml.jackson.databind.ObjectMapper;
+```
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.HashMap;
 import java.util.Map;
 
