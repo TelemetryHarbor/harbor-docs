@@ -4,42 +4,42 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Real-time Data Visualization',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Efficient Data Ingestion',
     description: (
       <>
-        Telemetry Harbor provides powerful, real-time visualization tools for your IoT data. 
-        Monitor your devices and analyze trends as they happen.
+        Telemetry Harbor seamlessly ingests data from diverse IoT devices and sources. 
+        Our platform supports multiple protocols and formats, ensuring smooth data collection 
+        at any scale, from individual sensors to vast networks of connected devices.
       </>
     ),
   },
   {
-    title: 'Scalable Cloud Infrastructure',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Secure and Scalable Storage',
     description: (
       <>
-        Our cloud-native platform scales effortlessly with your needs. From a handful of devices 
-        to millions, Telemetry Harbor grows with your IoT ecosystem.
+        Store your valuable IoT data with confidence. Telemetry Harbor offers robust, 
+        cloud-native storage solutions that scale effortlessly. With end-to-end encryption 
+        and flexible retention policies, your data remains safe and accessible.
       </>
     ),
   },
   {
-    title: 'Secure Data Management',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Powerful Data Visualization',
     description: (
       <>
-        Security is our top priority. Telemetry Harbor ensures your data is encrypted end-to-end, 
-        with robust access controls and compliance with industry standards.
+        Transform raw data into actionable insights with Telemetry Harbor's advanced 
+        visualization tools. Create custom dashboards, real-time monitors, and interactive 
+        reports to unlock the full potential of your IoT data.
       </>
     ),
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({ title, description}) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        {/* <Svg className={styles.featureSvg} role="img" /> */}
       </div>
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>
