@@ -2,46 +2,35 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Introduction to Telemetry Harbor
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Welcome to the Telemetry Harbor API documentation. This comprehensive guide provides detailed information on how to interact with our API for sensor data management and visualization. Whether you're integrating IoT devices, analyzing data, or creating custom dashboards, this documentation will help you leverage the full power of Telemetry Harbor.
+
+## API Documentation Access
+
+For an interactive experience with our API, including detailed routes, models, and specifications, visit our Swagger UI:
+
+https://example.hive.telemetryhive.com/api/v1/docs
+
+This interactive documentation allows you to test API requests and view response models in real-time, making it easier to understand and integrate our API into your projects.
+
+## What You'll Find Here
+
+Our documentation is organized into several key sections:
+
+1. **Authentication** - Learn how to secure your API requests
+2. **Data Management** - Understand how to push and manage your sensor data
+3. **GPS Integration** - Implement location tracking for your IoT devices
+4. **Visualization** - Create powerful dashboards with Grafana integration
+5. **Technical Specs** - Explore our database schema and retention policies
 
 ## Getting Started
 
-Get started by **creating a new site**.
+To get started with Telemetry Harbor:
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+1. Sign up for an account
+2. Obtain your API key
+3. Configure your first device
+4. Start sending data
 
-### What you'll need
-
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+Choose a section from the sidebar to begin exploring our documentation.
