@@ -114,11 +114,11 @@ const config = {
             items: [
               {
                 label: 'Login',
-                href: 'https://telemetryhive.com/login',
+                href: 'https://telemetryharbor.com/login',
               },
               {
                 label: 'Sign Up',
-                href: 'https://telemetryhive.com/signup',
+                href: 'https://telemetryharbor.com/signup',
               },
             ],
           },
