@@ -24,4 +24,4 @@ Here's an example of what a query might look like to display temperature reading
 
 This query would select the time and value columns from the sensor_data table, filtering for temperature readings from a specific device, ordered by time in descending order, and limited to the most recent 100 readings.
 
-Adjust the sensor_id and bee_id values to match your specific data and devices. You can also use Grafana variables to create dynamic, interactive dashboards.
+Adjust the sensor_id and ship_id values to match your specific data and devices. You can also use Grafana variables to create dynamic, interactive dashboards.

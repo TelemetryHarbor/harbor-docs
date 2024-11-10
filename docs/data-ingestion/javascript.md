@@ -29,7 +29,7 @@ const url = "http://example.hive.telemetryhive.com/api/v1/ingest";
 const headers = { "X-API-Key": "your_api_key" };
 const data = {
   time: new Date().toISOString(),
-  bee_id: "bee1",
+  ship_id: "ship1",
   sensor_id: "sen1",
   value: 23.5
 };
@@ -57,8 +57,8 @@ Here's an example of how to perform a batch data push:
 const url = "http://example.hive.telemetryhive.com/api/v1/ingest/batch";
 const headers = { "X-API-Key": "your_api_key" };
 const data = [
-  { time: new Date().toISOString(), bee_id: "bee1", sensor_id: "sen1", value: 23.5 },
-  { time: new Date().toISOString(), bee_id: "bee1", sensor_id: "sen2", value: 18.7 }
+  { time: new Date().toISOString(), ship_id: "ship1", sensor_id: "sen1", value: 23.5 },
+  { time: new Date().toISOString(), ship_id: "ship1", sensor_id: "sen2", value: 18.7 }
 ];
 
 axios.post(url, data, { headers })
@@ -75,7 +75,7 @@ const url = "http://example.hive.telemetryhive.com/api/v1/ingest";
 const headers = { "X-API-Key": "your_api_key" };
 const data = {
   time: new Date().toISOString(),
-  bee_id: "bee1",
+  ship_id: "ship1",
   sensor_id: "sen1",
   value: 23.5
 };

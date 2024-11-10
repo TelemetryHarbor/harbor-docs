@@ -35,7 +35,7 @@ api_key = 'your_api_key'
 
 data = {
   time: Time.now.utc.iso8601,
-  bee_id: 'bee1',
+  ship_id: 'ship1',
   sensor_id: 'sen1',
   value: 23.5
 }
@@ -80,13 +80,13 @@ api_key = 'your_api_key'
 data = [
   {
     time: Time.now.utc.iso8601,
-    bee_id: 'bee1',
+    ship_id: 'ship1',
     sensor_id: 'sen1',
     value: 23.5
   },
   {
     time: Time.now.utc.iso8601,
-    bee_id: 'bee1',
+    ship_id: 'ship1',
     sensor_id: 'sen2',
     value: 18.7
   }
@@ -144,7 +144,7 @@ api_key = 'your_api_key'
 
 data = {
   time: Time.now.utc.iso8601,
-  bee_id: 'bee1',
+  ship_id: 'ship1',
   sensor_id: 'sen1',
   value: 23.5
 }
@@ -209,7 +209,7 @@ api_key = 'your_api_key'
 
 data = {
   time: Time.now.utc.iso8601,
-  bee_id: 'bee1',
+  ship_id: 'ship1',
   sensor_id: 'sen1',
   value: 23.5
 }
@@ -252,7 +252,7 @@ client = TelemetryHarborClient.new(api_key)
 
 data = {
   time: Time.now.utc.iso8601,
-  bee_id: 'bee1',
+  ship_id: 'ship1',
   sensor_id: 'sen1',
   value: 23.5
 }

@@ -27,7 +27,7 @@ curl -X POST http://example.hive.telemetryhive.com/api/v1/ingest \
 -H "Content-Type: application/json" \
 -d '{
   "time": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'",
-  "bee_id": "bee1",
+  "ship_id": "ship1",
   "sensor_id": "sen1",
   "value": 23.5
 }'```
@@ -51,13 +51,13 @@ Here's an example of how to perform a batch data push using cURL:
 -d '[
   {
     "time": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'",
-    "bee_id": "bee1",
+    "ship_id": "ship1",
     "sensor_id": "sen1",
     "value": 23.5
   },
   {
     "time": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'",
-    "bee_id": "bee1",
+    "ship_id": "ship1",
     "sensor_id": "sen2",
     "value": 18.7
   }
@@ -72,7 +72,7 @@ When using cURL, you can add options to see more information about the request a
 -H "Content-Type: application/json" \
 -d '{
   "time": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'",
-  "bee_id": "bee1",
+  "ship_id": "ship1",
   "sensor_id": "sen1",
   "value": 23.5
 }' \
@@ -91,7 +91,7 @@ The -i option includes the HTTP response headers in the output.
 -H "Content-Type: application/json" \
 -d '{
   "time": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'",
-  "bee_id": "bee1",
+  "ship_id": "ship1",
   "sensor_id": "sen1",
   "value": 23.5
 }'```
@@ -111,7 +111,7 @@ for i in $(seq 1 $MAX_RETRIES); do
     -H "Content-Type: application/json" \
     -d '{
       "time": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'",
-      "bee_id": "bee1",
+      "ship_id": "ship1",
       "sensor_id": "sen1",
       "value": 23.5
     }')
@@ -134,7 +134,7 @@ If you need to manipulate JSON data before sending it, you can use jq, a lightwe
 
 ```echo '{
   "time": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'",
-  "bee_id": "bee1",
+  "ship_id": "ship1",
   "sensor_id": "sen1",
   "value": 23.5
 }' | jq '.value += 1.0' | \

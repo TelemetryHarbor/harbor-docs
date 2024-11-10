@@ -32,7 +32,7 @@ url = "http://example.hive.telemetryhive.com/api/v1/ingest"
 headers = {"X-API-Key": "your_api_key"}
 data = {
     "time": datetime.utcnow().isoformat(),
-    "bee_id": "bee1",
+    "ship_id": "ship1",
     "sensor_id": "sen1",
     "value": 23.5
 }
@@ -63,13 +63,13 @@ headers = {"X-API-Key": "your_api_key"}
 data = [
     {
         "time": datetime.utcnow().isoformat(),
-        "bee_id": "bee1",
+        "ship_id": "ship1",
         "sensor_id": "sen1",
         "value": 23.5
     },
     {
         "time": datetime.utcnow().isoformat(),
-        "bee_id": "bee1",
+        "ship_id": "ship1",
         "sensor_id": "sen2",
         "value": 18.7
     }
@@ -90,7 +90,7 @@ url = "http://example.hive.telemetryhive.com/api/v1/ingest"
 headers = {"X-API-Key": "your_api_key"}
 data = {
     "time": datetime.utcnow().isoformat(),
-    "bee_id": "bee1",
+    "ship_id": "ship1",
     "sensor_id": "sen1",
     "value": 23.5
 }

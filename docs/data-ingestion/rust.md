@@ -45,9 +45,9 @@ use serde::{Deserialize, Serialize};
 use std::error::Error;
 
 #[derive(Debug, Serialize, Deserialize)]
-struct SensorData {
+struct AnchorData {
     time: DateTime<Utc>,
-    bee_id: String,
+    ship_id: String,
     sensor_id: String,
     value: f64,
 }
@@ -67,7 +67,7 @@ impl TelemetryHarborClient {
         }
     }
 
-    async fn send_data(&self, data: &SensorData) -> Result<String, Box<dyn Error>> {
+    async fn send_data(&self, data: &AnchorData) -> Result<String, Box<dyn Error>> {
         let url = format!("{}/api/v1/ingest", self.base_url);
         let response = self
             .client
@@ -96,9 +96,9 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let base_url = "http://example.hive.telemetryhive.com".to_string();
     let client = TelemetryHarborClient::new(api_key, base_url);
 
-    let data = SensorData {
+    let data = AnchorData {
         time: Utc::now(),
-        bee_id: "bee1".to_string(),
+        ship_id: "ship1".to_string(),
         sensor_id: "sen1".to_string(),
         value: 23.5,
     };
@@ -132,9 +132,9 @@ use serde::{Deserialize, Serialize};
 use std::error::Error;
 
 #[derive(Debug, Serialize, Deserialize)]
-struct SensorData {
+struct AnchorData {
     time: DateTime<Utc>,
-    bee_id: String,
+    ship_id: String,
     sensor_id: String,
     value: f64,
 }
@@ -154,7 +154,7 @@ impl TelemetryHarborClient {
         }
     }
 
-    async fn send_batch_data(&self, data: &[SensorData]) -> Result<String, Box<dyn Error>> {
+    async fn send_batch_data(&self, data: &[AnchorData]) -> Result<String, Box<dyn Error>> {
         let url = format!("{}/api/v1/ingest/batch", self.base_url);
         let response = self
             .client
@@ -184,15 +184,15 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let client = TelemetryHarborClient::new(api_key, base_url);
 
     let data = vec![
-        SensorData {
+        AnchorData {
             time: Utc::now(),
-            bee_id: "bee1".to_string(),
+            ship_id: "ship1".to_string(),
             sensor_id: "sen1".to_string(),
             value: 23.5,
         },
-        SensorData {
+        AnchorData {
             time: Utc::now(),
-            bee_id: "bee1".to_string(),
+            ship_id: "ship1".to_string(),
             sensor_id: "sen2".to_string(),
             value: 18.7,
         },
@@ -219,9 +219,9 @@ use std::error::Error;
 use thiserror::Error;
 
 #[derive(Debug, Serialize, Deserialize)]
-struct SensorData {
+struct AnchorData {
     time: DateTime<Utc>,
-    bee_id: String,
+    ship_id: String,
     sensor_id: String,
     value: f64,
 }
@@ -249,7 +249,7 @@ impl TelemetryHarborClient {
         }
     }
 
-    async fn send_data(&self, data: &SensorData) -> Result<String, TelemetryError> {
+    async fn send_data(&self, data: &AnchorData) -> Result<String, TelemetryError> {
         let url = format!("{}/api/v1/ingest", self.base_url);
         let response = self
             .client
@@ -276,9 +276,9 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let base_url = "http://example.hive.telemetryhive.com".to_string();
     let client = TelemetryHarborClient::new(api_key, base_url);
 
-    let data = SensorData {
+    let data = AnchorData {
         time: Utc::now(),
-        bee_id: "bee1".to_string(),
+        ship_id: "ship1".to_string(),
         sensor_id: "sen1".to_string(),
         value: 23.5,
     };
@@ -317,7 +317,7 @@ use backoff::ExponentialBackoff;
 use backoff::future::retry;
 
 impl TelemetryHarborClient {
-    async fn send_data_with_retry(&self, data: &SensorData) -> Result<String, TelemetryError> {
+    async fn send_data_with_retry(&self, data: &AnchorData) -> Result<String, TelemetryError> {
         let operation = || async {
             let result = self.send_data(data).await;
             match result {
@@ -340,7 +340,7 @@ impl TelemetryHarborClient {
 use futures::stream::{self, StreamExt};
 
 impl TelemetryHarborClient {
-    async fn send_batch_data_stream(&self, data: Vec<SensorData>) -> Result<(), TelemetryError> {
+    async fn send_batch_data_stream(&self, data: Vec<AnchorData>) -> Result<(), TelemetryError> {
         let results = stream::iter(data)
             .map(|sensor_data| self.send_data(&sensor_data))
             .buffer_unordered(10) // Process up to 10 requests concurrently

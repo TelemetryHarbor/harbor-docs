@@ -11,7 +11,7 @@ Telemetry Harbor uses TimescaleDB, a time-series database built on PostgreSQL, t
 The primary table for storing all sensor readings is sensor_data. Here's its structure:
 
 - time: Timestamp of the data point (with timezone)
-- bee_id: Unique identifier for the device
+- ship_id: Unique identifier for the device
 - sensor_id: Identifier for the sensor or data type
 - value: The recorded sensor value
 
@@ -19,4 +19,4 @@ Note: This table is created as a TimescaleDB hypertable, which provides enhanced
 
 ## Indexing
 
-To optimize query performance, we have created an index on frequently queried columns. This index will improve the performance of queries that filter by bee_id and sensor_id and order by time.
+To optimize query performance, we have created an index on frequently queried columns. This index will improve the performance of queries that filter by ship_id and sensor_id and order by time.

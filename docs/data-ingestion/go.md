@@ -34,10 +34,10 @@ import (
     "time"
 )
 
-type SensorData struct {
+type AnchorData struct {
     Time     string  `json:"time"`
-    BeeID    string  `json:"bee_id"`
-    SensorID string  `json:"sensor_id"`
+    ShipID    string  `json:"ship_id"`
+    AnchorID string  `json:"sensor_id"`
     Value    float64 `json:"value"`
 }
 
@@ -45,10 +45,10 @@ func main() {
     url := "http://example.hive.telemetryhive.com/api/v1/ingest"
     apiKey := "your_api_key"
 
-    data := SensorData{
+    data := AnchorData{
         Time:     time.Now().UTC().Format(time.RFC3339),
-        BeeID:    "bee1",
-        SensorID: "sen1",
+        ShipID:    "ship1",
+        AnchorID: "sen1",
         Value:    23.5,
     }
 
@@ -104,10 +104,10 @@ import (
     "time"
 )
 
-type SensorData struct {
+type AnchorData struct {
     Time     string  `json:"time"`
-    BeeID    string  `json:"bee_id"`
-    SensorID string  `json:"sensor_id"`
+    ShipID    string  `json:"ship_id"`
+    AnchorID string  `json:"sensor_id"`
     Value    float64 `json:"value"`
 }
 
@@ -115,17 +115,17 @@ func main() {
     url := "http://example.hive.telemetryhive.com/api/v1/ingest/batch"
     apiKey := "your_api_key"
 
-    data := []SensorData{
+    data := []AnchorData{
         {
             Time:     time.Now().UTC().Format(time.RFC3339),
-            BeeID:    "bee1",
-            SensorID: "sen1",
+            ShipID:    "ship1",
+            AnchorID: "sen1",
             Value:    23.5,
         },
         {
             Time:     time.Now().UTC().Format(time.RFC3339),
-            BeeID:    "bee1",
-            SensorID: "sen2",
+            ShipID:    "ship1",
+            AnchorID: "sen2",
             Value:    18.7,
         },
     }
@@ -173,10 +173,10 @@ import (
     "time"
 )
 
-type SensorData struct {
+type AnchorData struct {
     Time     string  `json:"time"`
-    BeeID    string  `json:"bee_id"`
-    SensorID string  `json:"sensor_id"`
+    ShipID    string  `json:"ship_id"`
+    AnchorID string  `json:"sensor_id"`
     Value    float64 `json:"value"`
 }
 
@@ -184,10 +184,10 @@ func main() {
     url := "http://example.hive.telemetryhive.com/api/v1/ingest"
     apiKey := "your_api_key"
 
-    data := SensorData{
+    data := AnchorData{
         Time:     time.Now().UTC().Format(time.RFC3339),
-        BeeID:    "bee1",
-        SensorID: "sen1",
+        ShipID:    "ship1",
+        AnchorID: "sen1",
         Value:    23.5,
     }
 
@@ -290,7 +290,7 @@ func sendRequest(url string, apiKey string, data []byte) error {
 func main() {
     url := "http://example.hive.telemetryhive.com/api/v1/ingest"
     apiKey := "your_api_key"
-    data := []byte(`{"time": "2023-05-01T12:00:00Z", "bee_id": "bee1", "sensor_id": "sen1", "value": 23.5}`)
+    data := []byte(`{"time": "2023-05-01T12:00:00Z", "ship_id": "ship1", "sensor_id": "sen1", "value": 23.5}`)
 
     maxRetries := 3
     for i := 0; i < maxRetries; i++ {
@@ -324,7 +324,7 @@ import (
     "time"
 )
 
-func sendData(url string, apiKey string, data SensorData, wg *sync.WaitGroup) {
+func sendData(url string, apiKey string, data AnchorData, wg *sync.WaitGroup) {
     defer wg.Done()
 
     jsonData, err := json.Marshal(data)
@@ -350,17 +350,17 @@ func sendData(url string, apiKey string, data SensorData, wg *sync.WaitGroup) {
     }
     defer resp.Body.Close()
 
-    fmt.Printf("Response Status for %s: %s\n", data.SensorID, resp.Status)
+    fmt.Printf("Response Status for %s: %s\n", data.AnchorID, resp.Status)
 }
 
 func main() {
     url := "http://example.hive.telemetryhive.com/api/v1/ingest"
     apiKey := "your_api_key"
 
-    sensors := []SensorData{
-        {Time: time.Now().UTC().Format(time.RFC3339), BeeID: "bee1", SensorID: "sen1", Value: 23.5},
-        {Time: time.Now().UTC().Format(time.RFC3339), BeeID: "bee1", SensorID: "sen2", Value: 18.7},
-        {Time: time.Now().UTC().Format(time.RFC3339), BeeID: "bee1", SensorID: "sen3", Value: 30.2},
+    sensors := []AnchorData{
+        {Time: time.Now().UTC().Format(time.RFC3339), ShipID: "ship1", AnchorID: "sen1", Value: 23.5},
+        {Time: time.Now().UTC().Format(time.RFC3339), ShipID: "ship1", AnchorID: "sen2", Value: 18.7},
+        {Time: time.Now().UTC().Format(time.RFC3339), ShipID: "ship1", AnchorID: "sen3", Value: 30.2},
     }
 
     var wg sync.WaitGroup

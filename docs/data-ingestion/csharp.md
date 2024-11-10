@@ -31,11 +31,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-public class SensorData
+public class AnchorData
 {
     public DateTime Time { get; set; }
-    public string BeeId { get; set; }
-    public string SensorId { get; set; }
+    public string ShipId { get; set; }
+    public string AnchorId { get; set; }
     public double Value { get; set; }
 }
 
@@ -52,7 +52,7 @@ public class TelemetryHarborClient
         _baseUrl = baseUrl;
     }
 
-    public async Task<string> SendDataAsync(SensorData data)
+    public async Task<string> SendDataAsync(AnchorData data)
     {
         var url = $"{_baseUrl}/api/v1/ingest";
         var json = JsonConvert.SerializeObject(data);
@@ -81,11 +81,11 @@ class Program
         var apiKey = "your_api_key";
         var client = new TelemetryHarborClient(apiKey);
 
-        var data = new SensorData
+        var data = new AnchorData
         {
             Time = DateTime.UtcNow,
-            BeeId = "bee1",
-            SensorId = "sen1",
+            ShipId = "ship1",
+            AnchorId = "sen1",
             Value = 23.5
         };
 
@@ -123,11 +123,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-public class SensorData
+public class AnchorData
 {
     public DateTime Time { get; set; }
-    public string BeeId { get; set; }
-    public string SensorId { get; set; }
+    public string ShipId { get; set; }
+    public string AnchorId { get; set; }
     public double Value { get; set; }
 }
 
@@ -144,7 +144,7 @@ public class TelemetryHarborClient
         _baseUrl = baseUrl;
     }
 
-    public async Task<string> SendBatchDataAsync(List<SensorData> dataList)
+    public async Task<string> SendBatchDataAsync(List<AnchorData> dataList)
     {
         var url = $"{_baseUrl}/api/v1/ingest/batch";
         var json = JsonConvert.SerializeObject(dataList);
@@ -173,20 +173,20 @@ class Program
         var apiKey = "your_api_key";
         var client = new TelemetryHarborClient(apiKey);
 
-        var dataList = new List<SensorData>
+        var dataList = new List<AnchorData>
         {
-            new SensorData
+            new AnchorData
             {
                 Time = DateTime.UtcNow,
-                BeeId = "bee1",
-                SensorId = "sen1",
+                ShipId = "ship1",
+                AnchorId = "sen1",
                 Value = 23.5
             },
-            new SensorData
+            new AnchorData
             {
                 Time = DateTime.UtcNow,
-                BeeId = "bee1",
-                SensorId = "sen2",
+                ShipId = "ship1",
+                AnchorId = "sen2",
                 Value = 18.7
             }
         };
@@ -226,7 +226,7 @@ public class TelemetryHarborClient
         _baseUrl = baseUrl;
     }
 
-    public async Task<string> SendDataAsync(SensorData data)
+    public async Task<string> SendDataAsync(AnchorData data)
     {
         try
         {
@@ -270,11 +270,11 @@ class Program
         var apiKey = "your_api_key";
         var client = new TelemetryHarborClient(apiKey);
 
-        var data = new SensorData
+        var data = new AnchorData
         {
             Time = DateTime.UtcNow,
-            BeeId = "bee1",
-            SensorId = "sen1",
+            ShipId = "ship1",
+            AnchorId = "sen1",
             Value = 23.5
         };
 
@@ -332,7 +332,7 @@ public class TelemetryHarborClient
             .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
     }
 
-    public async Task<string> SendDataAsync(SensorData data)
+    public async Task<string> SendDataAsync(AnchorData data)
     {
         var url = $"{_baseUrl}/api/v1/ingest";
         var json = JsonConvert.SerializeObject(data);
@@ -363,7 +363,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 public interface ITelemetryHarborClient
 {
-    Task<string> SendDataAsync(SensorData data);
+    Task<string> SendDataAsync(AnchorData data);
 }
 
 public class TelemetryHarborClient : ITelemetryHarborClient
@@ -377,7 +377,7 @@ public class TelemetryHarborClient : ITelemetryHarborClient
         _apiKey = apiKey;
     }
 
-    public async Task<string> SendDataAsync(SensorData data)
+    public async Task<string> SendDataAsync(AnchorData data)
     {
         // Implementation as before
     }
@@ -401,11 +401,11 @@ class Program
         var serviceProvider = services.BuildServiceProvider();
         var client = serviceProvider.GetRequiredService<ITelemetryHarborClient>();
 
-        var data = new SensorData
+        var data = new AnchorData
         {
             Time = DateTime.UtcNow,
-            BeeId = "bee1",
-            SensorId = "sen1",
+            ShipId = "ship1",
+            AnchorId = "sen1",
             Value = 23.5
         };
 

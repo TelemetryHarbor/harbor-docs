@@ -32,7 +32,7 @@ Each language has its own specific implementation, but the general structure of 
 When sending data to Telemetry Harbor, use the following structure:
 
 - `time`: Timestamp of the sensor reading (ISO 8601 format)
-- `bee_id`: Unique identifier for the device
+- `ship_id`: Unique identifier for the device
 - `sensor_id`: Identifier for the sensor or data type
 - `value`: The recorded sensor value
 

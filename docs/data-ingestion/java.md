@@ -34,7 +34,7 @@ public class TelemetryClient {
         String url = "http://example.hive.telemetryhive.com/api/v1/ingest";
         String apiKey = "your_api_key";
         String jsonData = String.format(
-            "{\"time\":\"%s\", \"bee_id\":\"bee1\", \"sensor_id\":\"sen1\", \"value\":23.5}",
+            "{\"time\":\"%s\", \"ship_id\":\"ship1\", \"sensor_id\":\"sen1\", \"value\":23.5}",
             Instant.now().toString()
         );
 
@@ -77,8 +77,8 @@ public class TelemetryBatchClient {
         String url = "http://example.hive.telemetryhive.com/api/v1/ingest/batch";
         String apiKey = "your_api_key";
         String jsonData = String.format(
-            "[{\"time\":\"%s\", \"bee_id\":\"bee1\", \"sensor_id\":\"sen1\", \"value\":23.5}," +
-            "{\"time\":\"%s\", \"bee_id\":\"bee1\", \"sensor_id\":\"sen2\", \"value\":18.7}]",
+            "[{\"time\":\"%s\", \"ship_id\":\"ship1\", \"sensor_id\":\"sen1\", \"value\":23.5}," +
+            "{\"time\":\"%s\", \"ship_id\":\"ship1\", \"sensor_id\":\"sen2\", \"value\":18.7}]",
             Instant.now().toString(),
             Instant.now().toString()
         );
@@ -114,7 +114,7 @@ public class TelemetryClientWithErrorHandling {
         String url = "http://example.hive.telemetryhive.com/api/v1/ingest";
         String apiKey = "your_api_key";
         String jsonData = String.format(
-            "{\"time\":\"%s\", \"bee_id\":\"bee1\", \"sensor_id\":\"sen1\", \"value\":23.5}",
+            "{\"time\":\"%s\", \"ship_id\":\"ship1\", \"sensor_id\":\"sen1\", \"value\":23.5}",
             Instant.now().toString()
         );
 
@@ -165,7 +165,7 @@ public class TelemetryClientWithRetry {
     public static void main(String[] args) throws Exception {
         String url = "http://example.hive.telemetryhive.com/api/v1/ingest";
         String apiKey = "your_api_key";
-        String jsonData = "{\"time\":\"" + Instant.now() + "\", \"bee_id\":\"bee1\", \"sensor_id\":\"sen1\", \"value\":23.5}";
+        String jsonData = "{\"time\":\"" + Instant.now() + "\", \"ship_id\":\"ship1\", \"sensor_id\":\"sen1\", \"value\":23.5}";
 
         HttpClient client = HttpClient.newBuilder()
             .connectTimeout(Duration.ofSeconds(10))
@@ -216,7 +216,7 @@ import java.util.Map;
 ObjectMapper mapper = new ObjectMapper();
 Map<String, Object> data = new HashMap<>();
 data.put("time", Instant.now().toString());
-data.put("bee_id", "bee1");
+data.put("ship_id", "ship1");
 data.put("sensor_id", "sen1");
 data.put("value", 23.5);
 

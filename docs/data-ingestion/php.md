@@ -30,7 +30,7 @@ $apiKey = "your_api_key";
 
 $data = array(
     "time" => date("c"),
-    "bee_id" => "bee1",
+    "ship_id" => "ship1",
     "sensor_id" => "sen1",
     "value" => 23.5
 );
@@ -82,13 +82,13 @@ $apiKey = "your_api_key";
 $data = array(
     array(
         "time" => date("c"),
-        "bee_id" => "bee1",
+        "ship_id" => "ship1",
         "sensor_id" => "sen1",
         "value" => 23.5
     ),
     array(
         "time" => date("c"),
-        "bee_id" => "bee1",
+        "ship_id" => "ship1",
         "sensor_id" => "sen2",
         "value" => 18.7
     )
@@ -159,7 +159,7 @@ $apiKey = "your_api_key";
 
 $data = array(
     "time" => date("c"),
-    "bee_id" => "bee1",
+    "ship_id" => "ship1",
     "sensor_id" => "sen1",
     "value" => 23.5
 );
@@ -211,7 +211,7 @@ $apiKey = "your_api_key";
 
 $data = array(
     "time" => date("c"),
-    "bee_id" => "bee1",
+    "ship_id" => "ship1",
     "sensor_id" => "sen1",
     "value" => 23.5
 );
@@ -245,7 +245,7 @@ $apiKey = "your_api_key";
 
 $data = [
     "time" => date("c"),
-    "bee_id" => "bee1",
+    "ship_id" => "ship1",
     "sensor_id" => "sen1",
     "value" => 23.5
 ];
