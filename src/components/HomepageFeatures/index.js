@@ -4,32 +4,29 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Real-time Data Visualization',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Telemetry Harbor provides powerful, real-time visualization tools for your IoT data. 
+        Monitor your devices and analyze trends as they happen.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Scalable Cloud Infrastructure',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Our cloud-native platform scales effortlessly with your needs. From a handful of devices 
+        to millions, Telemetry Harbor grows with your IoT ecosystem.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Secure Data Management',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Security is our top priority. Telemetry Harbor ensures your data is encrypted end-to-end, 
+        with robust access controls and compliance with industry standards.
       </>
     ),
   },
