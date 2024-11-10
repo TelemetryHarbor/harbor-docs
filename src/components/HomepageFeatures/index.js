@@ -5,6 +5,7 @@ import styles from './styles.module.css';
 const FeatureList = [
   {
     title: 'Real-time Data Visualization',
+    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
         Telemetry Harbor provides powerful, real-time visualization tools for your IoT data. 
@@ -14,6 +15,7 @@ const FeatureList = [
   },
   {
     title: 'Scalable Cloud Infrastructure',
+    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
         Our cloud-native platform scales effortlessly with your needs. From a handful of devices 
@@ -23,6 +25,7 @@ const FeatureList = [
   },
   {
     title: 'Secure Data Management',
+    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
         Security is our top priority. Telemetry Harbor ensures your data is encrypted end-to-end, 
