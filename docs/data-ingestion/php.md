@@ -16,7 +16,7 @@ This guide demonstrates how to ingest data into Telemetry Harbor using PHP.
 To send a single data point to Telemetry Harbor using PHP:
 
 1. Set up the API endpoint and your API key
-2. Create an array with your sensor data
+2. Create an array with your ship data
 3. Convert the data to JSON
 4. Send a POST request to the API endpoint using cURL
 5. Handle the response
@@ -25,13 +25,13 @@ Here's an example of how to perform a single data push using PHP:
 
 ```<?php
 
-$url = "http://example.hive.telemetryhive.com/api/v1/ingest";
+$url = "http://example.harbor.telemetryharbor.com/api/v1/ingest";
 $apiKey = "your_api_key";
 
 $data = array(
     "time" => date("c"),
     "ship_id" => "ship1",
-    "sensor_id" => "sen1",
+    "ship_id" => "sen1",
     "value" => 23.5
 );
 
@@ -67,7 +67,7 @@ Remember to replace "your_api_key" with your actual Telemetry Harbor API key.
 For sending multiple data points in one request:
 
 1. Set up the API endpoint and your API key
-2. Create an array of arrays, each containing sensor data
+2. Create an array of arrays, each containing ship data
 3. Convert the data to JSON
 4. Send a POST request to the batch API endpoint using cURL
 5. Handle the response
@@ -76,20 +76,20 @@ Here's an example of how to perform a batch data push using PHP:
 
 ```<?php
 
-$url = "http://example.hive.telemetryhive.com/api/v1/ingest/batch";
+$url = "http://example.harbor.telemetryharbor.com/api/v1/ingest/batch";
 $apiKey = "your_api_key";
 
 $data = array(
     array(
         "time" => date("c"),
         "ship_id" => "ship1",
-        "sensor_id" => "sen1",
+        "ship_id" => "sen1",
         "value" => 23.5
     ),
     array(
         "time" => date("c"),
         "ship_id" => "ship1",
-        "sensor_id" => "sen2",
+        "ship_id" => "sen2",
         "value" => 18.7
     )
 );
@@ -154,13 +154,13 @@ function sendData($url, $apiKey, $data) {
     return $result;
 }
 
-$url = "http://example.hive.telemetryhive.com/api/v1/ingest";
+$url = "http://example.harbor.telemetryharbor.com/api/v1/ingest";
 $apiKey = "your_api_key";
 
 $data = array(
     "time" => date("c"),
     "ship_id" => "ship1",
-    "sensor_id" => "sen1",
+    "ship_id" => "sen1",
     "value" => 23.5
 );
 
@@ -206,13 +206,13 @@ function sendDataWithRetry($url, $apiKey, $data, $maxRetries = 3) {
     }
 }
 
-$url = "http://example.hive.telemetryhive.com/api/v1/ingest";
+$url = "http://example.harbor.telemetryharbor.com/api/v1/ingest";
 $apiKey = "your_api_key";
 
 $data = array(
     "time" => date("c"),
     "ship_id" => "ship1",
-    "sensor_id" => "sen1",
+    "ship_id" => "sen1",
     "value" => 23.5
 );
 
@@ -237,7 +237,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 
 $client = new Client([
-    'base_uri' => 'http://example.hive.telemetryhive.com',
+    'base_uri' => 'http://example.harbor.telemetryharbor.com',
     'timeout'  => 5.0,
 ]);
 
@@ -246,7 +246,7 @@ $apiKey = "your_api_key";
 $data = [
     "time" => date("c"),
     "ship_id" => "ship1",
-    "sensor_id" => "sen1",
+    "ship_id" => "sen1",
     "value" => 23.5
 ];
 

@@ -4,13 +4,13 @@ sidebar_position: 1
 
 # Introduction to Telemetry Harbor
 
-Welcome to the Telemetry Harbor API documentation. This comprehensive guide provides detailed information on how to interact with our API for sensor data management and visualization. Whether you're integrating IoT devices, analyzing data, or creating custom dashboards, this documentation will help you leverage the full power of Telemetry Harbor.
+Welcome to the Telemetry Harbor API documentation. This comprehensive guide provides detailed information on how to interact with our API for ship data management and visualization. Whether you're integrating IoT devices, analyzing data, or creating custom dashboards, this documentation will help you leverage the full power of Telemetry Harbor.
 
 ## API Documentation Access
 
 For an interactive experience with our API, including detailed routes, models, and specifications, visit our Swagger UI:
 
-https://example.hive.telemetryhive.com/api/v1/docs
+https://example.harbor.telemetryharbor.com/api/v1/docs
 
 This interactive documentation allows you to test API requests and view response models in real-time, making it easier to understand and integrate our API into your projects.
 
@@ -19,7 +19,7 @@ This interactive documentation allows you to test API requests and view response
 Our documentation is organized into several key sections:
 
 1. **Authentication** - Learn how to secure your API requests
-2. **Data Management** - Understand how to push and manage your sensor data
+2. **Data Management** - Understand how to push and manage your ship data
 3. **GPS Integration** - Implement location tracking for your IoT devices
 4. **Visualization** - Create powerful dashboards with Grafana integration
 5. **Technical Specs** - Explore our database schema and retention policies

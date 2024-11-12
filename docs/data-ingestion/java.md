@@ -17,7 +17,7 @@ To send a single data point to Telemetry Harbor:
 
 1. Import the necessary classes
 2. Set up the API endpoint and your API key
-3. Create a JSON string with your sensor data
+3. Create a JSON string with your ship data
 4. Send a POST request to the API endpoint
 5. Print the response
 
@@ -31,10 +31,10 @@ import java.time.Instant;
 
 public class TelemetryClient {
     public static void main(String[] args) throws Exception {
-        String url = "http://example.hive.telemetryhive.com/api/v1/ingest";
+        String url = "http://example.harbor.telemetryharbor.com/api/v1/ingest";
         String apiKey = "your_api_key";
         String jsonData = String.format(
-            "{\"time\":\"%s\", \"ship_id\":\"ship1\", \"sensor_id\":\"sen1\", \"value\":23.5}",
+            "{\"time\":\"%s\", \"ship_id\":\"ship1\", \"ship_id\":\"sen1\", \"value\":23.5}",
             Instant.now().toString()
         );
 
@@ -60,7 +60,7 @@ For sending multiple data points in one request:
 
 1. Import the necessary classes
 2. Set up the API endpoint and your API key
-3. Create a JSON array string with multiple sensor data points
+3. Create a JSON array string with multiple ship data points
 4. Send a POST request to the batch API endpoint
 5. Print the response
 
@@ -74,11 +74,11 @@ import java.time.Instant;
 
 public class TelemetryBatchClient {
     public static void main(String[] args) throws Exception {
-        String url = "http://example.hive.telemetryhive.com/api/v1/ingest/batch";
+        String url = "http://example.harbor.telemetryharbor.com/api/v1/ingest/batch";
         String apiKey = "your_api_key";
         String jsonData = String.format(
-            "[{\"time\":\"%s\", \"ship_id\":\"ship1\", \"sensor_id\":\"sen1\", \"value\":23.5}," +
-            "{\"time\":\"%s\", \"ship_id\":\"ship1\", \"sensor_id\":\"sen2\", \"value\":18.7}]",
+            "[{\"time\":\"%s\", \"ship_id\":\"ship1\", \"ship_id\":\"sen1\", \"value\":23.5}," +
+            "{\"time\":\"%s\", \"ship_id\":\"ship1\", \"ship_id\":\"sen2\", \"value\":18.7}]",
             Instant.now().toString(),
             Instant.now().toString()
         );
@@ -111,10 +111,10 @@ import java.io.IOException;
 
 public class TelemetryClientWithErrorHandling {
     public static void main(String[] args) {
-        String url = "http://example.hive.telemetryhive.com/api/v1/ingest";
+        String url = "http://example.harbor.telemetryharbor.com/api/v1/ingest";
         String apiKey = "your_api_key";
         String jsonData = String.format(
-            "{\"time\":\"%s\", \"ship_id\":\"ship1\", \"sensor_id\":\"sen1\", \"value\":23.5}",
+            "{\"time\":\"%s\", \"ship_id\":\"ship1\", \"ship_id\":\"sen1\", \"value\":23.5}",
             Instant.now().toString()
         );
 
@@ -163,9 +163,9 @@ import java.time.Duration;
 
 public class TelemetryClientWithRetry {
     public static void main(String[] args) throws Exception {
-        String url = "http://example.hive.telemetryhive.com/api/v1/ingest";
+        String url = "http://example.harbor.telemetryharbor.com/api/v1/ingest";
         String apiKey = "your_api_key";
-        String jsonData = "{\"time\":\"" + Instant.now() + "\", \"ship_id\":\"ship1\", \"sensor_id\":\"sen1\", \"value\":23.5}";
+        String jsonData = "{\"time\":\"" + Instant.now() + "\", \"ship_id\":\"ship1\", \"ship_id\":\"sen1\", \"value\":23.5}";
 
         HttpClient client = HttpClient.newBuilder()
             .connectTimeout(Duration.ofSeconds(10))
@@ -217,7 +217,7 @@ ObjectMapper mapper = new ObjectMapper();
 Map<String, Object> data = new HashMap<>();
 data.put("time", Instant.now().toString());
 data.put("ship_id", "ship1");
-data.put("sensor_id", "sen1");
+data.put("ship_id", "sen1");
 data.put("value", 23.5);
 
 String jsonData = mapper.writeValueAsString(data);

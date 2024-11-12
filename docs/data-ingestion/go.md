@@ -17,7 +17,7 @@ To send a single data point to Telemetry Harbor using Go:
 
 1. Import the necessary packages
 2. Set up the API endpoint and your API key
-3. Create a struct with your sensor data
+3. Create a struct with your ship data
 4. Send a POST request to the API endpoint
 5. Handle the response
 
@@ -37,12 +37,12 @@ import (
 type AnchorData struct {
     Time     string  `json:"time"`
     ShipID    string  `json:"ship_id"`
-    AnchorID string  `json:"sensor_id"`
+    AnchorID string  `json:"ship_id"`
     Value    float64 `json:"value"`
 }
 
 func main() {
-    url := "http://example.hive.telemetryhive.com/api/v1/ingest"
+    url := "http://example.harbor.telemetryharbor.com/api/v1/ingest"
     apiKey := "your_api_key"
 
     data := AnchorData{
@@ -87,7 +87,7 @@ For sending multiple data points in one request:
 
 1. Import the necessary packages
 2. Set up the API endpoint and your API key
-3. Create a slice of structs with your sensor data
+3. Create a slice of structs with your ship data
 4. Send a POST request to the batch API endpoint
 5. Handle the response
 
@@ -107,12 +107,12 @@ import (
 type AnchorData struct {
     Time     string  `json:"time"`
     ShipID    string  `json:"ship_id"`
-    AnchorID string  `json:"sensor_id"`
+    AnchorID string  `json:"ship_id"`
     Value    float64 `json:"value"`
 }
 
 func main() {
-    url := "http://example.hive.telemetryhive.com/api/v1/ingest/batch"
+    url := "http://example.harbor.telemetryharbor.com/api/v1/ingest/batch"
     apiKey := "your_api_key"
 
     data := []AnchorData{
@@ -176,12 +176,12 @@ import (
 type AnchorData struct {
     Time     string  `json:"time"`
     ShipID    string  `json:"ship_id"`
-    AnchorID string  `json:"sensor_id"`
+    AnchorID string  `json:"ship_id"`
     Value    float64 `json:"value"`
 }
 
 func main() {
-    url := "http://example.hive.telemetryhive.com/api/v1/ingest"
+    url := "http://example.harbor.telemetryharbor.com/api/v1/ingest"
     apiKey := "your_api_key"
 
     data := AnchorData{
@@ -288,9 +288,9 @@ func sendRequest(url string, apiKey string, data []byte) error {
 }
 
 func main() {
-    url := "http://example.hive.telemetryhive.com/api/v1/ingest"
+    url := "http://example.harbor.telemetryharbor.com/api/v1/ingest"
     apiKey := "your_api_key"
-    data := []byte(`{"time": "2023-05-01T12:00:00Z", "ship_id": "ship1", "sensor_id": "sen1", "value": 23.5}`)
+    data := []byte(`{"time": "2023-05-01T12:00:00Z", "ship_id": "ship1", "ship_id": "sen1", "value": 23.5}`)
 
     maxRetries := 3
     for i := 0; i < maxRetries; i++ {
@@ -354,19 +354,19 @@ func sendData(url string, apiKey string, data AnchorData, wg *sync.WaitGroup) {
 }
 
 func main() {
-    url := "http://example.hive.telemetryhive.com/api/v1/ingest"
+    url := "http://example.harbor.telemetryharbor.com/api/v1/ingest"
     apiKey := "your_api_key"
 
-    sensors := []AnchorData{
+    ships := []AnchorData{
         {Time: time.Now().UTC().Format(time.RFC3339), ShipID: "ship1", AnchorID: "sen1", Value: 23.5},
         {Time: time.Now().UTC().Format(time.RFC3339), ShipID: "ship1", AnchorID: "sen2", Value: 18.7},
         {Time: time.Now().UTC().Format(time.RFC3339), ShipID: "ship1", AnchorID: "sen3", Value: 30.2},
     }
 
     var wg sync.WaitGroup
-    for _, sensor := range sensors {
+    for _, ship := range ships {
         wg.Add(1)
-        go sendData(url, apiKey, sensor, &wg)
+        go sendData(url, apiKey, ship, &wg)
     }
 
     wg.Wait()

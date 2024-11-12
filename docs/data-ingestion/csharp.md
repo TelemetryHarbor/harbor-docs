@@ -17,8 +17,8 @@ This guide demonstrates how to ingest data into Telemetry Harbor using C#.
 To send a single data point to Telemetry Harbor using C#:
 
 1. Set up the API endpoint and your API key
-2. Create a class to represent your sensor data
-3. Create an instance of the sensor data class
+2. Create a class to represent your ship data
+3. Create an instance of the ship data class
 4. Serialize the data to JSON
 5. Send a POST request to the API endpoint
 6. Handle the response
@@ -45,7 +45,7 @@ public class TelemetryHarborClient
     private readonly string _apiKey;
     private readonly string _baseUrl;
 
-    public TelemetryHarborClient(string apiKey, string baseUrl = "http://example.hive.telemetryhive.com")
+    public TelemetryHarborClient(string apiKey, string baseUrl = "http://example.harbor.telemetryharbor.com")
     {
         _httpClient = new HttpClient();
         _apiKey = apiKey;
@@ -108,8 +108,8 @@ Remember to replace "your_api_key" with your actual Telemetry Harbor API key.
 For sending multiple data points in one request:
 
 1. Set up the API endpoint and your API key
-2. Create a class to represent your sensor data
-3. Create a list of sensor data instances
+2. Create a class to represent your ship data
+3. Create a list of ship data instances
 4. Serialize the list to JSON
 5. Send a POST request to the batch API endpoint
 6. Handle the response
@@ -137,7 +137,7 @@ public class TelemetryHarborClient
     private readonly string _apiKey;
     private readonly string _baseUrl;
 
-    public TelemetryHarborClient(string apiKey, string baseUrl = "http://example.hive.telemetryhive.com")
+    public TelemetryHarborClient(string apiKey, string baseUrl = "http://example.harbor.telemetryharbor.com")
     {
         _httpClient = new HttpClient();
         _apiKey = apiKey;
@@ -219,7 +219,7 @@ public class TelemetryHarborClient
     private readonly string _apiKey;
     private readonly string _baseUrl;
 
-    public TelemetryHarborClient(string apiKey, string baseUrl = "http://example.hive.telemetryhive.com")
+    public TelemetryHarborClient(string apiKey, string baseUrl = "http://example.harbor.telemetryharbor.com")
     {
         _httpClient = new HttpClient();
         _apiKey = apiKey;
@@ -320,7 +320,7 @@ public class TelemetryHarborClient
     private readonly string _baseUrl;
     private readonly IAsyncPolicy<HttpResponseMessage> _retryPolicy;
 
-    public TelemetryHarborClient(string apiKey, string baseUrl = "http://example.hive.telemetryhive.com")
+    public TelemetryHarborClient(string apiKey, string baseUrl = "http://example.harbor.telemetryharbor.com")
     {
         _httpClient = new HttpClient();
         _apiKey = apiKey;
@@ -390,7 +390,7 @@ class Program
         var services = new ServiceCollection();
         services.AddHttpClient<ITelemetryHarborClient, TelemetryHarborClient>(client =>
         {
-            client.BaseAddress = new Uri("http://example.hive.telemetryhive.com");
+            client.BaseAddress = new Uri("http://example.harbor.telemetryharbor.com");
         });
 
         services.AddSingleton(sp => new TelemetryHarborClient(

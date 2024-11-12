@@ -22,13 +22,13 @@ To send a single data point to Telemetry Harbor using cURL:
 
 Here's an example of how to perform a single data push using cURL:
 ```
-curl -X POST http://example.hive.telemetryhive.com/api/v1/ingest \
+curl -X POST http://example.harbor.telemetryharbor.com/api/v1/ingest \
 -H "X-API-Key: your_api_key" \
 -H "Content-Type: application/json" \
 -d '{
   "time": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'",
   "ship_id": "ship1",
-  "sensor_id": "sen1",
+  "ship_id": "sen1",
   "value": 23.5
 }'```
 
@@ -45,20 +45,20 @@ For sending multiple data points in one request:
 
 Here's an example of how to perform a batch data push using cURL:
 
-```curl -X POST http://example.hive.telemetryhive.com/api/v1/ingest/batch \
+```curl -X POST http://example.harbor.telemetryharbor.com/api/v1/ingest/batch \
 -H "X-API-Key: your_api_key" \
 -H "Content-Type: application/json" \
 -d '[
   {
     "time": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'",
     "ship_id": "ship1",
-    "sensor_id": "sen1",
+    "ship_id": "sen1",
     "value": 23.5
   },
   {
     "time": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'",
     "ship_id": "ship1",
-    "sensor_id": "sen2",
+    "ship_id": "sen2",
     "value": 18.7
   }
 ]'
@@ -67,13 +67,13 @@ Here's an example of how to perform a batch data push using cURL:
 
 When using cURL, you can add options to see more information about the request and response, which can be helpful for error handling:
 
-```curl -X POST http://example.hive.telemetryhive.com/api/v1/ingest \
+```curl -X POST http://example.harbor.telemetryharbor.com/api/v1/ingest \
 -H "X-API-Key: your_api_key" \
 -H "Content-Type: application/json" \
 -d '{
   "time": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'",
   "ship_id": "ship1",
-  "sensor_id": "sen1",
+  "ship_id": "sen1",
   "value": 23.5
 }' \
 -v -i
@@ -86,13 +86,13 @@ The -i option includes the HTTP response headers in the output.
 - Use environment variables to store your API key:
 
 ```export TELEMETRY_HARBOR_API_KEY="your_api_key"```
-```curl -X POST http://example.hive.telemetryhive.com/api/v1/ingest \
+```curl -X POST http://example.harbor.telemetryharbor.com/api/v1/ingest \
 -H "X-API-Key: $TELEMETRY_HARBOR_API_KEY" \
 -H "Content-Type: application/json" \
 -d '{
   "time": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'",
   "ship_id": "ship1",
-  "sensor_id": "sen1",
+  "ship_id": "sen1",
   "value": 23.5
 }'```
 
@@ -106,13 +106,13 @@ MAX_RETRIES=3
 RETRY_DELAY=5
 
 for i in $(seq 1 $MAX_RETRIES); do
-    response=$(curl -s -o /dev/null -w "%{http_code}" -X POST http://example.hive.telemetryhive.com/api/v1/ingest \
+    response=$(curl -s -o /dev/null -w "%{http_code}" -X POST http://example.harbor.telemetryharbor.com/api/v1/ingest \
     -H "X-API-Key: your_api_key" \
     -H "Content-Type: application/json" \
     -d '{
       "time": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'",
       "ship_id": "ship1",
-      "sensor_id": "sen1",
+      "ship_id": "sen1",
       "value": 23.5
     }')
 
@@ -135,10 +135,10 @@ If you need to manipulate JSON data before sending it, you can use jq, a lightwe
 ```echo '{
   "time": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'",
   "ship_id": "ship1",
-  "sensor_id": "sen1",
+  "ship_id": "sen1",
   "value": 23.5
 }' | jq '.value += 1.0' | \
-curl -X POST http://example.hive.telemetryhive.com/api/v1/ingest \
+curl -X POST http://example.harbor.telemetryharbor.com/api/v1/ingest \
 -H "X-API-Key: your_api_key" \
 -H "Content-Type: application/json" \
 -d @-```

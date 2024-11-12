@@ -18,7 +18,7 @@ To send a single data point to Telemetry Harbor using Ruby:
 
 1. Require the necessary libraries
 2. Set up the API endpoint and your API key
-3. Create a hash with your sensor data
+3. Create a hash with your ship data
 4. Convert the data to JSON
 5. Send a POST request to the API endpoint
 6. Handle the response
@@ -30,13 +30,13 @@ require 'uri'
 require 'json'
 require 'time'
 
-url = URI.parse('http://example.hive.telemetryhive.com/api/v1/ingest')
+url = URI.parse('http://example.harbor.telemetryharbor.com/api/v1/ingest')
 api_key = 'your_api_key'
 
 data = {
   time: Time.now.utc.iso8601,
   ship_id: 'ship1',
-  sensor_id: 'sen1',
+  ship_id: 'sen1',
   value: 23.5
 }
 
@@ -62,7 +62,7 @@ For sending multiple data points in one request:
 
 1. Require the necessary libraries
 2. Set up the API endpoint and your API key
-3. Create an array of hashes, each containing sensor data
+3. Create an array of hashes, each containing ship data
 4. Convert the data to JSON
 5. Send a POST request to the batch API endpoint
 6. Handle the response
@@ -74,20 +74,20 @@ require 'uri'
 require 'json'
 require 'time'
 
-url = URI.parse('http://example.hive.telemetryhive.com/api/v1/ingest/batch')
+url = URI.parse('http://example.harbor.telemetryharbor.com/api/v1/ingest/batch')
 api_key = 'your_api_key'
 
 data = [
   {
     time: Time.now.utc.iso8601,
     ship_id: 'ship1',
-    sensor_id: 'sen1',
+    ship_id: 'sen1',
     value: 23.5
   },
   {
     time: Time.now.utc.iso8601,
     ship_id: 'ship1',
-    sensor_id: 'sen2',
+    ship_id: 'sen2',
     value: 18.7
   }
 ]
@@ -139,13 +139,13 @@ def send_data(url, api_key, data)
   end
 end
 
-url = 'http://example.hive.telemetryhive.com/api/v1/ingest'
+url = 'http://example.harbor.telemetryharbor.com/api/v1/ingest'
 api_key = 'your_api_key'
 
 data = {
   time: Time.now.utc.iso8601,
   ship_id: 'ship1',
-  sensor_id: 'sen1',
+  ship_id: 'sen1',
   value: 23.5
 }
 
@@ -204,13 +204,13 @@ def send_data(url, api_key, data)
   end
 end
 
-url = 'http://example.hive.telemetryhive.com/api/v1/ingest'
+url = 'http://example.harbor.telemetryharbor.com/api/v1/ingest'
 api_key = 'your_api_key'
 
 data = {
   time: Time.now.utc.iso8601,
   ship_id: 'ship1',
-  sensor_id: 'sen1',
+  ship_id: 'sen1',
   value: 23.5
 }
 
@@ -230,7 +230,7 @@ require 'time'
 
 class TelemetryHarborClient
   include HTTParty
-  base_uri 'http://example.hive.telemetryhive.com'
+  base_uri 'http://example.harbor.telemetryharbor.com'
 
   def initialize(api_key)
     @api_key = api_key
@@ -253,7 +253,7 @@ client = TelemetryHarborClient.new(api_key)
 data = {
   time: Time.now.utc.iso8601,
   ship_id: 'ship1',
-  sensor_id: 'sen1',
+  ship_id: 'sen1',
   value: 23.5
 }
 

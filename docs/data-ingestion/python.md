@@ -17,7 +17,7 @@ To send a single data point to Telemetry Harbor:
 
 1. Import the necessary libraries
 2. Set up the API endpoint and your API key
-3. Create a dictionary with your sensor data
+3. Create a dictionary with your ship data
 4. Send a POST request to the API endpoint
 5. Print the response
 
@@ -28,12 +28,12 @@ import requests
 import json
 from datetime import datetime
 
-url = "http://example.hive.telemetryhive.com/api/v1/ingest"
+url = "http://example.harbor.telemetryharbor.com/api/v1/ingest"
 headers = {"X-API-Key": "your_api_key"}
 data = {
     "time": datetime.utcnow().isoformat(),
     "ship_id": "ship1",
-    "sensor_id": "sen1",
+    "ship_id": "sen1",
     "value": 23.5
 }
 
@@ -48,7 +48,7 @@ For sending multiple data points in one request:
 
 1. Import the necessary libraries
 2. Set up the API endpoint and your API key
-3. Create a list of dictionaries, each containing sensor data
+3. Create a list of dictionaries, each containing ship data
 4. Send a POST request to the batch API endpoint
 5. Print the response
 
@@ -58,19 +58,19 @@ Here's an example of how to perform a batch data push:
 import requests
 from datetime import datetime
 
-url = "http://example.hive.telemetryhive.com/api/v1/ingest/batch"
+url = "http://example.harbor.telemetryharbor.com/api/v1/ingest/batch"
 headers = {"X-API-Key": "your_api_key"}
 data = [
     {
         "time": datetime.utcnow().isoformat(),
         "ship_id": "ship1",
-        "sensor_id": "sen1",
+        "ship_id": "sen1",
         "value": 23.5
     },
     {
         "time": datetime.utcnow().isoformat(),
         "ship_id": "ship1",
-        "sensor_id": "sen2",
+        "ship_id": "sen2",
         "value": 18.7
     }
 ]
@@ -86,12 +86,12 @@ It's important to implement proper error handling in your code. Here's an exampl
 import requests
 from datetime import datetime
 
-url = "http://example.hive.telemetryhive.com/api/v1/ingest"
+url = "http://example.harbor.telemetryharbor.com/api/v1/ingest"
 headers = {"X-API-Key": "your_api_key"}
 data = {
     "time": datetime.utcnow().isoformat(),
     "ship_id": "ship1",
-    "sensor_id": "sen1",
+    "ship_id": "sen1",
     "value": 23.5
 }
 

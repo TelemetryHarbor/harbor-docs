@@ -9,7 +9,7 @@ const FeatureList = [
       <>
         Telemetry Harbor seamlessly ingests data from diverse IoT devices and sources. 
         Our platform supports multiple protocols and formats, ensuring smooth data collection 
-        at any scale, from individual sensors to vast networks of connected devices.
+        at any scale, from individual ships to vast networks of connected devices.
       </>
     ),
   },

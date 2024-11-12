@@ -4,14 +4,14 @@ sidebar_position: 7
 
 # Data Retention
 
-Telemetry Harbor allows you to configure data retention policies to manage the lifecycle of your sensor data. You can query and modify the retention period through our API.
+Telemetry Harbor allows you to configure data retention policies to manage the lifecycle of your ship data. You can query and modify the retention period through our API.
 
 ## Querying Retention Period
 
 To check the current retention period for your data:
 
 - Endpoint: GET /retention
-- Response: Returns the current retention policy for the sensor_data table.
+- Response: Returns the current retention policy for the ship_data table.
 
 ## Modifying Retention Period
 

@@ -17,7 +17,7 @@ To send a single data point to Telemetry Harbor:
 
 1. Import the axios library
 2. Set up the API endpoint and your API key
-3. Create an object with your sensor data
+3. Create an object with your ship data
 4. Send a POST request to the API endpoint
 5. Log the response or handle any errors
 
@@ -25,12 +25,12 @@ Here's an example of how to perform a single data push:
 ```
 const axios = require("axios");
 
-const url = "http://example.hive.telemetryhive.com/api/v1/ingest";
+const url = "http://example.harbor.telemetryharbor.com/api/v1/ingest";
 const headers = { "X-API-Key": "your_api_key" };
 const data = {
   time: new Date().toISOString(),
   ship_id: "ship1",
-  sensor_id: "sen1",
+  ship_id: "sen1",
   value: 23.5
 };
 
@@ -46,7 +46,7 @@ For sending multiple data points in one request:
 
 1. Import the axios library
 2. Set up the API endpoint and your API key
-3. Create an array of objects, each containing sensor data
+3. Create an array of objects, each containing ship data
 4. Send a POST request to the batch API endpoint
 5. Log the response or handle any errors
 
@@ -54,11 +54,11 @@ Here's an example of how to perform a batch data push:
 
 ```const axios = require("axios");
 
-const url = "http://example.hive.telemetryhive.com/api/v1/ingest/batch";
+const url = "http://example.harbor.telemetryharbor.com/api/v1/ingest/batch";
 const headers = { "X-API-Key": "your_api_key" };
 const data = [
-  { time: new Date().toISOString(), ship_id: "ship1", sensor_id: "sen1", value: 23.5 },
-  { time: new Date().toISOString(), ship_id: "ship1", sensor_id: "sen2", value: 18.7 }
+  { time: new Date().toISOString(), ship_id: "ship1", ship_id: "sen1", value: 23.5 },
+  { time: new Date().toISOString(), ship_id: "ship1", ship_id: "sen2", value: 18.7 }
 ];
 
 axios.post(url, data, { headers })
@@ -71,12 +71,12 @@ It's important to implement proper error handling in your code. Here's an exampl
 
 ```const axios = require("axios");
 
-const url = "http://example.hive.telemetryhive.com/api/v1/ingest";
+const url = "http://example.harbor.telemetryharbor.com/api/v1/ingest";
 const headers = { "X-API-Key": "your_api_key" };
 const data = {
   time: new Date().toISOString(),
   ship_id: "ship1",
-  sensor_id: "sen1",
+  ship_id: "sen1",
   value: 23.5
 };
 

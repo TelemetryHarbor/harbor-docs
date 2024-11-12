@@ -18,7 +18,7 @@ This guide demonstrates how to ingest data into Telemetry Harbor using Rust.
 To send a single data point to Telemetry Harbor using Rust:
 
 1. Set up the project and add dependencies
-2. Create a struct to represent your sensor data
+2. Create a struct to represent your ship data
 3. Implement the API client
 4. Send a POST request to the API endpoint
 5. Handle the response
@@ -48,7 +48,7 @@ use std::error::Error;
 struct AnchorData {
     time: DateTime<Utc>,
     ship_id: String,
-    sensor_id: String,
+    ship_id: String,
     value: f64,
 }
 
@@ -93,13 +93,13 @@ impl TelemetryHarborClient {
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
     let api_key = "your_api_key".to_string();
-    let base_url = "http://example.hive.telemetryhive.com".to_string();
+    let base_url = "http://example.harbor.telemetryharbor.com".to_string();
     let client = TelemetryHarborClient::new(api_key, base_url);
 
     let data = AnchorData {
         time: Utc::now(),
         ship_id: "ship1".to_string(),
-        sensor_id: "sen1".to_string(),
+        ship_id: "sen1".to_string(),
         value: 23.5,
     };
 
@@ -118,7 +118,7 @@ Remember to replace "your_api_key" with your actual Telemetry Harbor API key.
 
 For sending multiple data points in one request:
 
-1. Create a vector of sensor data instances
+1. Create a vector of ship data instances
 2. Implement a batch send method in the API client
 3. Send a POST request to the batch API endpoint
 4. Handle the response
@@ -135,7 +135,7 @@ use std::error::Error;
 struct AnchorData {
     time: DateTime<Utc>,
     ship_id: String,
-    sensor_id: String,
+    ship_id: String,
     value: f64,
 }
 
@@ -180,20 +180,20 @@ impl TelemetryHarborClient {
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
     let api_key = "your_api_key".to_string();
-    let base_url = "http://example.hive.telemetryhive.com".to_string();
+    let base_url = "http://example.harbor.telemetryharbor.com".to_string();
     let client = TelemetryHarborClient::new(api_key, base_url);
 
     let data = vec![
         AnchorData {
             time: Utc::now(),
             ship_id: "ship1".to_string(),
-            sensor_id: "sen1".to_string(),
+            ship_id: "sen1".to_string(),
             value: 23.5,
         },
         AnchorData {
             time: Utc::now(),
             ship_id: "ship1".to_string(),
-            sensor_id: "sen2".to_string(),
+            ship_id: "sen2".to_string(),
             value: 18.7,
         },
     ];
@@ -222,7 +222,7 @@ use thiserror::Error;
 struct AnchorData {
     time: DateTime<Utc>,
     ship_id: String,
-    sensor_id: String,
+    ship_id: String,
     value: f64,
 }
 
@@ -273,13 +273,13 @@ impl TelemetryHarborClient {
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
     let api_key = "your_api_key".to_string();
-    let base_url = "http://example.hive.telemetryhive.com".to_string();
+    let base_url = "http://example.harbor.telemetryharbor.com".to_string();
     let client = TelemetryHarborClient::new(api_key, base_url);
 
     let data = AnchorData {
         time: Utc::now(),
         ship_id: "ship1".to_string(),
-        sensor_id: "sen1".to_string(),
+        ship_id: "sen1".to_string(),
         value: 23.5,
     };
 
@@ -342,7 +342,7 @@ use futures::stream::{self, StreamExt};
 impl TelemetryHarborClient {
     async fn send_batch_data_stream(&self, data: Vec<AnchorData>) -> Result<(), TelemetryError> {
         let results = stream::iter(data)
-            .map(|sensor_data| self.send_data(&sensor_data))
+            .map(|ship_data| self.send_data(&ship_data))
             .buffer_unordered(10) // Process up to 10 requests concurrently
             .collect::<Vec<_>>()
             .await;
