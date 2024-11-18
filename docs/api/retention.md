@@ -3,6 +3,7 @@ sidebar_position: 7
 ---
 
 # Data Retention
+ `Enterprise Only Feature`
 
 Telemetry Harbor allows you to configure data retention policies to manage the lifecycle of your ship data. You can query and modify the retention period through our API.
 

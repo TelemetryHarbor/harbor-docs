@@ -12,8 +12,8 @@ The primary table for storing all ship readings is ship_data. Here's its structu
 
 - time: Timestamp of the data point (with timezone)
 - ship_id: Unique identifier for the device
-- ship_id: Identifier for the ship or data type
-- value: The recorded ship value
+- cargo_id: Identifier for the sensor or event
+- value: The recorded cargo value
 
 Note: This table is created as a TimescaleDB hypertable, which provides enhanced performance for time-series data queries.
 

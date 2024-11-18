@@ -33,13 +33,20 @@ When sending data to Telemetry Harbor, use the following structure:
 
 - `time`: Timestamp of the ship reading (ISO 8601 format)
 - `ship_id`: Unique identifier for the device
-- `ship_id`: Identifier for the ship or data type
+- `cargo_id`: Identifier for the sensor or eent
 - `value`: The recorded ship value
 
 ## API Endpoints
 
-- Single Data Push: `POST http://example.harbor.telemetryharbor.com/api/v1/ingest`
-- Batch Data Push: `POST http://example.harbor.telemetryharbor.com/api/v1/ingest/batch`
+`Shared`
+- Single Data Push: `POST http://telemetryharbor.com/api/v1/ingest/harbor_id`
+- Batch Data Push: `POST http://telemetryharbor.com/api/v1/ingest/batch/harbor_id`
+
+
+`Enterprise Dedicated`
+- Single Data Push: `POST http://CustomName.harbor.telemetryharbor.com/api/v1/ingest/harbor_id`
+- Batch Data Push: `POST http://CustomName.harbor.telemetryharbor.com/api/v1/ingest/batch/harbor_id`
+
 
 Remember to include your API key in the `X-API-Key` header for all requests.
 
