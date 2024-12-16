@@ -18,8 +18,10 @@ When submitting GPS data, you would include two separate data points for each lo
 
 To submit a single ship GPS location:
 
-- Endpoint: POST /ingest
-- Body: JSON object conforming to the AnchorData model
+`Shared`
+- Single Data Push: `POST https://telemetryharbor.com/api/v1/ingest/ingest/harbor_id`
+`Enterprise Dedicated`
+- Single Data Push: `POST https://CustomName.harbor.telemetryharbor.com/api/v1/ingest/ingest/harbor_id`
 
 Example request body:
 ```
@@ -45,8 +47,10 @@ Include a JSON object with time, ship_id, cargo_id, and value fields.
 
 To submit multiple ship readings at once:
 
-- Endpoint: POST /ingest/batch
-- Body: Array of AnchorData objects
+`Shared`
+- Batch Data Push: `POST https://telemetryharbor.com/api/v1/ingest/ingest/batch/harbor_id`
+`Enterprise Dedicated`
+- Batch Data Push: `POST https://CustomName.harbor.telemetryharbor.com/api/v1/ingest/ingest/batch/harbor_id`
 
 Example request body:
 ```
