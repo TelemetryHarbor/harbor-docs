@@ -10,10 +10,10 @@ Telemetry Harbor uses TimescaleDB, a time-series database built on PostgreSQL, t
 
 The primary table for storing all ship readings is ship_data. Here's its structure:
 
-- time: Timestamp of the data point (with timezone)
-- ship_id: Unique identifier for the device
-- cargo_id: Identifier for the sensor or event
-- value: The recorded cargo value
+- `time`: Timestamp of the ship reading (ISO 8601 format)
+- `ship_id`: Unique identifier for the device
+- `cargo_id`: Unique identifier for the sensor or event
+- `value`: The recorded cargo value
 
 Note: This table is created as a TimescaleDB hypertable, which provides enhanced performance for time-series data queries.
 

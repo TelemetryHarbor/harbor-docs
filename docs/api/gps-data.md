@@ -20,6 +20,7 @@ To submit a single ship GPS location:
 
 `Shared`
 - Single Data Push: `POST https://telemetryharbor.com/api/v1/ingest/ingest/harbor_id`
+
 `Enterprise Dedicated`
 - Single Data Push: `POST https://CustomName.harbor.telemetryharbor.com/api/v1/ingest/ingest/harbor_id`
 

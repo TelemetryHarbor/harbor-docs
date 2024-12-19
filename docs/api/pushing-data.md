@@ -12,7 +12,7 @@ When submitting ship readings, use the following data model:
 
 - `time`: Timestamp of the ship reading (ISO 8601 format)
 - `ship_id`: Unique identifier for the device
-- `cargo_id`: Identifier for the sensor or event
+- `cargo_id`: Unique identifier for the sensor or event
 - `value`: The recorded cargo value
 
 ## Single Data Point Ingestion
@@ -20,9 +20,10 @@ When submitting ship readings, use the following data model:
 To submit a single ship reading:
 
 `Shared`
-- Single Data Push: `POST http://telemetryharbor.com/api/v1/ingest/ingest/harbor_id`
+- Single Data Push: `POST https://telemetryharbor.com/api/v1/ingest/ingest/harbor_id`
+
 `Enterprise Dedicated`
-- Single Data Push: `POST http://CustomName.harbor.telemetryharbor.com/api/v1/ingest/ingest/harbor_id`
+- Single Data Push: `POST https://CustomName.harbor.telemetryharbor.com/api/v1/ingest/ingest/harbor_id`
 
 Example request body:
 ```
@@ -41,9 +42,10 @@ Include a JSON object with time, ship_id, cargo_id, and value fields.
 To submit multiple ship readings at once:
 
 `Shared`
-- Batch Data Push: `POST http://telemetryharbor.com/api/v1/ingest/ingest/batch/harbor_id`
+- Single Data Push: `POST https://telemetryharbor.com/api/v1/ingest/ingest/harbor_id`
+
 `Enterprise Dedicated`
-- Batch Data Push: `POST http://CustomName.harbor.telemetryharbor.com/api/v1/ingest/ingest/batch/harbor_id`
+- Single Data Push: `POST https://CustomName.harbor.telemetryharbor.com/api/v1/ingest/ingest/harbor_id`
 
 Example request body:
 ```
