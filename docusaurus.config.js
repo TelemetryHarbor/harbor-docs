@@ -130,7 +130,7 @@ const config = {
       announcementBar: {
         id: 'support_us',
         content:
-          '⭐️ If you find Telemetry Harbor useful, please star us on <a target="_blank" rel="noopener noreferrer" href="https://github.com/telemetryharbor/telemetryharbor">GitHub</a>',
+          '⭐️ If you find Telemetry Harbor useful, please star us on <a target="_blank" rel="noopener noreferrer" href="https://github.com/telemetryharbor">GitHub</a>',
         backgroundColor: '#0066CC',
         textColor: '#ffffff',
         isCloseable: true,
