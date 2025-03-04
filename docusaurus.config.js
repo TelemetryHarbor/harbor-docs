@@ -11,11 +11,11 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Telemetry Harbor Documentation',
-  tagline: 'Your IoT Data Horbor',
+  tagline: 'Your IoT Data Harbor',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://docs.telemetryharbor.com/',
+  url: 'https://docs.telemetryharbor.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -36,35 +36,77 @@ const config = {
     locales: ['en'],
   },
 
+  // Add plugins for enhanced functionality
+  plugins: [
+    [
+      '@docusaurus/plugin-sitemap',
+      {
+        changefreq: 'weekly',
+        priority: 0.5,
+        ignorePatterns: ['/tags/**'],
+      },
+    ],
+    [
+      '@docusaurus/plugin-pwa',
+      {
+        debug: false,
+        offlineModeActivationStrategies: ['appInstalled', 'standalone', 'queryString'],
+        pwaHead: [
+          {
+            tagName: 'link',
+            rel: 'icon',
+            href: '/img/favicon.ico',
+          },
+          {
+            tagName: 'link',
+            rel: 'manifest',
+            href: '/manifest.json',
+          },
+          {
+            tagName: 'meta',
+            name: 'theme-color',
+            content: '#0066CC',
+          },
+        ],
+      },
+    ],
+  ],
+
   presets: [
     [
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
-         docs: {
+        docs: {
           sidebarPath: './sidebars.js',
           // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/telemetryharbor/telemetryharbor/edit/main/docs/',
+          showLastUpdateTime: true,
+          showLastUpdateAuthor: true,
         },
         blog: {
           showReadingTime: true,
           feedOptions: {
             type: ['rss', 'atom'],
+            copyright: `Copyright © ${new Date().getFullYear()} Telemetry Harbor`,
             xslt: true,
           },
           // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/telemetryharbor/telemetryharbor/edit/main/blog/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
+          postsPerPage: 5,
         }, 
         theme: {
           customCss: './src/css/custom.css',
+        },
+        gtag: {
+          trackingID: 'G-XXXXXXXXXX', // Replace with your Google Analytics tracking ID
+          anonymizeIP: true,
         },
       }),
     ],
@@ -75,6 +117,24 @@ const config = {
     ({
       // Replace with your project's social card
       image: 'img/social-card.jpg',
+      metadata: [
+        {name: 'keywords', content: 'telemetry, iot, data, harbor, documentation'},
+        {name: 'description', content: 'Comprehensive documentation for Telemetry Harbor - Your IoT Data Harbor'},
+        {name: 'twitter:card', content: 'summary_large_image'},
+      ],
+      colorMode: {
+        defaultMode: 'light',
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
+      },
+      announcementBar: {
+        id: 'support_us',
+        content:
+          '⭐️ If you find Telemetry Harbor useful, please star us on <a target="_blank" rel="noopener noreferrer" href="https://github.com/telemetryharbor/telemetryharbor">GitHub</a>',
+        backgroundColor: '#0066CC',
+        textColor: '#ffffff',
+        isCloseable: true,
+      },
       navbar: {
         title: 'Telemetry Harbor',
         logo: {
@@ -87,9 +147,20 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Docs',
+            label: 'Documentation',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {
+            to: '/docs/category/api',
+            label: 'API',
+            position: 'left',
+          },
+          
+          {
+            href: 'https://github.com/telemetryharbor/telemetryharbor',
+            position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository',
+          },
           {
             href: 'https://telemetryharbor.com/',
             label: 'Join Us',
@@ -101,12 +172,17 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Documentation',
             items: [
               {
-                label: 'Docs',
+                label: 'Getting Started',
                 to: '/docs/intro',
               },
+              {
+                label: 'API Reference',
+                to: '/docs/category/api',
+              },
+            
             ],
           },
           {
@@ -120,27 +196,47 @@ const config = {
                 label: 'Sign Up',
                 href: 'https://telemetryharbor.com/signup',
               },
+             
             ],
           },
           {
-            title: 'More',
+            title: 'Community',
             items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/telemetryharbor',
               },
+             
+              {
+                label: 'Twitter',
+                href: 'https://twitter.com/telemetryharbor',
+              },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Telemetry Harbor Documentation`,
+        copyright: `Copyright © ${new Date().getFullYear()} Telemetry Harbor. All rights reserved.`,
       },
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
+        additionalLanguages: ['bash', 'json', 'yaml', 'docker', 'nginx'],
+      },
+      algolia: {
+        // Replace with your Algolia credentials
+        appId: 'YOUR_APP_ID',
+        apiKey: 'YOUR_SEARCH_API_KEY',
+        indexName: 'telemetryharbor',
+        contextualSearch: true,
+      },
+      docs: {
+        sidebar: {
+          hideable: true,
+          autoCollapseCategories: true,
+        },
+      },
+      tableOfContents: {
+        minHeadingLevel: 2,
+        maxHeadingLevel: 4,
       },
     }),
 };

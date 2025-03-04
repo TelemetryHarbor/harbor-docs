@@ -16,6 +16,9 @@ function HomepageHeader() {
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <p className={styles.heroDescription}>
+          Ingest, store, and visualize your IoT data with ease.
+        </p>
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
