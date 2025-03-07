@@ -221,13 +221,6 @@ const config = {
         darkTheme: prismThemes.dracula,
         additionalLanguages: ['bash', 'json', 'yaml', 'docker', 'nginx'],
       },
-      algolia: {
-        // Replace with your Algolia credentials
-        appId: 'YOUR_APP_ID',
-        apiKey: 'YOUR_SEARCH_API_KEY',
-        indexName: 'telemetryharbor',
-        contextualSearch: true,
-      },
       docs: {
         sidebar: {
           hideable: true,
