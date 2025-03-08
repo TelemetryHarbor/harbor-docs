@@ -41,6 +41,7 @@ const config = {
     [
       '@docusaurus/plugin-sitemap',
       {
+        id: 'plugin-sitemap-1',
         changefreq: 'weekly',
         priority: 0.5,
         ignorePatterns: ['/tags/**'],
@@ -49,6 +50,7 @@ const config = {
     [
       '@docusaurus/plugin-pwa',
       {
+        id: 'plugin-pwa-1',
         debug: false,
         offlineModeActivationStrategies: ['appInstalled', 'standalone', 'queryString'],
         pwaHead: [
