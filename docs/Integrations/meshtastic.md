@@ -19,14 +19,13 @@ The Meshtastic Integration script allows you to connect your Meshtastic device t
 - **Grafana Compatibility**: Visualize your Meshtastic device data with rich Grafana dashboards.  
 
 
-## How to Use  
+## Setup 
 
-1. **Prepare Your Meshtastic Device**:  
+### 1. Prepare Your Meshtastic Device:  
    - Ensure your Meshtastic device is connected and operational.  
    - Note the COM port associated with the device.  
----
 
-2. **Set Up the Script**:  
+### 2. Set Up the Script:  
    - Clone this repository:  
      ```bash
      git clone https://github.com/TelemetryHarbor/harbor-meshtastic.git
@@ -36,8 +35,8 @@ The Meshtastic Integration script allows you to connect your Meshtastic device t
      ```bash
      pip install -r requirements.txt
      ```  
----
-3. **Run the Script**:  
+
+### 3. Run the Script:  
    - Execute the script and provide the required information:  
      - **Batch Endpoint**: Obtain this from your Telemetry Harbor account.  
      - **API Key**: Your unique key for secure communication.  
@@ -46,11 +45,11 @@ The Meshtastic Integration script allows you to connect your Meshtastic device t
      ```bash
      python app.py
      ```  
----
-4. **Stream Data**:  
+
+### 4. Stream Data:  
    - The script will push telemetry data from your device to the Telemetry Harbor batch endpoint.  
----
-5. **Visualize in Grafana**:  
+
+### 5. Visualize in Grafana:  
    - Log in to your Telemetry Harbor Grafana instance.  
    - Access pre-configured dashboards to view and analyze your Meshtastic data.
 

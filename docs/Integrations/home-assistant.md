@@ -15,18 +15,17 @@ This guide will walk you through the process of setting up the Home Assistant in
 - Automate data collection using REST commands
 - View live dashboards in Grafana
 
-## How to Use 
 
-**Prerequisites**
+## Prerequisites
 
 Before starting, ensure you have:
 - **Home Assistant** installed and running
 - A working knowledge of **YAML** for Home Assistant configurations
 - Smart home **sensors** or **devices** set up in Home Assistant
 
----
 
-   **Step 1: Create a Telemetry Harbor Account**
+## Setup
+### 1. Create a Telemetry Harbor Account
 1. **Sign up** at [Telemetry Harbor](https://telemetryharbor.com/)
 2. **Verify** your email and log in
 3. **Create a Harbor**:
@@ -45,9 +44,9 @@ Before starting, ensure you have:
      - `Grafana Username`
      - `Grafana Password`
 
----
 
-  **Step 2: Configure Home Assistant**
+
+  ### 2. Configure Home Assistant
 Edit your `configuration.yaml` to include the following REST command:
 
 **configuration.yaml**
@@ -73,7 +72,7 @@ rest_command:
         {% endfor %}
       ]
   ```
----
-**Step 3: Save & Restart**
+
+### 3. Save & Restart
 Save your Yaml file and restart your home assistant
 
