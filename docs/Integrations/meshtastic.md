@@ -8,6 +8,8 @@ description: Sync Your Meshtastic Telemetry Data to Telemetry Harbor
 
 The Meshtastic Integration script allows you to connect your Meshtastic device to Telemetry Harbor effortlessly. By running this Python code, you can send telemetry data from your Meshtastic device to your Telemetry Harbor account, where it can be visualized using Grafana.
 
+**_Repo Link:_**  https://github.com/TelemetryHarbor/harbor-meshtastic
+
 ## Features  
 
 - **Seamless Device Connection**: Easily connect your Meshtastic device via a selected COM port.  
@@ -52,4 +54,3 @@ The Meshtastic Integration script allows you to connect your Meshtastic device t
    - Log in to your Telemetry Harbor Grafana instance.  
    - Access pre-configured dashboards to view and analyze your Meshtastic data.
 
-**_Repo Link:_**  https://github.com/TelemetryHarbor/harbor-meshtastic

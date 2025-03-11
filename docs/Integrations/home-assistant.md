@@ -8,6 +8,8 @@ description: Detailed guide for setting up the Home Assistant integration
 
 This guide will walk you through the process of setting up the Home Assistant integration with Telemetry Harbor. Easily collect and visualize your smart home data in **Grafana** with **Telemetry Harbor**.
 
+**_Repo Link:_**  https://github.com/TelemetryHarbor/harbor-home-assistant
+
 ## Features
 - Push Home Assistant sensor data to Telemetry Harbor
 - Automate data collection using REST commands
@@ -75,4 +77,3 @@ rest_command:
 **Step 3: Save & Restart**
 Save your Yaml file and restart your home assistant
 
-**_Repo Link:_**  https://github.com/TelemetryHarbor/harbor-home-assistant
