@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Meshtastic Integration
+title: Meshtastic
 description: Sync Your Meshtastic Telemetry Data to Telemetry Harbor
 ---
 
