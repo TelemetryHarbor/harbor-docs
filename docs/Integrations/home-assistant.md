@@ -74,3 +74,5 @@ rest_command:
 ---
 **Step 3: Save & Restart**
 Save your Yaml file and restart your home assistant
+
+**_Repo Link:_**  https://github.com/TelemetryHarbor/harbor-home-assistant

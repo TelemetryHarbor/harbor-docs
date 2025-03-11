@@ -51,3 +51,5 @@ The Meshtastic Integration script allows you to connect your Meshtastic device t
 5. **Visualize in Grafana**:  
    - Log in to your Telemetry Harbor Grafana instance.  
    - Access pre-configured dashboards to view and analyze your Meshtastic data.
+
+**_Repo Link:_**  https://github.com/TelemetryHarbor/harbor-meshtastic
