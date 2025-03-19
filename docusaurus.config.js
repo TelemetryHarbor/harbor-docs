@@ -181,8 +181,12 @@ const config = {
                 to: '/docs/intro',
               },
               {
-                label: 'API Reference',
+                label: 'API',
                 to: '/docs/category/api',
+              },
+              {
+                label: 'Integrations',
+                to: '/docs/category/integrations',
               },
             
             ],
@@ -197,6 +201,10 @@ const config = {
               {
                 label: 'Sign Up',
                 href: 'https://telemetryharbor.com/signup',
+              },
+              {
+                label: 'System Status',
+                href: 'https://status.telemetryharbor.com/',
               },
              
             ],
