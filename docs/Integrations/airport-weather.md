@@ -48,17 +48,16 @@ Before starting, ensure you have:
 
 ### 2. Install the Airport Weather Agent
 1. Download the installation script:
-\`\`\`bash
-curl -sSL -o install-airport-weather.sh https://raw.githubusercontent.com/TelemetryHarbor/harbor-airport-weather/refs/heads/main/install.sh
-\`\`\`
+```bashcurl -sSL -o install-airport-weather.sh https://raw.githubusercontent.com/TelemetryHarbor/harbor-airport-weather/refs/heads/main/install.sh
+```
 2. Make it executable:
-\`\`\`bash
+```bash
 chmod +x install-airport-weather.sh
-\`\`\`
+```
 3. Run the installation script with root privileges:
-\`\`\`bash
+```bash
 sudo ./install-airport-weather.sh
-\`\`\`
+```
 ### 3. Configuration During Installation
 
 During installation, you'll be prompted to:
@@ -110,45 +109,45 @@ The installation script includes sample airports from around the world:
 
 After installation, the airport weather service runs automatically. You can manage it using:
 
-\`\`\`bash
+
 # Check service status
+```bash
 systemctl status harbor-airport
-\`\`\`
-\`\`\`bash
+```
 # View logs
+```bash
 journalctl -u harbor-airport -f
-\`\`\`
-\`\`\`bash
+```
 # Stop the service
+```bash
 systemctl stop harbor-airport
-\`\`\`
-\`\`\`bash
+```
 # Start the service
+```bash
 systemctl start harbor-airport
-\`\`\`
-\`\`\`bash
+```
 # Disable automatic startup
+```bash
 systemctl disable harbor-airport
-\`\`\`
-\`\`\`bash
+```
 # Enable automatic startup
+```bash
 systemctl enable harbor-airport
-\`\`\`
+```
 ## Uninstalling
 
 To uninstall the airport weather agent:
 
 1. Run the installation script again:
-\`\`\`bash
+```bash
 sudo ./install-airport-weather.sh
-\`\`\`
+```
 2. Select the "Uninstall Airport Weather Collector" option from the menu.
 
 Alternatively, use the uninstall flag:
-\`\`\`bash
+```bash
 sudo ./install-airport-weather.sh --uninstall
-\`\`\`
-
+```
 ## Troubleshooting
 
 ### Common Issues
@@ -192,22 +191,5 @@ The airport weather data can be used for:
 - Creating historical weather databases
 - Correlating weather with other metrics in your systems
 - Educational purposes and weather analysis
-\`\`\`
 
-I've created two separate files:
-
-1. README.md - A standard GitHub repository README with installation instructions, features, and basic usage information
-2. airport-weather.md - A comprehensive documentation file formatted for your documentation website with the sidebar metadata
-
-The install.sh script remains the same as in my previous response, with all the requested changes implemented.
-
-<Actions>
-  <Action name="Add weather visualization" description="Create a Grafana dashboard template for weather data" />
-  <Action name="Add more weather metrics" description="Expand to include visibility, cloud cover, and precipitation" />
-  <Action name="Create Docker version" description="Containerize the airport weather collector" />
-  <Action name="Add historical data" description="Add option to collect historical weather data" />
-  <Action name="Add alert integration" description="Configure weather alerts based on thresholds" />
-</Actions>
-
-\`\`\`
 
