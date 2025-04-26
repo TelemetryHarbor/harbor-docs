@@ -48,7 +48,8 @@ Before starting, ensure you have:
 
 ### 2. Install the Airport Weather Agent
 1. Download the installation script:
-```bashcurl -sSL -o install-airport-weather.sh https://raw.githubusercontent.com/TelemetryHarbor/harbor-airport-weather/refs/heads/main/install.sh
+```bash
+curl -sSL -o install-airport-weather.sh https://raw.githubusercontent.com/TelemetryHarbor/harbor-airport-weather/refs/heads/main/install.sh
 ```
 2. Make it executable:
 ```bash
