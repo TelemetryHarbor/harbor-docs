@@ -76,7 +76,7 @@ Here's an example of how to perform a batch data push using PHP:
 
 ```<?php
 
-$url = "http://example.harbor.telemetryharbor.com/api/v1/ingest/batch";
+$url = "http://example.harbor.telemetryharbor.com/api/v1/ingest/ingest/harbor_id/batch";
 $apiKey = "your_api_key";
 
 $data = array(

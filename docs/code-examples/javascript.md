@@ -54,7 +54,7 @@ Here's an example of how to perform a batch data push:
 
 ```const axios = require("axios");
 
-const url = "http://example.harbor.telemetryharbor.com/api/v1/ingest/batch";
+const url = "http://example.harbor.telemetryharbor.com/api/v1/ingest/ingest/harbor_id/batch";
 const headers = { "X-API-Key": "your_api_key" };
 const data = [
   { time: new Date().toISOString(), ship_id: "ship1", ship_id: "sen1", value: 23.5 },

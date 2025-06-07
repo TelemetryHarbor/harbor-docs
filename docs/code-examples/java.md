@@ -74,7 +74,7 @@ import java.time.Instant;
 
 public class TelemetryBatchClient {
     public static void main(String[] args) throws Exception {
-        String url = "http://example.harbor.telemetryharbor.com/api/v1/ingest/batch";
+        String url = "http://example.harbor.telemetryharbor.com/api/v1/ingest/ingest/harbor_id/batch";
         String apiKey = "your_api_key";
         String jsonData = String.format(
             "[{\"time\":\"%s\", \"ship_id\":\"ship1\", \"ship_id\":\"sen1\", \"value\":23.5}," +

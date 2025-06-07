@@ -42,10 +42,9 @@ Include a JSON object with time, ship_id, cargo_id, and value fields.
 To submit multiple ship readings at once:
 
 `Shared`
-- Single Data Push: `POST https://telemetryharbor.com/api/v1/ingest/ingest/harbor_id`
-
+- Batch Data Push: `POST https://telemetryharbor.com/api/v1/ingest/ingest/harbor_id/batch`
 `Enterprise Dedicated`
-- Single Data Push: `POST https://CustomName.harbor.telemetryharbor.com/api/v1/ingest/ingest/harbor_id`
+- Batch Data Push: `POST https://CustomName.harbor.telemetryharbor.com/api/v1/ingest/ingest/harbor_id/batch`
 
 Example request body:
 ```

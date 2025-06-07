@@ -74,7 +74,7 @@ require 'uri'
 require 'json'
 require 'time'
 
-url = URI.parse('http://example.harbor.telemetryharbor.com/api/v1/ingest/batch')
+url = URI.parse('http://example.harbor.telemetryharbor.com/api/v1/ingest/ingest/harbor_id/batch')
 api_key = 'your_api_key'
 
 data = [

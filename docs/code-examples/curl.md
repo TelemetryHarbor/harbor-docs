@@ -47,7 +47,7 @@ For sending multiple data points in one request:
 Here's an example of how to perform a batch data push using cURL:
 
 ```
-curl -X POST http://telemetryharbor.com/api/v1/ingest/batch/harbor_id \
+curl -X POST http://telemetryharbor.com/api/v1/ingest/harbor_id/batch \
 -H "X-API-Key: your_api_key" \
 -H "Content-Type: application/json" \
 -d '[

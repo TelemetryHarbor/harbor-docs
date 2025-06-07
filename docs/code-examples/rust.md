@@ -155,7 +155,7 @@ impl TelemetryHarborClient {
     }
 
     async fn send_batch_data(&self, data: &[AnchorData]) -> Result<String, Box<dyn Error>> {
-        let url = format!("{}/api/v1/ingest/batch", self.base_url);
+        let url = format!("{}/api/v1/ingest/ingest/harbor_id/batch", self.base_url);
         let response = self
             .client
             .post(&url)

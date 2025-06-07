@@ -58,7 +58,7 @@ Here's an example of how to perform a batch data push:
 import requests
 from datetime import datetime
 
-url = "http://example.harbor.telemetryharbor.com/api/v1/ingest/batch"
+url = "http://example.harbor.telemetryharbor.com/api/v1/ingest/ingest/harbor_id/batch"
 headers = {"X-API-Key": "your_api_key"}
 data = [
     {

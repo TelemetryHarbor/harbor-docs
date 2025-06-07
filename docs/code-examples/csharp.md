@@ -137,7 +137,7 @@ public class TelemetryHarborClient
     private readonly string _apiKey;
     private readonly string _baseUrl;
 
-    public TelemetryHarborClient(string apiKey, string baseUrl = "http://example.harbor.telemetryharbor.com")
+    public TelemetryHarborClient(string apiKey, string baseUrl = "http://example.harbor.telemetryharbor.com/api/v1/ingest/ingest/harbor_id/batch")
     {
         _httpClient = new HttpClient();
         _apiKey = apiKey;
@@ -146,7 +146,7 @@ public class TelemetryHarborClient
 
     public async Task<string> SendBatchDataAsync(List<AnchorData> dataList)
     {
-        var url = $"{_baseUrl}/api/v1/ingest/batch";
+        var url = $"{_baseUrl}";
         var json = JsonConvert.SerializeObject(dataList);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 

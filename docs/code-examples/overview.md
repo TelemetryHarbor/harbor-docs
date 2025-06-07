@@ -42,13 +42,13 @@ When sending data to Telemetry Harbor, use the following structure:
 
 `Shared Endpoints`
 
-- **Single Data Push**: `POST http://telemetryharbor.com/api/v1/ingest/harbor_id`
-- **Batch Data Push**: `POST http://telemetryharbor.com/api/v1/ingest/batch/harbor_id`
+- **Single Data Push**: `POST http://telemetryharbor.com/api/v1/ingest/ingest/harbor_id`
+- **Batch Data Push**: `POST http://telemetryharbor.com/api/v1/ingest/ingest/harbor_id/batch`
 
 `Enterprise Dedicated Endpoints`
 
-- **Single Data Push**: `POST http://CustomName.harbor.telemetryharbor.com/api/v1/ingest/harbor_id`
-- **Batch Data Push**: `POST http://CustomName.harbor.telemetryharbor.com/api/v1/ingest/batch/harbor_id`
+- **Single Data Push**: `POST http://CustomName.harbor.telemetryharbor.com/api/v1/ingest/ingest/harbor_id`
+- **Batch Data Push**: `POST http://CustomName.harbor.telemetryharbor.com//api/v1/ingest/ingest/harbor_id/batch`
 
 For all requests, include your API key in the `X-API-Key` header.
 

@@ -112,7 +112,7 @@ type AnchorData struct {
 }
 
 func main() {
-    url := "http://example.harbor.telemetryharbor.com/api/v1/ingest/batch"
+    url := "http://example.harbor.telemetryharbor.com/api/v1/ingest/ingest/harbor_id/batch"
     apiKey := "your_api_key"
 
     data := []AnchorData{
