@@ -13,6 +13,10 @@ const config = {
   title: 'Telemetry Harbor Documentation',
   tagline: 'Your IoT Data Harbor',
   favicon: 'img/favicon.ico',
+  future: {
+    experimental_faster: true
+    
+  },
 
   // Set the production url of your site here
   url: 'https://docs.telemetryharbor.com',
