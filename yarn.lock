@@ -1875,21 +1875,6 @@
     sitemap "^7.1.1"
     tslib "^2.6.0"
 
-"@docusaurus/plugin-sitemap@^3.7.0":
-  version "3.8.1"
-  resolved "https://registry.yarnpkg.com/@docusaurus/plugin-sitemap/-/plugin-sitemap-3.8.1.tgz#3aebd39186dc30e53023f1aab44625bc0bdac892"
-  integrity sha512-+9YV/7VLbGTq8qNkjiugIelmfUEVkTyLe6X8bWq7K5qPvGXAjno27QAfFq63mYfFFbJc7z+pudL63acprbqGzw==
-  dependencies:
-    "@docusaurus/core" "3.8.1"
-    "@docusaurus/logger" "3.8.1"
-    "@docusaurus/types" "3.8.1"
-    "@docusaurus/utils" "3.8.1"
-    "@docusaurus/utils-common" "3.8.1"
-    "@docusaurus/utils-validation" "3.8.1"
-    fs-extra "^11.1.1"
-    sitemap "^7.1.1"
-    tslib "^2.6.0"
-
 "@docusaurus/plugin-svgr@3.7.0":
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/@docusaurus/plugin-svgr/-/plugin-svgr-3.7.0.tgz#018e89efd615d5fde77b891a8c2aadf203013f5d"
