@@ -13,10 +13,6 @@ const config = {
   title: 'Telemetry Harbor Documentation',
   tagline: 'Your IoT Data Harbor',
   favicon: 'img/favicon.ico',
-  future: {
-    experimental_faster: true
-    
-  },
 
   // Set the production url of your site here
   url: 'https://docs.telemetryharbor.com',
@@ -111,7 +107,7 @@ const config = {
           customCss: './src/css/custom.css',
         },
         gtag: {
-          trackingID: 'G-XXXXXXXXXX', // Replace with your Google Analytics tracking ID
+          trackingID: 'G-XW9HHXP7SE', // Replace with your Google Analytics tracking ID
           anonymizeIP: true,
         },
       }),

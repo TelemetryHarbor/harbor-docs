@@ -10,24 +10,26 @@ import styles from './index.module.css';
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <p className={styles.heroDescription}>
-          Ingest, store, and visualize your IoT data with ease.
-        </p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Get Started - 5min ⏱️
-          </Link>
-        </div>
+   <header className={clsx('hero hero--primary', styles.heroBanner)}>
+  <div className="container">
+    <div className={styles.headerContent}>
+      <Heading as="h1" className={styles.heroTitle}>
+        {siteConfig.title}
+      </Heading>
+      <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
+      <p className={styles.heroDescription}>
+        Seamlessly ingest, securely store, and powerfully visualize your IoT data. Empower your applications with real-time insights and robust data management.
+      </p>
+      <div className={styles.buttons}>
+        <Link
+          className="button button--secondary button--lg" // Using Docusaurus's built-in button classes
+          to="/docs/intro">
+          Get Started - 5min ⏱️
+        </Link>
       </div>
-    </header>
+    </div>
+  </div>
+</header>
   );
 }
 
