@@ -29,7 +29,7 @@ Example request body:
 {
   "time": "2024-11-18T19:24:00.948Z",
   "ship_id": "Ship1",
-  "cargo_id": "Long",
+  "cargo_id": "longitude",
   "value": 0
 }
 ```
@@ -37,7 +37,7 @@ Example request body:
 {
   "time": "2024-11-18T19:24:00.948Z",
   "ship_id": "Ship1",
-  "cargo_id": "Lat",
+  "cargo_id": "latitude",
   "value": 0
 }
 ```
@@ -59,13 +59,13 @@ Example request body:
   {
     "time": "2024-11-18T19:24:19.687Z",
     "ship_id": "Ship1",
-    "cargo_id": "Long",
+    "cargo_id": "longitude",
     "value": 0
   },
   {
     "time": "2024-11-18T19:24:19.687Z",
     "ship_id": "Ship1",
-    "cargo_id": "Lat",
+    "cargo_id": "latitude",
     "value": 0
   }
 ]
