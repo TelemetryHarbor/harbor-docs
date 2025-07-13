@@ -6,29 +6,53 @@ description: Detailed guide for setting up the Airport Weather Monitoring agent 
 
 # Airport Weather Monitoring Agent
 
-Easily collect and visualize weather data from airports worldwide in **Grafana** with **Telemetry Harbor**.
+Easily collect and visualize comprehensive weather data from airports worldwide in **Grafana** with **Telemetry Harbor**.
 
 **_Repo Link:_** https://github.com/TelemetryHarbor/harbor-airport-weather
 
 ## Features
-- Collect temperature, pressure, and wind speed data from airports worldwide
+
+- Collect comprehensive weather data from airports worldwide including temperature, pressure, wind, humidity, UV index, air quality, and visibility
 - Support for multiple airports with customizable names
 - Configurable sampling rates from 1 minute to 1 hour
 - Automatic service installation with systemd integration
 - Interactive installation with color-coded interface
-- Minimal dependencies - works on most Linux systems out of the box
-- Real-time weather data from aviation weather services
+- Pre-built Grafana dashboard
+- Real-time weather data from aviation weather services and OpenWeatherMap API
 
 ## Prerequisites
 
 Before starting, ensure you have:
+
 - A **Linux** system with **root/sudo** access
 - **curl** installed for API communication
 - A working internet connection to fetch weather data and send to Telemetry Harbor
+- **OpenWeatherMap API key** (free tier available at https://openweathermap.org/api)
 - Basic knowledge of Linux terminal commands
 
+## Available Metrics
+
+The enhanced airport weather agent collects the following metrics for each airport:
+
+| Metric | Description | Units |
+|--------|-------------|-------|
+| Temperature_Fahrenheit | Current temperature | °F |
+| Feels_Like_F | Apparent temperature | °F |
+| Humidity_Percent | Relative humidity | % |
+| Pressure_hPa | Atmospheric pressure | hPa |
+| Wind_Speed_MPH | Wind speed | mph |
+| Wind_Gust_MPH | Wind gust speed | mph |
+| Wind_Direction_Degrees | Wind direction | degrees |
+| UV_Index | UV radiation level | index |
+| Visibility_Meters | Atmospheric visibility | meters |
+| Cloud_Cover_Percent | Cloud coverage | % |
+| PM2_5_ugm3 | PM2.5 particles | μg/m³ |
+| PM10_ugm3 | PM10 particles | μg/m³ |
+
 ## Setup
+
 ### 1. Create a Telemetry Harbor Account
+
 1. **Sign up** at [Telemetry Harbor](https://telemetryharbor.com/)
 2. **Verify** your email and log in
 3. **Create a Harbor**:
@@ -36,7 +60,6 @@ Before starting, ensure you have:
    - Choose a **name** and select **General** as the type
    - Select the **Free** plan (or upgrade for more data capacity)
    - Click **Create**
-
 4. **Retrieve your credentials**:
    - After creation, go to **View Details**
    - Note down:
@@ -46,20 +69,30 @@ Before starting, ensure you have:
      - `Grafana Username`
      - `Grafana Password`
 
-### 2. Install the Airport Weather Agent
+### 2. Get OpenWeatherMap API Key
+
+1. Sign up at [OpenWeatherMap](https://openweathermap.org/api)
+2. Subscribe to the **Free** plan (1,000 calls/day)
+3. Copy your **API Key** from the dashboard
+
+### 3. Install the Airport Weather Agent
+
 1. Download the installation script:
 ```bash
 curl -sSL -o install-airport-weather.sh https://raw.githubusercontent.com/TelemetryHarbor/harbor-airport-weather/refs/heads/main/install.sh
 ```
+
 2. Make it executable:
 ```bash
 chmod +x install-airport-weather.sh
 ```
+
 3. Run the installation script with root privileges:
 ```bash
 sudo ./install-airport-weather.sh
 ```
-### 3. Configuration During Installation
+
+### 4. Configuration During Installation
 
 During installation, you'll be prompted to:
 
@@ -67,27 +100,19 @@ During installation, you'll be prompted to:
    - API Batch Endpoint URL
    - API Key
 
-2. **Select airports to monitor**:
+2. **Enter your OpenWeatherMap API key**
+
+3. **Select airports to monitor**:
    - Enter airport codes and names in the format `ICAO:Airport Name`
    - Choose from sample airports around the world
    - Add as many airports as you need
 
-3. **Select a sampling rate** for how often weather data is collected:
+4. **Select a sampling rate** for how often weather data is collected:
    - Every 1 minute
    - Every 5 minutes (recommended)
    - Every 15 minutes
    - Every 30 minutes
    - Every 1 hour
-
-## Available Metrics
-
-The airport weather agent collects the following metrics for each airport:
-
-| Metric | Description |
-|--------|-------------|
-| Temperature | Temperature in degrees Celsius |
-| Pressure | Atmospheric pressure in hectopascals (hPa) |
-| WindSpeed | Wind speed in knots |
 
 ## Sample Airports
 
@@ -106,49 +131,58 @@ The installation script includes sample airports from around the world:
 | VIDP | Indira Gandhi International Airport (Delhi, India) |
 | ZBAA | Beijing Capital International Airport (Beijing, China) |
 
+## Pre-built Grafana Dashboard
+
+### Import the Ready-to-Use Dashboard
+
+1. **Download the dashboard JSON**:
+```bash
+curl -sSL -o airport-weather-dashboard.json https://raw.githubusercontent.com/TelemetryHarbor/harbor-airport-weather/main/airport-weather-dashboard.json
+```
+
+2. **Import into Grafana**:
+   - Log in to your Grafana instance
+   - Go to **Dashboards** → **Import**
+   - Click **Upload JSON file** and select `airport-weather-dashboard.json`
+   - Configure the PostgreSQL datasource
+   - Click **Import**
+
+### Dashboard Features
+
+- **Current Weather Conditions**: Real-time summary table with color-coded values
+- **Temperature & Feels Like**: Historical temperature trends
+- **Humidity**: Relative humidity monitoring
+- **Pressure**: Barometric pressure tracking
+- **Wind Speed & Gusts**: Wind condition analysis
+- **UV Index**: Solar radiation levels with safety thresholds
+- **Air Quality**: PM2.5 and PM10 particulate matter monitoring
+- **Airport Filter**: Multi-select airport monitoring
+- **Auto-refresh**: Real-time data updates every 30 seconds
+
 ## Managing the Service
 
 After installation, the airport weather service runs automatically. You can manage it using:
 
-
+```bash
 # Check service status
-```bash
 systemctl status harbor-airport
-```
+
 # View logs
-```bash
 journalctl -u harbor-airport -f
-```
+
 # Stop the service
-```bash
 systemctl stop harbor-airport
-```
+
 # Start the service
-```bash
 systemctl start harbor-airport
-```
+
 # Disable automatic startup
-```bash
 systemctl disable harbor-airport
-```
+
 # Enable automatic startup
-```bash
 systemctl enable harbor-airport
 ```
-## Uninstalling
 
-To uninstall the airport weather agent:
-
-1. Run the installation script again:
-```bash
-sudo ./install-airport-weather.sh
-```
-2. Select the "Uninstall Airport Weather Collector" option from the menu.
-
-Alternatively, use the uninstall flag:
-```bash
-sudo ./install-airport-weather.sh --uninstall
-```
 ## Troubleshooting
 
 ### Common Issues
@@ -158,6 +192,11 @@ sudo ./install-airport-weather.sh --uninstall
 - Check your internet connection
 - Ensure your firewall allows outbound connections
 
+**Error: Invalid OpenWeatherMap API key**
+- Verify your API key is correct
+- Ensure your API key is activated (may take a few minutes after signup)
+- Check you haven't exceeded the free tier limits
+
 **Service starts but no data appears in Grafana**
 - Check the service logs: `journalctl -u harbor-airport -f`
 - Verify the airports you selected are valid ICAO codes
@@ -166,31 +205,34 @@ sudo ./install-airport-weather.sh --uninstall
 **Missing or incomplete weather data**
 - Some airports may not report all weather metrics consistently
 - Try adding more airports to ensure consistent data collection
-- Check if the aviation weather service is experiencing issues
+- Check if the weather services are experiencing issues
 
-**"Invalid format" error when adding airports**
-- Make sure to use the correct format: `ICAO:Airport Name`
-- ICAO codes are typically 4 letters (e.g., KJFK, EGLL)
-- Don't include spaces before or after the colon
+## Uninstalling
 
-## Visualizing Data in Grafana
+To uninstall the airport weather agent:
 
-Once your airport weather data is flowing into Telemetry Harbor, you can visualize it in Grafana:
+1. Run the installation script again:
+```bash
+sudo ./install-airport-weather.sh
+```
 
-1. Log in to your Grafana instance using the credentials from your Harbor setup
-2. Create a new dashboard or import the Airport Weather template
-3. Add panels for each metric (Temperature, Pressure, WindSpeed)
-4. Use the airport names as filters to compare data from different locations
-5. Set up alerts for extreme weather conditions
+2. Select the "Uninstall Airport Weather Collector" option from the menu.
+
+Alternatively, use the uninstall flag:
+```bash
+sudo ./install-airport-weather.sh --uninstall
+```
 
 ## Data Applications
 
-The airport weather data can be used for:
+The comprehensive airport weather data can be used for:
 
-- Tracking weather patterns across different regions
-- Comparing climate conditions globally
-- Creating historical weather databases
-- Correlating weather with other metrics in your systems
-- Educational purposes and weather analysis
-
+- Professional weather monitoring and analysis
+- Climate pattern tracking across different regions
+- Air quality monitoring for health and safety
+- Aviation weather decision support
+- Historical weather database creation
+- Educational purposes and research
+- Correlating weather with other operational metrics
+```
 
