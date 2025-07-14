@@ -1,0 +1,8 @@
+{
+  "label": "Visualization",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "Learn how to visualize your Telemetry Harbor data using Grafana and AI-powered analytics"
+  }
+}
