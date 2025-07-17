@@ -43,17 +43,16 @@ For full details and advanced usage, please see our official documentation at [d
 
 ## Installation
 
-\`\`\`bash
+```bash
 npm install telemetryharbor-sdk
-\`\`\`
-
+```
 ***
 
 ## Quickstart Guide
 
 Here is a basic example of how to use the SDK.
 
-\`\`\`javascript
+```javascript
 import { HarborClient, GeneralReading } from 'telemetryharborsdk';
 
 // 1. Initialize the client
@@ -88,7 +87,7 @@ async function main() {
 }
 
 main();
-\`\`\`
+```
 
 ***
 
