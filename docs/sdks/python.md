@@ -47,17 +47,16 @@ For full details and advanced usage, please see our official documentation at [d
 
 ## Installation
 
-\`\`\`bash
+```bash
 pip install telemetry-harbor-sdk
-\`\`\`
-
+```
 ---
 
 ## Quickstart Guide
 
 Here is a basic example of how to use the SDK.
 
-\`\`\`python
+```python
 from telemetryharborsdk import HarborClient, GeneralReading
 
 # 1. Initialize the client
@@ -84,7 +83,7 @@ batch = [
 ]
 batch_response = client.send_batch(batch)
 print("Successfully sent batch!", batch_response)
-\`\`\`
+```
 
 ---
 
@@ -98,7 +97,7 @@ This allows proper grouping in the backend for time-series queries.
 
 **Example batch:**
 
-\`\`\`json
+```json
 [
   {
     "ship_id": "MV-Explorer",
@@ -113,13 +112,13 @@ This allows proper grouping in the backend for time-series queries.
     "timestamp": "2025-07-17T10:00:00Z"
   }
 ]
-\`\`\`
+```
 
 > ✅ This enables SQL queries to reconstruct full GPS points by grouping on `ship_id` and `timestamp`.
 
 **Query example (PostgreSQL/TimescaleDB):**
 
-\`\`\`sql
+```sql
 SELECT
     time,
     MAX(value) FILTER (WHERE cargo_id = 'latitude') AS latitude,
@@ -131,7 +130,7 @@ WHERE $__timeFilter(time)
   AND cargo_id IN ('latitude', 'longitude')
 GROUP BY time, ship_id
 ORDER BY time;
-\`\`\`
+```
 
 ---
 
