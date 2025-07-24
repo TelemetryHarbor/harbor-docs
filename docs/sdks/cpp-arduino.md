@@ -24,7 +24,7 @@ A C++ client SDK for sending telemetry data to the **Telemetry Harbor** service,
 
 This library simplifies sending sensor data by handling HTTP communication, JSON serialization, and robust error handling with automatic retries.
 
-For full details and advanced usage, please see our official documentation at [docs.telemetryharbor.com](https://docs.telemetryharbor.com).
+**_Repo Link:_** https://github.com/TelemetryHarbor/harbor-sdk-c-plus-plus
 
 ***
 
