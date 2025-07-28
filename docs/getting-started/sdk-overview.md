@@ -18,10 +18,6 @@ Using an SDK offers several advantages over direct API calls:
 -   **Faster Development**: Accelerate your development cycle with ready-to-use functions and examples.
 -   **Language Idiomatic**: SDKs are designed to feel natural within the programming language they support.
 
-:::tip Visual Aid
-Add an infographic comparing direct API calls vs. using an SDK, highlighting the benefits of SDKs.
-<img src="/placeholder.svg?height=400&width=600" alt="infographic showing benefits of using an SDK over direct API calls" />
-:::
 
 ## Available SDKs
 
@@ -33,10 +29,6 @@ Telemetry Harbor currently offers official SDKs for the following popular progra
 | **JavaScript SDK** | Perfect for web applications, Node.js services, and browser-based data collection. |
 | **C++ SDK**   | For high-performance embedded systems and resource-constrained devices. |
 
-:::tip Visual Aid
-Consider adding icons for Python, JavaScript, and C++ to visually represent the SDKs.
-<img src="/placeholder.svg?height=100&width=300" alt="icons for Python, JavaScript, and C++ programming languages" />
-:::
 
 ## How SDKs Work
 

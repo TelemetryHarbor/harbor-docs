@@ -14,21 +14,12 @@ This guide will help you get up and running with Telemetry Harbor quickly. Follo
 2.  Fill in your details and submit the registration form.
 3.  Check your email for a verification link and click it to verify your account.
 
-:::tip Visual Aid
-Add a screenshot of the Telemetry Harbor signup page.
-<img src="/placeholder.svg?height=400&width=600" alt="screenshot of Telemetry Harbor signup page" />
-:::
-
 ## 2. Create a Harbor
 
 1.  Log in to your Telemetry Harbor dashboard.
 2.  Click on "Create New Harbor" and select General for the type and Free for the specs.
 3.  Once created, you can view the Harbor Details.
 
-:::tip Visual Aid
-Add a screenshot of the "Create New Harbor" button and the harbor creation wizard.
-<img src="/placeholder.svg?height=400&width=600" alt="screenshot of Telemetry Harbor dashboard with 'Create New Harbor' button and harbor creation wizard" />
-:::
 
 ## 3. Get Your API Endpoints and Key
 
@@ -41,10 +32,6 @@ From the Harbor Details page, you will find the necessary credentials:
 Your API Key is sensitive. Do not share it publicly or embed it directly in client-side code. Use environment variables for secure storage.
 :::
 
-:::tip Visual Aid
-Add a screenshot highlighting where to find the API Endpoints and API Key on the Harbor Details page.
-<img src="/placeholder.svg?height=400&width=600" alt="screenshot of Telemetry Harbor details page showing API endpoints and API key" />
-:::
 
 ## 4. Send Your First Data Point
 
@@ -66,10 +53,6 @@ curl -X POST "YOUR_SINGLE_ENDPOINT" \
   "value": 123.45}'
 ```
 
-:::tip Visual Aid
-Add a screenshot of a successful cURL command execution in a terminal.
-<img src="/placeholder.svg?height=400&width=600" alt="screenshot of a terminal showing a successful cURL command sending data to Telemetry Harbor" />
-:::
 
 ## 5. Visualize Your Data
 
@@ -81,10 +64,6 @@ Telemetry Harbor integrates seamlessly with Grafana for powerful data visualizat
     -   **Password**: \[The password from Harbor Details]
 3.  You'll find pre-configured dashboards ready for your data.
 
-:::tip Visual Aid
-Add a screenshot of the Grafana login page and a basic Grafana dashboard.
-<img src="/placeholder.svg?height=400&width=600" alt="screenshot of Grafana login page and a simple Grafana dashboard" />
-:::
 
 ## 6. Explore the Demo Dashboard
 
@@ -94,10 +73,6 @@ To get started quickly:
 2.  Open it to see example visualizations of telemetry data.
 3.  Use this as a template to create your own custom dashboards.
 
-:::tip Visual Aid
-Add a screenshot of the "Comprehensive Telemetry Dashboard" in Grafana.
-<img src="/placeholder.svg?height=400&width=600" alt="screenshot of the comprehensive telemetry dashboard in Grafana" />
-:::
 
 Congratulations! You've set up your Telemetry Harbor account, sent your first data point, and accessed your visualization tools. From here, you can start ingesting real data and creating custom dashboards to suit your needs.
 

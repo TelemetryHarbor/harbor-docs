@@ -132,8 +132,5 @@ curl -X POST "https://telemetryharbor.com/api/v1/ingest/ingest/your_harbor_id/ba
 ]'
 ```
 
-:::tip Visual Aid
-Add a diagram illustrating the batch ingestion process, showing multiple data points in a single request.
-<img src="/placeholder.svg?height=300&width=500" alt="Diagram illustrating batch data ingestion process" />
-:::
+
 

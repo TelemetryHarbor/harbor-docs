@@ -43,10 +43,6 @@ Connect the BME280 sensor to the ESP32 using I2C:
 | SDA        | GPIO 21   | Data     |
 | SCL        | GPIO 22   | Clock    |
 
-:::tip Visual Aid
-Consider adding a clear wiring diagram image for ESP32 and BME280.
-<img src="/placeholder.svg?height=400&width=600" alt="Wiring diagram for ESP32 and BME280 sensor" />
-:::
 
 ## Setup
 

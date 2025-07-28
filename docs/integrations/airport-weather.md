@@ -10,6 +10,7 @@ This guide explains how to set up a Linux agent to collect real-time weather dat
 
 **_Repo Link:_** https://github.com/TelemetryHarbor/harbor-airport-weather
 
+
 ## Prerequisites
 
 Before starting, ensure you have:
@@ -25,7 +26,6 @@ Before starting, ensure you have:
 
 The airport weather agent is a bash script that fetches current weather data and air pollution data from the OpenWeatherMap API for a list of configured airports. It then formats this data into the Telemetry Harbor [General Harbor Data Type Model](../introduction/concepts.md#general-harbor-data-type-model) and sends it in batches to your Telemetry Harbor ingestion endpoint at a configurable interval. The agent runs as a `systemd` service for continuous operation.
 
-<img src="/placeholder.svg?height=300&width=500" alt="Diagram showing OpenWeatherMap API to Linux agent to Telemetry Harbor" />
 
 ## Available Metrics
 
@@ -150,10 +150,7 @@ The installation script includes sample airports from around the world:
 -   **Airport Filter**: Multi-select airport monitoring.
 -   **Auto-refresh**: Real-time data updates every 30 seconds.
 
-:::tip Visual Aid
-Consider adding a screenshot of the pre-built Grafana dashboard for airport weather.
-<img src="/placeholder.svg?height=400&width=600" alt="Screenshot of pre-built Grafana dashboard for airport weather" />
-:::
+
 
 ## Managing the Service
 

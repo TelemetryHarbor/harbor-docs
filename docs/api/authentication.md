@@ -18,10 +18,6 @@ X-API-Key: your_api_key_here
 
 Replace \`your_api_key_here\` with the actual API key provided to you by Telemetry Harbor. If you don't have an API key, please contact our support team or retrieve it from your [Harbor Details page](../getting-started/quick-start.md#3-get-your-api-endpoints-and-key).
 
-:::tip Visual Aid
-Add a diagram showing an HTTP request with the `X-API-Key` header.
-<img src="/placeholder.svg?height=300&width=500" alt="Diagram of HTTP request with X-API-Key header" />
-:::
 
 ## Security Best Practices
 

@@ -39,10 +39,6 @@ CREATE TABLE cargo_data (
     -   Click "Add new panel"
     -   In the query editor, select the TimescaleDB data source
 
-:::tip Visual Aid
-Consider adding a screenshot of the Grafana interface showing how to add a new panel and select the data source.
-<img src="/placeholder.svg?height=400&width=600" alt="Grafana interface showing how to add a new panel and select data source" />
-:::
 
 ## Setting Up Grafana Variables
 
@@ -203,10 +199,6 @@ Best for showing sensor trends over time:
 -   Configure legend to show `{{ship_id}} - {{cargo_id}}`.
 -   Set appropriate Y-axis units.
 
-:::tip Visual Aid
-Consider adding a screenshot of a Grafana Time Series panel.
-<img src="/placeholder.svg?height=400&width=600" alt="Grafana Time Series panel showing sensor trends" />
-:::
 
 ### Stat Panel
 
@@ -224,10 +216,6 @@ For GPS tracking visualization:
 -   Configure latitude/longitude fields.
 -   Add trajectory lines for ship movement.
 
-:::tip Visual Aid
-Consider adding a screenshot of a Grafana Geomap panel showing GPS tracks.
-<img src="/placeholder.svg?height=400&width=600" alt="Grafana Geomap panel showing GPS tracks" />
-:::
 
 ### Table Panel
 

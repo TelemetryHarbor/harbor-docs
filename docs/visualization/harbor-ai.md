@@ -33,10 +33,6 @@ Every Harbor AI response includes a "Show SQL Queries" button that reveals the u
 -   **Multiple Queries**: Some complex questions may generate multiple SQL statements.
 -   **Formatted Code**: Properly formatted SQL with syntax highlighting.
 
-:::tip Visual Aid
-Consider adding a screenshot of the Harbor AI chat interface with the "Show SQL Queries" button expanded.
-<img src="/placeholder.svg?height=400&width=600" alt="Screenshot of Harbor AI chat interface with 'Show SQL Queries' button expanded" />
-:::
 
 ## Example Interactions
 

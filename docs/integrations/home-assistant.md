@@ -94,7 +94,3 @@ automation:
 Once data starts flowing from Home Assistant to Telemetry Harbor, you can visualize it in Grafana. Use the `ship_id` (derived from entity ID) and `cargo_id` (derived from friendly name or entity ID) to filter and display your smart home sensor data.
 
 Refer to the [Grafana Visualization Guide](../visualization/grafana.md) for detailed instructions on creating dashboards.
-:::tip Visual Aid
-Consider adding a screenshot of a Grafana dashboard showing Home Assistant sensor data.
-<img src="/placeholder.svg?height=400&width=600" alt="Grafana dashboard showing Home Assistant sensor data" />
-:::
