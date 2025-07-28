@@ -26,7 +26,6 @@ This library simplifies sending sensor data by handling HTTP communication, JSON
 
 **_Repo Link:_** https://github.com/TelemetryHarbor/harbor-sdk-c-plus-plus
 
-***
 
 ## Features
 
@@ -36,7 +35,6 @@ This library simplifies sending sensor data by handling HTTP communication, JSON
 *   📡 **ESP32 & ESP8266 Ready**: Built for the most popular Wi-Fi enabled microcontrollers in the Arduino ecosystem.
 *   🔌 **Extensible**: Easily add new data structures for different telemetry types.
 
-***
 
 ## Installation
 
@@ -50,13 +48,10 @@ This library simplifies sending sensor data by handling HTTP communication, JSON
     *   In the Arduino IDE, go to `Sketch` > `Include Library` > `Add .ZIP Library...` and select the downloaded file.
     *   Install the **ArduinoJson** library separately from the Library Manager.
 
-***
 
 ## Quickstart Guide
 
 Here is a basic example of how to use the library to send a single sensor reading.
-
-### Example Sketch
 
 ```cpp
 #include <WiFi.h>
@@ -108,7 +103,7 @@ void loop() {
 
 ## API Reference
 
-### `TelemetryHarborClient(const char* endpoint, const char* api_key)`
+### `HarborClient(const char* endpoint, const char* api_key)`
 
 The constructor for the client.
 *   `endpoint`: The URL of your Telemetry Harbor ingestion endpoint.
@@ -136,6 +131,6 @@ struct GeneralReading {
     String ship_id;
     String cargo_id;
     float value;
-    String time; // Optional, ISO8601 format (e.g., "2025-07-17T10:08:55Z")
+    String time; // Optional, ISO8601 format (e.2025-07-17T10:08:55Z)
 };
-````
+```

@@ -7,13 +7,13 @@ sidebar_position: 2
 
 <!-- Telemetry Harbor SDK Badges -->
 <!-- PyPI -->
-![PyPI](https://img.shields.io/pypi/v/telemetry-harbor-sdk.svg)
-![Python Versions](https://img.shields.io/pypi/pyversions/telemetry-harbor-sdk.svg)
-![Downloads](https://img.shields.io/pypi/dm/telemetry-harbor-sdk.svg)
-![License](https://img.shields.io/pypi/l/telemetry-harbor-sdk.svg)
-![Wheel](https://img.shields.io/pypi/wheel/telemetry-harbor-sdk.svg)
-![Format](https://img.shields.io/pypi/format/telemetry-harbor-sdk.svg)
-![Status](https://img.shields.io/pypi/status/telemetry-harbor-sdk.svg)
+![PyPI](https://img.shields.io/pypi/v/telemetryharborsdk.svg)
+![Python Versions](https://img.shields.io/pypi/pyversions/telemetryharborsdk.svg)
+![Downloads](https://img.shields.io/pypi/dm/telemetryharborsdk.svg)
+![License](https://img.shields.io/pypi/l/telemetryharborsdk.svg)
+![Wheel](https://img.shields.io/pypi/wheel/telemetryharborsdk.svg)
+![Format](https://img.shields.io/pypi/format/telemetryharborsdk.svg)
+![Status](https://img.shields.io/pypi/status/telemetryharborsdk.svg)
 <!-- GitHub -->
 ![Build](https://github.com/TelemetryHarbor/harbor-sdk-python/actions/workflows/publish-to-pypi.yml/badge.svg)
 ![Last Commit](https://img.shields.io/github/last-commit/TelemetryHarbor/harbor-sdk-python.svg)
@@ -31,9 +31,8 @@ A modern, production-ready SDK for sending telemetry data to the **Telemetry Har
 
 This SDK simplifies data sending by handling HTTP communication, JSON serialization, and robust error handling with automatic retries.
 
-For full details and advanced usage, please see our official documentation at [docs.telemetryharbor.com](https://docs.telemetryharbor.com).
+**_Repo Link:_** https://github.com/TelemetryHarbor/harbor-sdk-python
 
-***
 
 ## Features
 
@@ -50,6 +49,7 @@ For full details and advanced usage, please see our official documentation at [d
 ```bash
 pip install telemetryharborsdk
 ```
+
 ---
 
 ## Quickstart Guide

@@ -7,10 +7,10 @@ sidebar_position: 3
 
 <!-- Telemetry Harbor JavaScript SDK Badges -->
 <!-- npm -->
-[![npm version](https://img.shields.io/npm/v/telemetryharbor-sdk.svg)](https://www.npmjs.com/package/telemetryharbor-sdk)
-[![npm downloads](https://img.shields.io/npm/dm/telemetryharbor-sdk.svg)](https://www.npmjs.com/package/telemetryharbor-sdk)
-[![License](https://img.shields.io/npm/l/telemetryharbor-sdk.svg)](https://github.com/TelemetryHarbor/harbor-sdk-js/blob/main/LICENSE)
-[![Node.js Version](https://img.shields.io/node/v/telemetryharbor-sdk.svg)](https://nodejs.org)
+[![npm version](https://img.shields.io/npm/v/telemetryharborsdk.svg)](https://www.npmjs.com/package/telemetryharbor-sdk)
+[![npm downloads](https://img.shields.io/npm/dm/telemetryharborsdk.svg)](https://www.npmjs.com/package/telemetryharbor-sdk)
+[![License](https://img.shields.io/npm/l/telemetryharborsdk.svg)](https://github.com/TelemetryHarbor/harbor-sdk-js/blob/main/LICENSE)
+[![Node.js Version](https://img.shields.io/node/v/telemetryharborsdk.svg)](https://nodejs.org)
 <!-- GitHub -->
 ![Build](https://github.com/TelemetryHarbor/harbor-sdk-js/actions/workflows/publish-to-npm.yml/badge.svg)
 ![Last Commit](https://img.shields.io/github/last-commit/TelemetryHarbor/harbor-sdk-js.svg)
@@ -27,26 +27,24 @@ A modern, production-ready SDK for sending telemetry data to the **Telemetry Har
 
 This library simplifies sending data by handling HTTP communication, JSON serialization, and robust error handling with automatic retries.
 
-For full details and advanced usage, please see our official documentation at [docs.telemetryharbor.com](https://docs.telemetryharbor.com).
+**_Repo Link:_** https://github.com/TelemetryHarbor/harbor-sdk-js
 
-***
 
 ## Features
 
 *   ✅ **TypeScript First**: Written in TypeScript for strong typing and excellent editor autocompletion.
 *   📦 **Batching Support**: Efficiently send multiple readings in a single request.
 *   ⚙️ **Robust Retries**: Implements exponential backoff to automatically retry sending data on network or server errors.
-*   modern: Uses `async/await` and is built on top of the popular `axios` library.
+*   **Modern**: Uses `async/await` and is built on top of the popular `axios` library.
 *   🌐 **Universal**: Works in any modern Node.js environment.
 
-***
 
 ## Installation
 
 ```bash
 npm install telemetryharborsdk
 ```
-***
+
 
 ## Quickstart Guide
 
@@ -89,11 +87,10 @@ async function main() {
 main();
 ```
 
-***
 
 ## API Reference
 
-### `TelemetryHarborClient(endpoint, apiKey, [maxRetries], [initialBackoff])`
+### `HarborClient(endpoint, apiKey, [maxRetries], [initialBackoff])`
 
 The constructor for the client.
 *   `endpoint` (string): The URL of your Telemetry Harbor ingestion endpoint.

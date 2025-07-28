@@ -180,8 +180,8 @@ const config = {
           {
             title: 'Learn',
             items: [
-              { label: 'Getting Started', to: '/docs/intro' },
-              { label: 'SDKs', to: '/docs/category/SDKs' },
+              { label: 'Getting Started', to: '/docs/getting-started/quick-start' },
+              { label: 'SDKs', to: '/docs/category/sdks' },
               { label: 'API', to: '/docs/category/api' },
               { label: 'Integrations', to: '/docs/category/integrations' },
             ],
