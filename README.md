@@ -1,41 +1,37 @@
-# Website
+# Telemetry Harbor Docs
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+This repository contains the documentation source files for **Telemetry Harbor** — a platform for collecting, storing, and analyzing telemetry data across cloud, edge, and offline deployments.
 
-### Installation
+## 📁 About
 
-```
-$ yarn
-```
+All official docs live here, including:
 
-### Local Development
+- Getting started guides
+- Deployment and architecture patterns
+- Data formats and API references
+- Harbor types, tiers, and integration models
+- AI Harbor and LLM capabilities
 
-```
-$ yarn start
-```
+Docs are written in Markdown and structured for clarity, maintainability, and version control.
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+## 🛠️ Contributing
 
-### Build
+We welcome improvements, corrections, and additions.
 
-```
-$ yarn build
-```
+### To contribute:
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+1. Fork the repo and create a branch.
+2. Make your changes in Markdown (`.md`) files under `docs/`.
+3. Ensure clarity, structure, and consistent tone.
+4. Open a pull request with a clear description.
 
-### Deployment
+Use relative links and avoid hardcoding version numbers or endpoints unless necessary.
 
-Using SSH:
+### Docs style guidelines:
 
-```
-$ USE_SSH=true yarn deploy
-```
+- Use simple, active language.
+- Favor headings and bullet points.
+- Keep file names lowercase with hyphens.
+- Include frontmatter only if building with static site generators.
 
-Not using SSH:
 
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
