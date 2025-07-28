@@ -1,29 +1,23 @@
 ---
-sidebar_position: 2
-title: Pushing Telemetry Data
-description: Learn the general principles of sending single and batch telemetry data points to Telemetry Harbor.
+sidebar_position: 4
+title: Harbor Types
+description: Learn about the different types of Harbors available in Telemetry Harbor, their data models, and ingestion methods.
 ---
 
-# Pushing Telemetry Data
+# Harbor Types
 
-Telemetry Harbor provides robust endpoints for pushing your telemetry data to our platform. You can send individual data points or batch data for more efficient data transmission.
-
-:::info Important
-The specific data model (payload structure) and API endpoints for ingestion depend on the **Harbor Type** you have created. This page provides a general overview of pushing data. For detailed information on the data model and endpoints for each Harbor Type, please refer to the [Harbor Types](../getting-started/harbor-types.md) documentation.
-:::
-
-## General Principles of Data Ingestion
-
-Regardless of the Harbor Type, the core process of pushing data involves:
-
-1.  **Authentication**: Including your API Key in the `X-API-Key` header for every request. (See [Authentication](./authentication.md) for details).
-2.  **Endpoint Selection**: Using the correct ingestion endpoint for your Harbor ID and whether you are sending a single data point or a batch.
-3.  **Payload Formatting**: Structuring your data according to the specific data model required by your Harbor Type.
-4.  **HTTP Method**: Always using `POST` for data ingestion.
+Telemetry Harbor offers different "Harbor Types" to cater to various data storage and processing needs. Each Harbor Type is optimized for specific use cases and may have its own data model and ingestion endpoints.
 
 ## General Harbor
 
 The "General" Harbor is designed for broad applicability, allowing you to ingest any numerical time-series data. It's the default and recommended choice for most users.
+
+### Characteristics
+
+-   **Flexible Schema**: As detailed in [Core Concepts](../introduction/concepts.md), it uses a flexible `ship_id`, `cargo_id`, `value` model.
+-   **TimescaleDB Backend**: Data is stored in TimescaleDB, a powerful time-series database built on PostgreSQL, optimized for high-volume, high-performance data.
+-   **Grafana Integration**: Seamlessly integrates with Grafana for visualization, leveraging TimescaleDB's capabilities for complex queries and dashboards.
+-   **Scalable**: Built to handle a wide range of data volumes, from small personal projects to large-scale industrial deployments.
 
 ### General Harbor Data Model
 
@@ -136,4 +130,46 @@ curl -X POST "https://telemetryharbor.com/api/v1/ingest/ingest/your_harbor_id/ba
 Add a diagram illustrating the batch ingestion process, showing multiple data points in a single request.
 <img src="/placeholder.svg?height=300&width=500" alt="Diagram illustrating batch data ingestion process" />
 :::
+
+### Querying General Harbor Data
+
+Telemetry Harbor stores your General Harbor data in a PostgreSQL database with TimescaleDB extensions. Understanding the underlying table schema is crucial for writing effective SQL queries, especially when building custom dashboards in Grafana.
+
+#### `cargo_data` Table Schema
+
+All telemetry readings for a General Harbor are stored in the `cargo_data` table. Here's its structure:
+
+```sql
+CREATE TABLE cargo_data (
+    time TIMESTAMPTZ NOT NULL,
+    ship_id TEXT NOT NULL,
+    cargo_id TEXT NOT NULL,
+    value DOUBLE PRECISION NOT NULL
+);
+```
+
+**Column Descriptions:**
+-   `time`: `TIMESTAMPTZ NOT NULL` - The timestamp of the reading in ISO 8601 format. This is the primary time dimension for all queries.
+-   `ship_id`: `TEXT NOT NULL` - A unique identifier for the device, sensor, or entity that sent the data. Useful for filtering and grouping data by source.
+-   `cargo_id`: `TEXT NOT NULL` - A unique identifier for the specific metric or event being recorded (e.g., "temperature", "engine_rpm"). This distinguishes different types of readings from the same `ship_id`.
+-   `value`: `DOUBLE PRECISION NOT NULL` - The numerical value of the reading.
+
+
+### When to Use
+
+The "General" Harbor is suitable for:
+
+-   **IoT Sensor Data**: Temperature, humidity, pressure, light, motion, etc.
+-   **GPS Tracking**: Location data (latitude, longitude).
+-   **System Metrics**: CPU usage, memory, disk I/O, network traffic.
+-   **Environmental Monitoring**: Air quality, water levels, weather data.
+-   **Industrial Telemetry**: Machine performance, production counts, energy consumption.
+-   **Any numerical time-series data** that fits the `ship_id`, `cargo_id`, `value` model.
+
+
+## Specialized Harbors (Coming Soon)
+
+We are continuously working to expand our offerings. In the future, we plan to introduce specialized Harbor Types with unique data models and optimized ingestion methods for specific data domains (e.g., dedicated GPS tracking harbors with built-in geospatial functions, or event-based harbors for discrete events).
+
+These specialized types will offer enhanced features and performance for their respective data domains, while the "General" Harbor will remain the versatile backbone for diverse telemetry needs.
 

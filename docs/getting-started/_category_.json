@@ -3,7 +3,6 @@
   "position": 2,
   "link": {
     "type": "generated-index",
-    "description": "Comprehensive guide to the Telemetry Harbor API"
+    "description": "A comprehensive guide to quickly setting up your Telemetry Harbor account, first data ingestion, and SDK integration."
   }
 }
-

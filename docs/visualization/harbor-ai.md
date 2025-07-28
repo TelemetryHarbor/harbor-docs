@@ -1,30 +1,42 @@
 ---
 sidebar_position: 2
+title: Harbor AI with SQL Query Insights
+description: Leverage AI to query your data and understand the underlying SQL.
 ---
 
 # Harbor AI with SQL Query Insights
 
-Harbor AI is an intelligent assistant that helps you analyze your telemetry data through natural language queries. One of its most powerful features is the ability to show you the actual SQL queries it generates to answer your questions.
+Telemetry Harbor's AI-powered insights feature allows you to query your data using natural language. This powerful tool not only provides answers but also reveals the underlying SQL queries used to generate those answers, making it an excellent learning resource for understanding your data and building custom Grafana dashboards.
 
 ## How Harbor AI Works
 
-When you ask Harbor AI a question about your data, it:
+Harbor AI leverages Large Language Models (LLMs) to translate your natural language questions into precise SQL queries. These queries are then executed against your Telemetry Harbor data, and the results are presented in an easy-to-understand format.
 
-1. **Analyzes your question** using natural language processing
-2. **Generates appropriate SQL queries** based on your harbor's schema
-3. **Executes the queries** against your TimescaleDB database
-4. **Provides insights** in natural language
-5. **Shows you the SQL** so you can learn and reuse the queries
+<img src="/placeholder.svg?height=400&width=600" alt="Diagram showing natural language query to AI, AI generates SQL, SQL queries database, results returned to user" />
+
+## Benefits of LLM-Powered Insights
+
+-   **Accessibility**: Non-technical users can easily query complex time-series data without writing SQL.
+-   **Efficiency**: Rapidly explore data and get answers without manual dashboard creation.
+-   **Learning**: The ability to view generated SQL queries serves as an educational tool for understanding database interactions and building your own Grafana queries.
+-   **Discovery**: Uncover patterns and insights that might not be immediately obvious through traditional dashboards.
+-   **Scalability**: The LLM can handle a wide range of query complexities and data volumes.
 
 ## Accessing SQL Queries
 
 Every Harbor AI response includes a "Show SQL Queries" button that reveals the underlying SQL code used to generate the answer.
 
-### Features:
-- **View SQL**: Click to expand and see the exact queries used
-- **Copy to Clipboard**: One-click copying for reuse in Grafana or other tools
-- **Multiple Queries**: Some complex questions may generate multiple SQL statements
-- **Formatted Code**: Properly formatted SQL with syntax highlighting
+### Features
+
+-   **View SQL**: Click to expand and see the exact queries used.
+-   **Copy to Clipboard**: One-click copying for reuse in Grafana or other tools.
+-   **Multiple Queries**: Some complex questions may generate multiple SQL statements.
+-   **Formatted Code**: Properly formatted SQL with syntax highlighting.
+
+:::tip Visual Aid
+Consider adding a screenshot of the Harbor AI chat interface with the "Show SQL Queries" button expanded.
+<img src="/placeholder.svg?height=400&width=600" alt="Screenshot of Harbor AI chat interface with 'Show SQL Queries' button expanded" />
+:::
 
 ## Example Interactions
 
@@ -35,13 +47,13 @@ Every Harbor AI response includes a "Show SQL Queries" button that reveals the u
 
 **Generated SQL:**
 ```sql
-SELECT 
-    AVG(value) as average_temperature,
-    COUNT(*) as reading_count
-FROM cargo_data 
-WHERE ship_id = 'Ship1' 
-    AND cargo_id LIKE '%temperature%'
-    AND time >= NOW() - INTERVAL '24 hours'
+SELECT
+  AVG(value) as average_temperature,
+  COUNT(*) as reading_count
+FROM cargo_data
+WHERE ship_id = 'Ship1'
+  AND cargo_id LIKE '%temperature%'
+  AND time >= NOW() - INTERVAL '24 hours'
 ```
 
 ### Question: "Show me GPS coordinates for all ships in the last hour"
@@ -52,13 +64,13 @@ WHERE ship_id = 'Ship1'
 **Generated SQL:**
 ```sql
 SELECT DISTINCT ON (ship_id)
-    ship_id,
-    time,
-    MAX(CASE WHEN cargo_id = 'latitude' THEN value END) as latitude,
-    MAX(CASE WHEN cargo_id = 'longitude' THEN value END) as longitude
+  ship_id,
+  time,
+  MAX(CASE WHEN cargo_id = 'latitude' THEN value END) as latitude,
+  MAX(CASE WHEN cargo_id = 'longitude' THEN value END) as longitude
 FROM cargo_data
 WHERE time >= NOW() - INTERVAL '1 hour'
-    AND cargo_id IN ('latitude', 'longitude')
+  AND cargo_id IN ('latitude', 'longitude')
 GROUP BY ship_id, time
 ORDER BY ship_id, time DESC
 ```
@@ -70,12 +82,12 @@ ORDER BY ship_id, time DESC
 
 **Generated SQL:**
 ```sql
-SELECT 
-    ship_id,
-    SUM(value) as total_fuel_consumption
+SELECT
+  ship_id,
+  SUM(value) as total_fuel_consumption
 FROM cargo_data
 WHERE cargo_id = 'fuel_consumption'
-    AND time >= CURRENT_DATE
+  AND time >= CURRENT_DATE
 GROUP BY ship_id
 ORDER BY total_fuel_consumption DESC
 LIMIT 1
@@ -88,15 +100,15 @@ LIMIT 1
 
 **Generated SQL:**
 ```sql
-SELECT 
-    time_bucket('1 hour', time) as hour,
-    ship_id,
-    AVG(value) as avg_temperature,
-    MIN(value) as min_temperature,
-    MAX(value) as max_temperature
+SELECT
+  time_bucket('1 hour', time) as hour,
+  ship_id,
+  AVG(value) as avg_temperature,
+  MIN(value) as min_temperature,
+  MAX(value) as max_temperature
 FROM cargo_data
 WHERE time >= NOW() - INTERVAL '24 hours'
-    AND cargo_id LIKE '%temperature%'
+  AND cargo_id LIKE '%temperature%'
 GROUP BY time_bucket('1 hour', time), ship_id
 ORDER BY hour ASC, ship_id
 ```
@@ -106,7 +118,9 @@ ORDER BY hour ASC, ship_id
 The SQL queries generated by Harbor AI are excellent learning resources:
 
 ### 1. **Time Filtering Patterns**
+
 Learn how to properly filter time-series data:
+
 ```sql
 -- Last 24 hours
 WHERE time >= NOW() - INTERVAL '24 hours'
@@ -122,43 +136,49 @@ WHERE time >= NOW() - INTERVAL '7 days'
 ```
 
 ### 2. **Aggregation Techniques**
+
 Understand different ways to aggregate your data:
+
 ```sql
 -- Basic aggregations
 SELECT AVG(value), MAX(value), MIN(value), COUNT(*)
 
 -- Time-based grouping with time_bucket
-SELECT 
-    time_bucket('1 hour', time) as hour,
-    AVG(value)
+SELECT
+  time_bucket('1 hour', time) as hour,
+  AVG(value)
 FROM cargo_data
 GROUP BY time_bucket('1 hour', time)
 
 -- Multiple dimensions
-SELECT 
-    ship_id,
-    cargo_id,
-    AVG(value)
+SELECT
+  ship_id,
+  cargo_id,
+  AVG(value)
 FROM cargo_data
 GROUP BY ship_id, cargo_id
 ```
 
 ### 3. **GPS Data Handling**
+
 See how to work with coordinate pairs:
+
 ```sql
 -- Pivot latitude/longitude
-SELECT 
-    time,
-    ship_id,
-    MAX(CASE WHEN cargo_id = 'latitude' THEN value END) as lat,
-    MAX(CASE WHEN cargo_id = 'longitude' THEN value END) as lng
+SELECT
+  time,
+  ship_id,
+  MAX(CASE WHEN cargo_id = 'latitude' THEN value END) as lat,
+  MAX(CASE WHEN cargo_id = 'longitude' THEN value END) as lng
 FROM cargo_data
 WHERE cargo_id IN ('latitude', 'longitude')
 GROUP BY time, ship_id
 ```
 
 ### 4. **Pattern Matching**
+
 Learn to use LIKE and other pattern matching:
+
 ```sql
 -- Find temperature-related sensors
 WHERE cargo_id LIKE '%temperature%'
@@ -174,22 +194,22 @@ WHERE cargo_id ~ '(temperature|temp|thermal)'
 
 The SQL queries from Harbor AI can be directly used in Grafana:
 
-1. **Copy the SQL** from Harbor AI
-2. **Open Grafana** and create a new panel
-3. **Paste the query** into the query editor
-4. **Add Grafana variables** for dynamic filtering:
+1.  **Copy the SQL** from Harbor AI.
+2.  **Open Grafana** and create a new panel.
+3.  **Paste the query** into the query editor.
+4.  **Add Grafana variables** for dynamic filtering:
 
 ```sql
 -- Original AI query
 SELECT AVG(value) FROM cargo_data WHERE ship_id = 'Ship1'
 
 -- Modified for Grafana with variables
-SELECT 
-    time,
-    AVG(value) as avg_value
-FROM cargo_data 
+SELECT
+  time,
+  AVG(value) as avg_value
+FROM cargo_data
 WHERE ship_id IN ($ship_id:sqlstring)
-    AND $__timeFilter(time)
+  AND $__timeFilter(time)
 ORDER BY time ASC
 ```
 
@@ -198,123 +218,114 @@ ORDER BY time ASC
 Harbor AI can generate sophisticated queries for complex analysis:
 
 ### Window Functions
+
 ```sql
-SELECT 
-    time,
-    ship_id,
-    value,
-    LAG(value) OVER (PARTITION BY ship_id ORDER BY time) as previous_value,
-    value - LAG(value) OVER (PARTITION BY ship_id ORDER BY time) as change
+SELECT
+  time,
+  ship_id,
+  value,
+  LAG(value) OVER (PARTITION BY ship_id ORDER BY time) as previous_value,
+  value - LAG(value) OVER (PARTITION BY ship_id ORDER BY time) as change
 FROM cargo_data
 WHERE cargo_id = 'fuel_level'
 ORDER BY ship_id, time
 ```
 
 ### Statistical Analysis
+
 ```sql
-SELECT 
-    ship_id,
-    AVG(value) as mean_value,
-    STDDEV(value) as std_deviation,
-    PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY value) as median,
-    MIN(value) as min_value,
-    MAX(value) as max_value
+SELECT
+  ship_id,
+  AVG(value) as mean_value,
+  STDDEV(value) as std_deviation,
+  PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY value) as median,
+  MIN(value) as min_value,
+  MAX(value) as max_value
 FROM cargo_data
 WHERE cargo_id = 'engine_rpm'
 GROUP BY ship_id
 ```
 
 ### Anomaly Detection
+
 ```sql
 WITH stats AS (
-    SELECT 
-        ship_id,
-        AVG(value) as mean_val,
-        STDDEV(value) as std_val
-    FROM cargo_data
-    WHERE cargo_id = 'temperature'
-    GROUP BY ship_id
+  SELECT
+      ship_id,
+      AVG(value) as mean_val,
+      STDDEV(value) as std_val
+  FROM cargo_data
+  WHERE cargo_id = 'temperature'
+  GROUP BY ship_id
 )
-SELECT 
-    c.time,
-    c.ship_id,
-    c.value,
-    s.mean_val,
-    ABS(c.value - s.mean_val) / s.std_val as z_score
+SELECT
+  c.time,
+  c.ship_id,
+  c.value,
+  s.mean_val,
+  ABS(c.value - s.mean_val) / s.std_val as z_score
 FROM cargo_data c
 JOIN stats s ON c.ship_id = s.ship_id
 WHERE c.cargo_id = 'temperature'
-    AND ABS(c.value - s.mean_val) / s.std_val > 2
+  AND ABS(c.value - s.mean_val) / s.std_val > 2
 ORDER BY z_score DESC
 ```
 
 ### Time Series Gaps Detection
+
 ```sql
 WITH time_series AS (
-    SELECT 
-        ship_id,
-        time,
-        LAG(time) OVER (PARTITION BY ship_id ORDER BY time) as prev_time
-    FROM cargo_data
-    WHERE cargo_id = 'heartbeat'
-        AND time >= NOW() - INTERVAL '24 hours'
+  SELECT
+      ship_id,
+      time,
+      LAG(time) OVER (PARTITION BY ship_id ORDER BY time) as prev_time
+  FROM cargo_data
+  WHERE cargo_id = 'heartbeat'
+      AND time >= NOW() - INTERVAL '24 hours'
 )
-SELECT 
-    ship_id,
-    time,
-    prev_time,
-    EXTRACT(EPOCH FROM (time - prev_time))/60 as gap_minutes
+SELECT
+  ship_id,
+  time,
+  prev_time,
+  EXTRACT(EPOCH FROM (time - prev_time))/60 as gap_minutes
 FROM time_series
-WHERE EXTRACT(EPOCH FROM (time - prev_time))/60 > 30  -- Gaps > 30 minutes
+WHERE EXTRACT(EPOCH FROM (time - prev_time))/60 > 30   -- Gaps > 30 minutes
 ORDER BY gap_minutes DESC
 ```
 
 ## Best Practices
 
 ### 1. **Ask Specific Questions**
-- ❌ "Show me data"
-- ✅ "What's the average engine temperature for Ship1 in the last 6 hours?"
+
+-   ❌ "Show me data"
+-   ✅ "What's the average engine temperature for Ship1 in the last 6 hours?"
 
 ### 2. **Learn from the SQL**
-- Study the generated queries to understand patterns
-- Modify them for your specific needs
-- Use them as templates for similar analysis
+
+-   Study the generated queries to understand patterns.
+-   Modify them for your specific needs.
+-   Use them as templates for similar analysis.
 
 ### 3. **Combine with Grafana**
-- Copy useful queries to Grafana dashboards
-- Add variables for interactivity
-- Set up alerts based on AI-discovered patterns
+
+-   Copy useful queries to Grafana dashboards.
+-   Add variables for interactivity.
+-   Set up alerts based on AI-discovered patterns.
 
 ### 4. **Iterate and Refine**
-- Ask follow-up questions to dive deeper
-- Request different time ranges or aggregations
-- Explore edge cases and anomalies
+
+-   Ask follow-up questions to dive deeper.
+-   Request different time ranges or aggregations.
+-   Explore edge cases and anomalies.
 
 ## Tips for Better Results
 
-1. **Be Specific**: Include ship names, time ranges, and sensor types
-2. **Use Domain Terms**: Reference "cargo_id", "ship_id", and specific sensor names
-3. **Ask for Comparisons**: "Compare fuel efficiency between Ship1 and Ship2"
-4. **Request Trends**: "Show me the trend of engine temperature over the last week"
-5. **Explore Relationships**: "Is there a correlation between speed and fuel consumption?"
-6. **Ask for Aggregations**: "What are the hourly averages for temperature sensors?"
-7. **Request Analysis**: "Find any unusual patterns in the GPS data"
-
-## Common Query Patterns
-
-### Data Quality Checks
-- "Are there any missing data points for Ship1?"
-- "Which sensors haven't reported in the last hour?"
-- "Show me duplicate timestamps for any ship"
-
-### Performance Analysis
-- "Which ship has the most consistent readings?"
-- "What's the data frequency for each ship?"
-- "Show me the busiest hours for data ingestion"
-
-### Comparative Analysis
-- "Compare all ships' fuel consumption this week"
-- "Which cargo sensors show the most variation?"
-- "How do morning readings compare to evening readings?"
+1.  **Be Specific**: Include ship names, time ranges, and sensor types.
+2.  **Use Domain Terms**: Reference "cargo_id", "ship_id", and specific sensor names.
+3.  **Ask for Comparisons**: "Compare fuel efficiency between Ship1 and Ship2".
+4.  **Request Trends**: "Show me the trend of engine temperature over the last week".
+5.  **Explore Relationships**: "Is there a correlation between speed and fuel consumption?".
+6.  **Ask for Aggregations**: "What are the hourly averages for temperature sensors?".
+7.  **Request Analysis**: "Find any unusual patterns in the GPS data".
 
 Harbor AI's SQL query feature bridges the gap between natural language questions and technical database queries, making it easier to explore your data and learn SQL patterns for future analysis. The transparency of showing actual SQL queries helps users understand their data better and build more sophisticated visualizations in Grafana.

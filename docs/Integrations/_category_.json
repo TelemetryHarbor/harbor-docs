@@ -1,8 +1,0 @@
-{
-  "label": "Integrations",
-  "position": 7,
-  "link": {
-    "type": "generated-index",
-    "description": "Telemetry Harbor offers several integrations to help you connect your devices and services to our platform. These integrations make it easy to collect, analyze, and visualize your data."
-  }
-}

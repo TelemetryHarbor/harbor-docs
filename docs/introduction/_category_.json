@@ -1,0 +1,8 @@
+{
+  "label": "Introduction",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Learn about Telemetry Harbor, its core concepts, and key features."
+  }
+}
