@@ -39,8 +39,8 @@ You can send individual data points or batch data for more efficient data transm
 To submit a single telemetry reading to a General Harbor:
 
 **Endpoint:**
--   `Shared`: `POST https://telemetryharbor.com/api/v1/ingest/your_harbor_id`
--   `Enterprise Dedicated`: `POST https://CustomName.harbor.telemetryharbor.com/api/v1/ingest/your_harbor_id`
+-   `Shared`: `POST https://telemetryharbor.com/api/v2/ingest/your_harbor_id`
+-   `Enterprise Dedicated`: `POST https://CustomName.harbor.telemetryharbor.com/api/v2/ingest/your_harbor_id`
 
 Replace `your_harbor_id` with your actual Harbor ID.
 
@@ -58,7 +58,7 @@ Replace `your_harbor_id` with your actual Harbor ID.
 ##### cURL Example
 
 ```bash
-curl -X POST "https://telemetryharbor.com/api/v1/ingest/ingest/your_harbor_id" \
+curl -X POST "https://telemetryharbor.com/api/v2/ingest/ingest/your_harbor_id" \
 -H "X-API-Key: your_api_key" \
 -H "Content-Type: application/json" \
 -d '{
@@ -74,8 +74,8 @@ curl -X POST "https://telemetryharbor.com/api/v1/ingest/ingest/your_harbor_id" \
 To submit multiple telemetry readings at once to a General Harbor, which is more efficient for high-frequency data:
 
 **Endpoint:**
--   `Shared`: `POST https://telemetryharbor.com/api/v1/ingest/ingest/your_harbor_id/batch`
--   `Enterprise Dedicated`: `POST https://CustomName.harbor.telemetryharbor.com/api/v1/ingest/ingest/your_harbor_id/batch`
+-   `Shared`: `POST https://telemetryharbor.com/api/v2/ingest/ingest/your_harbor_id/batch`
+-   `Enterprise Dedicated`: `POST https://CustomName.harbor.telemetryharbor.com/api/v2/ingest/ingest/your_harbor_id/batch`
 
 Replace `your_harbor_id` with your actual Harbor ID.
 
@@ -107,7 +107,7 @@ Replace `your_harbor_id` with your actual Harbor ID.
 ##### cURL Example
 
 ```bash
-curl -X POST "https://telemetryharbor.com/api/v1/ingest/ingest/your_harbor_id/batch" \
+curl -X POST "https://telemetryharbor.com/api/v2/ingest/ingest/your_harbor_id/batch" \
 -H "X-API-Key: your_api_key" \
 -H "Content-Type: application/json" \
 -d '[

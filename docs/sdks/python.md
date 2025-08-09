@@ -61,7 +61,7 @@ from telemetryharborsdk import HarborClient, GeneralReading
 
 # 1. Initialize the client
 client = HarborClient(
-    endpoint="https://api.telemetry-harbor.com/v1/ingest/{harbor_id}",
+    endpoint="https://api.telemetry-harbor.com/v2/ingest/{harbor_id}",
     api_key="your_secret_api_key"
 )
 

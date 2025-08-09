@@ -38,8 +38,8 @@ Your API Key is sensitive. Do not share it publicly or embed it directly in clie
 You can send data using either the Single Data Push or Batch Data Push endpoints. The data model and specific cURL examples for sending data to a General Harbor can be found in the [Harbor Types](../getting-started/harbor-types.md#ingesting-data-to-a-general-harbor) documentation.
 
 **General Endpoints:**
--   **Single Data Push**: `POST https://telemetryharbor.com/api/v1/ingest/ingest/your_harbor_id`
--   **Batch Data Push**: `POST https://telemetryharbor.com/api/v1/ingest/ingest/your_harbor_id/batch`
+-   **Single Data Push**: `POST https://telemetryharbor.com/api/v2/ingest/ingest/your_harbor_id`
+-   **Batch Data Push**: `POST https://telemetryharbor.com/api/v2/ingest/ingest/your_harbor_id/batch`
 
 Replace `your_harbor_id` and `your_api_key` with the actual values from your Harbor Details page.
 ```bash
