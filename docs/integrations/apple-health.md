@@ -1,10 +1,10 @@
 ---
 sidebar_position: 7
-title: Apple Health Integration for Telemetry Harbor
+title: Apple Health Integration
 description: Use iOS Shortcuts to send Apple Health data (steps, heart rate, etc.) to Telemetry Harbor.
 ---
 
-# Apple Health Integration for Telemetry Harbor
+# Apple Health Integration
 
 This guide explains how to use iOS Shortcuts to automatically send Apple Health data (such as steps, heart rate, calories, or sleep) to Telemetry Harbor. This allows you to monitor your health metrics, visualize trends, and correlate them with other telemetry in **Grafana dashboards**.
 
@@ -72,12 +72,12 @@ Data is transmitted as a **daily log of raw points** (not aggregated totals). Ea
 
 During setup, you’ll need to:
 
-1.  **Enter your Telemetry Harbor API details**:
-    -   API Endpoint URL
-    -   API Key
-2.  **Select the health metric**:
+1.  **Select the health metric**:
     -   Choose one Apple Health data type to export with this shortcut.
     -   To track multiple metrics, **duplicate the shortcut** and configure each separately.
+2.  **Enter your Telemetry Harbor API details**:
+    -   API Endpoint URL
+    -   API Key
 3.  **Grant permissions**:
     -   Allow access to Apple Health data when prompted.
 
