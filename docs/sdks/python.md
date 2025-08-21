@@ -42,7 +42,6 @@ This SDK simplifies data sending by handling HTTP communication, JSON serializat
 *   ⚙️ **Simple API** with intuitive methods like `send` and `send_batch`.
 *   🌐 **Universal** — works in any Python 3.7+ environment.
 
-***
 
 ## Installation
 
@@ -50,7 +49,6 @@ This SDK simplifies data sending by handling HTTP communication, JSON serializat
 pip install telemetryharborsdk
 ```
 
----
 
 ## Quickstart Guide
 
@@ -85,7 +83,6 @@ batch_response = client.send_batch(batch)
 print("Successfully sent batch!", batch_response)
 ```
 
----
 
 ## GPS and Cargo Data Rules
 
@@ -131,8 +128,6 @@ WHERE $__timeFilter(time)
 GROUP BY time, ship_id
 ORDER BY time;
 ```
-
----
 
 ## API Reference
 
