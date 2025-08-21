@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Rate Limiting
+title: Rate Limiting & Error Codes
 description: Understand API error responses and how to handle rate limits.
 ---
 
