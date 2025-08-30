@@ -79,8 +79,6 @@ Save your `configuration.yaml` file and restart your Home Assistant instance for
 To automatically push data at regular intervals, you can create an automation in Home Assistant. Add this to your `automations.yaml` or directly in the Home Assistant UI.
 
 ```yaml
-# Example automation to push data every 5 minutes
-automation:
   - alias: 'Push all sensors data to Telemetry Harbor'
     trigger:
       - platform: time_pattern
