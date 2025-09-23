@@ -23,7 +23,7 @@ Before starting, ensure you have:
 
 ## How it Works
 
-The integration involves a Python script that connects to your Meshtastic device via its serial port. It listens for incoming telemetry messages (e.g., sensor data from other nodes) or can be configured to send data from the connected device itself. This data is then formatted into the Telemetry Harbor [General Harbor Data Type Model](../introduction/concepts.md#general-harbor-data-type-model) and pushed to your Telemetry Harbor batch ingestion endpoint.
+The integration involves a Python script that connects to your Meshtastic device via its serial port. It listens for incoming telemetry messages (e.g., sensor data from other nodes) or can be configured to send data from the connected device itself. This data is then formatted into the Telemetry Harbor [General Harbor Data Type Model](../introduction/concepts.md#general-harbor-data-type-model) and pushed to your Telemetry Harbor API ingestion endpoint.
 
 <img src="/placeholder.svg?height=300&width=500" alt="Diagram showing Meshtastic device to Python script to Telemetry Harbor" />
 
@@ -49,7 +49,7 @@ The integration involves a Python script that connects to your Meshtastic device
 ### 3. Run the Script:
 
 -   Execute the script and provide the required information:
-    -   **Batch Endpoint**: Obtain this from your Telemetry Harbor account.
+    -   **API Endpoint**: Obtain this from your Telemetry Harbor account.
     -   **API Key**: Your unique key for secure communication.
     -   **COM Port**: The port your Meshtastic device is connected to.
     ```bash
@@ -59,7 +59,7 @@ The integration involves a Python script that connects to your Meshtastic device
 
 ### 4. Stream Data:
 
--   Once running, the script will continuously push telemetry data from your Meshtastic device to the Telemetry Harbor batch endpoint. You should see output in your terminal indicating data being sent.
+-   Once running, the script will continuously push telemetry data from your Meshtastic device to the Telemetry Harbor endpoint. You should see output in your terminal indicating data being sent.
 
 ### 5. Visualize in Grafana:
 
@@ -71,7 +71,7 @@ The integration involves a Python script that connects to your Meshtastic device
 ### Common Issues
 
 -   **Device not found**: Ensure the COM port is correct and the Meshtastic device is properly connected and powered on.
--   **API connection errors**: Verify your Telemetry Harbor Batch Endpoint and API Key are correct. Check your internet connection.
+-   **API connection errors**: Verify your Telemetry Harbor API Endpoint and API Key are correct. Check your internet connection.
 -   **No data in Grafana**: Confirm the script is running and sending data successfully. Check Grafana's time range and filters.
 
 For more detailed troubleshooting, refer to the `README.md` in the [harbor-meshtastic GitHub repository](https://github.com/TelemetryHarbor/harbor-meshtastic).
