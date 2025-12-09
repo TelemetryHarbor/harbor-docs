@@ -131,6 +131,26 @@ curl -X POST "https://telemetryharbor.com/api/v2/ingest/ingest/your_harbor_id/ba
   }
 ]'
 ```
+## The Things Network (TTN) Harbor
 
+When using a TTN Harbor, data is pushed automatically by **The Things Network** servers via a Webhook. You do not manually construct the JSON payload.
+
+**Endpoint:**
+
+  - `Shared`: `POST https://telemetryharbor.com/api/v2/ingest/your_harbor_id/ttn`
+  - `Enterprise Dedicated`: `POST https://CustomName.harbor.telemetryharbor.com/api/v2/ingest/your_harbor_id/ttn`
+
+### Configuration
+
+Instead of using cURL or an SDK, you configure the "Push" inside the TTN Console:
+
+1.  **Payload Formatter**: Ensure your Javascript formatter returns a `decoded_payload` object containing numbers (e.g., `{ "temp": 24, "hum": 60 }`).
+2.  **Webhook Integration**:
+      * **Format**: `JSON`
+      * **BASE URL**: [https://telemetryharbor.com](https://telemetryharbor.com).
+      * **Add Additional Header**: `X-API-Key: <your_api_key>`
+      * **Enabled Event types**: Enable `Uplink Message` and add in the value `/api/v2/ingest/your_harbor_id/ttn`
+
+Once configured, every uplink message received by The Things Network is automatically pushed to Telemetry Harbor.
 
 
