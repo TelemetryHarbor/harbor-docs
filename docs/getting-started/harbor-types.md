@@ -12,13 +12,6 @@ Telemetry Harbor offers different "Harbor Types" to cater to various data storag
 
 The "General" Harbor is designed for broad applicability, allowing you to ingest any numerical time-series data. It's the default and recommended choice for most users.
 
-### Characteristics
-
--   **Flexible Schema**: As detailed in [Core Concepts](../introduction/concepts.md), it uses a flexible `ship_id`, `cargo_id`, `value` model.
--   **TimescaleDB Backend**: Data is stored in TimescaleDB, a powerful time-series database built on PostgreSQL, optimized for high-volume, high-performance data.
--   **Grafana Integration**: Seamlessly integrates with Grafana for visualization, leveraging TimescaleDB's capabilities for complex queries and dashboards.
--   **Scalable**: Built to handle a wide range of data volumes, from small personal projects to large-scale industrial deployments.
-
 ### General Harbor Data Model
 
 When submitting telemetry readings to a General Harbor, use the following data model:
@@ -137,35 +130,74 @@ All telemetry readings for a General Harbor are stored in the `cargo_data` table
 
 ```sql
 CREATE TABLE cargo_data (
-    time TIMESTAMPTZ NOT NULL,
-    ship_id TEXT NOT NULL,
-    cargo_id TEXT NOT NULL,
-    value DOUBLE PRECISION NOT NULL
+    time TIMESTAMPTZ NOT NULL, -- The timestamp of the reading in ISO 8601 format. This is the primary time dimension for all queries.
+    ship_id TEXT NOT NULL, -- A unique identifier for the device, sensor, or entity that sent the data. Useful for filtering and grouping data by source.
+    cargo_id TEXT NOT NULL, -- A unique identifier for the specific metric or event being recorded (e.g., "temperature", "engine_rpm"). This distinguishes different types of readings from the same ship_id
+    value DOUBLE PRECISION NOT NULL -- The numerical value of the reading.
 );
 ```
 
-**Column Descriptions:**
--   `time`: `TIMESTAMPTZ NOT NULL` - The timestamp of the reading in ISO 8601 format. This is the primary time dimension for all queries.
--   `ship_id`: `TEXT NOT NULL` - A unique identifier for the device, sensor, or entity that sent the data. Useful for filtering and grouping data by source.
--   `cargo_id`: `TEXT NOT NULL` - A unique identifier for the specific metric or event being recorded (e.g., "temperature", "engine_rpm"). This distinguishes different types of readings from the same `ship_id`.
--   `value`: `DOUBLE PRECISION NOT NULL` - The numerical value of the reading.
+## The Things Network (TTN) Harbor
+
+The "TTN Harbor" is a specialized harbor type built specifically for **LoRaWAN** devices managed via **The Things Network (V3)**. It is designed to consume TTN Webhooks directly without any intermediate translation layer.
 
 
-### When to Use
+### Automatic Data Mapping
 
-The "General" Harbor is suitable for:
+This Harbor type treats your LoRaWAN infrastructure as follows:
 
--   **IoT Sensor Data**: Temperature, humidity, pressure, light, motion, etc.
--   **GPS Tracking**: Location data (latitude, longitude).
--   **System Metrics**: CPU usage, memory, disk I/O, network traffic.
--   **Environmental Monitoring**: Air quality, water levels, weather data.
--   **Industrial Telemetry**: Machine performance, production counts, energy consumption.
--   **Any numerical time-series data** that fits the `ship_id`, `cargo_id`, `value` model.
+| TTN Concept | Telemetry Harbor Concept | Description |
+| :--- | :--- | :--- |
+| `device_id` | `ship_id` | The unique end-device ID from TTN becomes the Ship ID. |
+| `decoded_payload` keys | `cargo_id` | Keys in your decoded payload (e.g., "temp") become Cargo IDs. |
+| `decoded_payload` values | `value` | The values associated with those keys are stored as the metric values. |
+| `received_at` | `time` | The time the packet arrived at the network server (or `time` from payload if provided). |
 
+### Built-in Metadata Cargo
 
-## Specialized Harbors (Coming Soon)
+In addition to your payload, the TTN Harbor automatically tracks the following "Cargo" for every ship (device):
 
-We are continuously working to expand our offerings. In the future, we plan to introduce specialized Harbor Types with unique data models and optimized ingestion methods for specific data domains (e.g., dedicated GPS tracking harbors with built-in geospatial functions, or event-based harbors for discrete events).
+  * `rssi`: Received Signal Strength Indicator (dBm)
+  * `snr`: Signal-to-Noise Ratio (dB)
+  * `frequency`: Transmission frequency (Hz)
+  * `bandwidth`: Bandwidth used (Hz)
+  * `spreading_factor`: LoRa Spreading Factor (7-12)
 
-These specialized types will offer enhanced features and performance for their respective data domains, while the "General" Harbor will remain the versatile backbone for diverse telemetry needs.
+### Configuration
+
+To connect a TTN Application to this Harbor:
+
+1.  **Create a TTN Harbor** in your Telemetry Harbor dashboard.
+2.  Copy your **Harbor ID** and **API Key**.
+3.  Go to your **TTN Console** \> **Integrations** \> **Webhooks**.
+4.  Click **Add Webhook** \> **Custom Webhook**.
+5.  **Webhook Settings**:
+      * **Base URL**:
+          * Shared: `https://telemetryharbor.com/api/v2/ingest/your_harbor_id/ttn`
+          * Enterprise: `https://CustomName.harbor.telemetryharbor.com/api/v2/ingest/your_harbor_id/ttn`
+      * **Method**: `POST`
+      * **Format**: `JSON`
+      * **Additional Headers**:
+          * Key: `X-API-Key`
+          * Value: `your_api_key_here`
+6.  **Enabled Messages**: Check **Uplink message**.
+
+> **Important:** Ensure your TTN **Payload Formatter** returns a flat JSON object in the `decoded_payload` field containing numbers. Nested objects or strings in the payload will be ignored.
+### Querying TTN Harbor Data
+
+Telemetry Harbor stores your TTN Harbor data in a PostgreSQL database with TimescaleDB extensions. Understanding the underlying table schema is crucial for writing effective SQL queries, especially when building custom dashboards in Grafana.
+
+#### `cargo_data` Table Schema
+
+All telemetry readings for a TTN Harbor are stored in the `cargo_data` table. Here's its structure:
+
+```sql
+CREATE TABLE cargo_data (
+    time TIMESTAMPTZ NOT NULL, -- The timestamp of the reading in ISO 8601 format. This is the primary time dimension for all queries.
+    ship_id TEXT NOT NULL, -- A unique identifier for the device, sensor, or entity that sent the data. Useful for filtering and grouping data by source.
+    cargo_id TEXT NOT NULL, -- A unique identifier for the specific metric or event being recorded (e.g., "temperature", "engine_rpm"). This distinguishes different types of readings from the same ship_id
+    value DOUBLE PRECISION NOT NULL -- The numerical value of the reading.
+);
+```
+
 
