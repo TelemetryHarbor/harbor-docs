@@ -146,10 +146,18 @@ Instead of using cURL or an SDK, you configure the "Push" inside the TTN Console
 
 1.  **Payload Formatter**: Ensure your Javascript formatter returns a `decoded_payload` object containing numbers (e.g., `{ "temp": 24, "hum": 60 }`).
 2.  **Webhook Integration**:
+      * **Base URL**:
+          * Shared: `https://telemetryharbor.com/api/v2/ingest/your_harbor_id/ttn`
+          * Enterprise: `https://CustomName.harbor.telemetryharbor.com/api/v2/ingest/your_harbor_id/ttn`
+      * **Method**: `POST`
       * **Format**: `JSON`
-      * **BASE URL**: [https://telemetryharbor.com](https://telemetryharbor.com).
-      * **Add Additional Header**: `X-API-Key: <your_api_key>`
-      * **Enabled Event types**: Enable `Uplink Message` and add in the value `/api/v2/ingest/your_harbor_id/ttn`
+      * **Additional Headers**:
+          * Key: `X-API-Key`
+          * Value: `your_api_key_here`
+      *  **Enabled Messages**:
+            - Check **Uplink message**.
+            - (Optional) Uncheck others to reduce noise. 
+      
 
 Once configured, every uplink message received by The Things Network is automatically pushed to Telemetry Harbor.
 
