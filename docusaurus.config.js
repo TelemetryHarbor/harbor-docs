@@ -202,7 +202,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Telemetry Harbor. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Telemetry Harbor.`,
       },
 
       // --- CODE BLOCK STYLING ---
