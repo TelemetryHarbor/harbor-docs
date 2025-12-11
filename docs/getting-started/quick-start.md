@@ -1,3 +1,4 @@
+---
 sidebar_position: 1
 title: Quick Start Guide
 description: Get started with Telemetry Harbor in minutes. Create an account, set up a harbor, send data, and visualize.
@@ -27,9 +28,11 @@ From the Harbor Details page, you will find the necessary credentials:
 2.  Copy your **API Key**. Keep this secure, as it's used to authenticate your requests.
 
 :::warning
-Security Notice
+**Security Notice**
+
 Your API Key is sensitive. Do not share it publicly or embed it directly in client-side code. Use environment variables for secure storage.
 :::
+
 
 
 ## 4. Send Your First Data Point
