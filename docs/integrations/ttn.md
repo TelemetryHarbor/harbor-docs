@@ -48,20 +48,30 @@ Telemetry Harbor requires your data to be numerical and flat. You must configure
 **Example Decoder:**
 ```javascript
 function decodeUplink(input) {
-  var bytes = input.bytes;
-  var data = {};
+    // TTN passes Base64 or HEX depending on input
+    let bytes = input.bytes;
 
-  // Example: decoding a simple temperature/humidity sensor
-  // Byte 0: Temp, Byte 1: Humidity
-  data.temperature = bytes[0];
-  data.humidity = bytes[1];
+    if (!bytes) {
+        // Convert HEX string to byte array
+        bytes = [];
+        for (let i = 0; i < input.frm_payload.length; i += 2) {
+            bytes.push(parseInt(input.frm_payload.substr(i, 2), 16));
+        }
+    }
 
-  // Return structure MUST be flat
-  return {
-    data: data,
-    warnings: [],
-    errors: []
-  };
+    let temperature = ((bytes[0] << 8) | bytes[1]) / 100;
+    let humidity = bytes[2];
+    let battery = bytes[3];
+    let status = String.fromCharCode.apply(null, bytes.slice(4));
+
+    return {
+        data: {
+            temperature,
+            humidity,
+            battery,
+            status
+        }
+    };
 }
 ````
 
