@@ -1,27 +1,41 @@
 :root {
-  --ifm-color-primary: #000000; /* Primary black */
-  --ifm-color-primary-dark: #333333; /* Darker black for accents */
-  --ifm-color-primary-darker: #222222;
-  --ifm-color-primary-darkest: #111111;
-  --ifm-color-primary-light: #555555; /* Lighter shade for buttons or links */
-  --ifm-color-primary-lighter: #777777;
-  --ifm-color-primary-lightest: #999999;
-  --ifm-background-color: #ffffff; /* Background white */
-  --ifm-font-color-base: #000000; /* Text color black */
+  /* Base: International Orange #FF4F00 */
+  --ifm-color-primary: #ff4f00;
+  --ifm-color-primary-dark: #e64700;
+  --ifm-color-primary-darker: #d94300;
+  --ifm-color-primary-darkest: #b33700;
+  --ifm-color-primary-light: #ff611a;
+  --ifm-color-primary-lighter: #ff6a26;
+  --ifm-color-primary-lightest: #ff7d40;
+  
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(255, 79, 0, 0.1); /* Orange tint */
+  
+  /* Standard White Background for Light Mode */
+  --ifm-background-color: #ffffff;
+  --ifm-font-color-base: #1c1e21; /* Softer black for better readability */
 }
 
 /* Dark Mode */
 [data-theme='dark'] {
-  --ifm-color-primary: #ffffff; /* Primary white */
-  --ifm-color-primary-dark: #cccccc; /* Softer white for accents */
-  --ifm-color-primary-darker: #bbbbbb;
-  --ifm-color-primary-darkest: #aaaaaa;
-  --ifm-color-primary-light: #dddddd; /* Slightly brighter shades */
-  --ifm-color-primary-lighter: #eeeeee;
-  --ifm-color-primary-lightest: #f5f5f5;
-  --ifm-background-color: #000000; /* Background black */
-  --ifm-font-color-base: #ffffff; /* Text color white */
-  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+  /* In dark mode, we keep the same orange, or slightly lighten it 
+     if you find it vibrates too much against the black. 
+     These values are currently identical to root.
+  */
+  --ifm-color-primary: #ff4f00;
+  --ifm-color-primary-dark: #e64700;
+  --ifm-color-primary-darker: #d94300;
+  --ifm-color-primary-darkest: #b33700;
+  --ifm-color-primary-light: #ff611a;
+  --ifm-color-primary-lighter: #ff6a26;
+  --ifm-color-primary-lightest: #ff7d40;
+
+  --docusaurus-highlighted-code-line-bg: rgba(255, 79, 0, 0.2);
+
+  /* Using a "Space Gray" background (#1b1b1d) usually looks 
+     more premium with Orange than pure black (#000000), 
+     but you can revert to #000000 if you prefer OLED black.
+  */
+  --ifm-background-color: #1b1b1d; 
+  --ifm-font-color-base: #e3e3e3;
 }

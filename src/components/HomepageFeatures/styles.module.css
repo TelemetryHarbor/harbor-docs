@@ -48,7 +48,8 @@
 
 .stepCell:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  /* Optional: Add a slight orange tint to the shadow on hover */
+  box-shadow: 0 8px 24px rgba(255, 79, 0, 0.15);
 }
 
 .stepContent {
@@ -60,7 +61,8 @@
 .checkIcon {
   width: 32px;
   height: 32px;
-  color: #000; /* Green color similar to the reference */
+  /* UPDATED: Uses International Orange */
+  color: var(--ifm-color-primary); 
   margin-bottom: 1.5rem;
 }
 
@@ -73,7 +75,8 @@
 
 .stepLink {
   display: block;
-  color: #000; /* Green color similar to the reference */
+  /* UPDATED: Uses International Orange */
+  color: var(--ifm-color-primary);
   font-weight: 600;
   margin: 1rem 0;
   text-decoration: none;
@@ -82,7 +85,8 @@
 }
 
 .stepLink:hover {
-  color: #000; /* Darker green on hover */
+  /* UPDATED: Darker orange on hover */
+  color: var(--ifm-color-primary-dark);
   text-decoration: none;
 }
 
@@ -105,7 +109,7 @@
 
 .clientCell:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgba(255, 79, 0, 0.15);
 }
 
 .clientContent {
@@ -126,7 +130,8 @@
 .clientIcon {
   width: 32px;
   height: 32px;
-  color: #000; /* Green color similar to the reference */
+  /* UPDATED: Uses International Orange */
+  color: var(--ifm-color-primary);
 }
 
 .clientTitle {
@@ -146,7 +151,8 @@
 
 .tryButton {
   display: inline-block;
-  color: #000; /* Green color similar to the reference */
+  /* UPDATED: Uses International Orange */
+  color: var(--ifm-color-primary);
   font-weight: 600;
   text-decoration: none;
   font-size: 1.1rem;
@@ -155,27 +161,29 @@
 }
 
 .tryButton:hover {
-  color: #000; /* Darker green on hover */
+  /* UPDATED: Darker orange on hover */
+  color: var(--ifm-color-primary-dark);
   text-decoration: none;
 }
 
-/* Dark mode specific styles */
+/* Dark mode specific styles 
+   -------------------------
+   We removed the color overrides (color: #fff) for icons and links.
+   This ensures the International Orange branding pops against the dark background.
+*/
+
 html[data-theme='dark'] .stepCell,
 html[data-theme='dark'] .clientCell {
-  background-color: #1E1E1E; /* Dark background similar to the reference */
+  background-color: #1b1b1d; /* Space Gray to match your new theme */
 }
 
-html[data-theme='dark'] .checkIcon,
-html[data-theme='dark'] .clientIcon,
+/* If you want the links to be slightly brighter in dark mode, uncomment this: */
+/*
 html[data-theme='dark'] .stepLink,
 html[data-theme='dark'] .tryButton {
-  color: #fff; /* Brighter green in dark mode */
+  color: var(--ifm-color-primary-light);
 }
-
-html[data-theme='dark'] .stepLink:hover,
-html[data-theme='dark'] .tryButton:hover {
-  color: #fff; /* Lighter green on hover in dark mode */
-}
+*/
 
 /* Responsive */
 @media (max-width: 768px) {

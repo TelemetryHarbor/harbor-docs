@@ -1,26 +1,12 @@
 // @ts-check
-// `@type` JSDoc annotations allow editor autocompletion and type checking
-// (when paired with `@ts-check`).
-// There are various equivalent ways to declare your Docusaurus config.
-// See: https://docusaurus.io/docs/api/docusaurus-config
-
 import { themes as prismThemes } from 'prism-react-renderer';
-
-/**
- * ==============================================================================
- * YOUR DOCUSAURUS CONFIGURATION
- * ==============================================================================
- * This file contains the central configuration for your Docusaurus site.
- *
- * You can find a full list of options here:
- * https://docusaurus.io/docs/api/docusaurus-config
- */
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   // --- SITE METADATA ---
   title: 'Telemetry Harbor',
-  tagline: 'Collect, Store & Visualize — All in One Place',
+  // SEO: A slightly longer tagline helps with context
+  tagline: 'The All-in-One Platform to Collect, Store & Visualize IoT Data', 
   favicon: 'img/favicon.ico',
   url: 'https://docs.telemetryharbor.com',
   baseUrl: '/',
@@ -57,7 +43,8 @@ const config = {
         pwaHead: [
           { tagName: 'link', rel: 'icon', href: '/img/favicon.ico' },
           { tagName: 'link', rel: 'manifest', href: '/manifest.json' },
-          { tagName: 'meta', name: 'theme-color', content: '#111827' },
+          // THEME: Updated to International Orange for mobile browser headers
+          { tagName: 'meta', name: 'theme-color', content: '#FF4F00' }, 
         ],
       },
     ],
@@ -102,12 +89,24 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // --- SEO & SOCIAL SHARING ---
-      image: 'img/social-card.jpg',
+      image: 'img/social-card.jpg', // Ensure this image is high quality (1200x630px)
       metadata: [
-        { name: 'keywords', content: 'telemetry, iot, data, harbor, documentation, api, real-time' },
+        // SEO: Expanded keywords for better discoverability
+        { name: 'keywords', content: 'telemetry, iot, data platform, real-time analytics, visualization, harbor, api, sdk, developer tools, time-series data, mqtt, http' },
+        { name: 'description', content: 'Telemetry Harbor documentation: The complete guide to collecting, storing, and visualizing your device data in real-time.' },
+        
+        // Open Graph (Facebook/LinkedIn)
         { property: 'og:title', content: 'Telemetry Harbor Documentation' },
         { property: 'og:description', content: 'Collect, Store & Visualize — All in One Place.' },
         { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: 'https://docs.telemetryharbor.com' },
+        
+        // Twitter Card (Large Image for better visibility)
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: 'Telemetry Harbor Documentation' },
+        { name: 'twitter:description', content: 'The developer-first platform for real-time IoT telemetry and visualization.' },
+        { name: 'twitter:site', content: '@telemetryharbor' }, 
+        { name: 'twitter:image', content: 'https://docs.telemetryharbor.com/img/social-card.jpg' },
       ],
 
       // --- UI & APPEARANCE ---
@@ -132,7 +131,8 @@ const config = {
         id: 'github_star',
         content:
           '⭐️ If you find Telemetry Harbor useful, please <b>star us on GitHub</b>! ⭐️',
-        backgroundColor: '#111827',
+        // THEME: International Orange background
+        backgroundColor: '#FF4F00', 
         textColor: '#ffffff',
         isCloseable: true,
       },
@@ -163,8 +163,6 @@ const config = {
             label: 'SDKs',
             position: 'left',
           },
-          /* { to: '/blog', label: 'Blog', position: 'left' }, */
-          
           {
             href: 'https://telemetryharbor.com/signup',
             label: 'Get Started for Free',
@@ -209,7 +207,6 @@ const config = {
       prism: {
         theme: prismThemes.oneLight,
         darkTheme: prismThemes.oneDark,
-        // 'http' has been removed from this list to fix the error
         additionalLanguages: ['bash', 'json', 'yaml', 'docker', 'nginx'],
       },
     }),
