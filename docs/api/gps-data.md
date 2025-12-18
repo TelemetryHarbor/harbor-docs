@@ -19,10 +19,10 @@ When submitting GPS data, you would include two separate data points for each lo
 To submit a single ship GPS location:
 
 `Shared`
-- Single Data Push: `POST https://telemetryharbor.com/api/v2/ingest/ingest/harbor_id`
+- Single Data Push: `POST https://harborscale.com/api/v2/ingest/ingest/harbor_id`
 
 `Enterprise Dedicated`
-- Single Data Push: `POST https://CustomName.harbor.telemetryharbor.com/api/v2/ingest/ingest/harbor_id`
+- Single Data Push: `POST https://CustomName.harbor.harborscale.com/api/v2/ingest/ingest/harbor_id`
 
 Example request body:
 ```
@@ -49,9 +49,9 @@ Include a JSON object with time, ship_id, cargo_id, and value fields.
 To submit multiple ship readings at once:
 
 `Shared`
-- Batch Data Push: `POST https://telemetryharbor.com/api/v2/ingest/ingest/harbor_id/batch`
+- Batch Data Push: `POST https://harborscale.com/api/v2/ingest/ingest/harbor_id/batch`
 `Enterprise Dedicated`
-- Batch Data Push: `POST https://CustomName.harbor.telemetryharbor.com/api/v2/ingest/ingest/harbor_id/batch`
+- Batch Data Push: `POST https://CustomName.harbor.harborscale.com/api/v2/ingest/ingest/harbor_id/batch`
 
 Example request body:
 ```

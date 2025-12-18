@@ -7,31 +7,31 @@ sidebar_position: 2
 
 <!-- Telemetry Harbor SDK Badges -->
 <!-- PyPI -->
-![PyPI](https://img.shields.io/pypi/v/telemetryharborsdk.svg)
-![Python Versions](https://img.shields.io/pypi/pyversions/telemetryharborsdk.svg)
-![Downloads](https://img.shields.io/pypi/dm/telemetryharborsdk.svg)
-![License](https://img.shields.io/pypi/l/telemetryharborsdk.svg)
-![Wheel](https://img.shields.io/pypi/wheel/telemetryharborsdk.svg)
-![Format](https://img.shields.io/pypi/format/telemetryharborsdk.svg)
-![Status](https://img.shields.io/pypi/status/telemetryharborsdk.svg)
+![PyPI](https://img.shields.io/pypi/v/harborscalesdk.svg)
+![Python Versions](https://img.shields.io/pypi/pyversions/harborscalesdk.svg)
+![Downloads](https://img.shields.io/pypi/dm/harborscalesdk.svg)
+![License](https://img.shields.io/pypi/l/harborscalesdk.svg)
+![Wheel](https://img.shields.io/pypi/wheel/harborscalesdk.svg)
+![Format](https://img.shields.io/pypi/format/harborscalesdk.svg)
+![Status](https://img.shields.io/pypi/status/harborscalesdk.svg)
 <!-- GitHub -->
-![Build](https://github.com/TelemetryHarbor/harbor-sdk-python/actions/workflows/publish-to-pypi.yml/badge.svg)
-![Last Commit](https://img.shields.io/github/last-commit/TelemetryHarbor/harbor-sdk-python.svg)
-![Issues](https://img.shields.io/github/issues/TelemetryHarbor/harbor-sdk-python.svg)
-![Pull Requests](https://img.shields.io/github/issues-pr/TelemetryHarbor/harbor-sdk-python.svg)
-![Repo Size](https://img.shields.io/github/repo-size/TelemetryHarbor/harbor-sdk-python.svg)
-![Contributors](https://img.shields.io/github/contributors/TelemetryHarbor/harbor-sdk-python.svg)
+![Build](https://github.com/harborscale/harbor-sdk-python/actions/workflows/publish-to-pypi.yml/badge.svg)
+![Last Commit](https://img.shields.io/github/last-commit/harborscale/harbor-sdk-python.svg)
+![Issues](https://img.shields.io/github/issues/harborscale/harbor-sdk-python.svg)
+![Pull Requests](https://img.shields.io/github/issues-pr/harborscale/harbor-sdk-python.svg)
+![Repo Size](https://img.shields.io/github/repo-size/harborscale/harbor-sdk-python.svg)
+![Contributors](https://img.shields.io/github/contributors/harborscale/harbor-sdk-python.svg)
 <!-- Fun / Community -->
 ![Made with Python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
-![Stars](https://img.shields.io/github/stars/TelemetryHarbor/harbor-sdk-python.svg?style=social)
-![Forks](https://img.shields.io/github/forks/TelemetryHarbor/harbor-sdk-python.svg?style=social)
+![Stars](https://img.shields.io/github/stars/harborscale/harbor-sdk-python.svg?style=social)
+![Forks](https://img.shields.io/github/forks/harborscale/harbor-sdk-python.svg?style=social)
 
 A modern, production-ready SDK for sending telemetry data to the **Telemetry Harbor** service from any Python application.
 
 This SDK simplifies data sending by handling HTTP communication, JSON serialization, and robust error handling with automatic retries.
 
-**_Repo Link:_** https://github.com/TelemetryHarbor/harbor-sdk-python
+**_Repo Link:_** https://github.com/harborscale/harbor-sdk-python
 
 
 ## Features
@@ -46,7 +46,7 @@ This SDK simplifies data sending by handling HTTP communication, JSON serializat
 ## Installation
 
 ```bash
-pip install telemetryharborsdk
+pip install harborscalesdk
 ```
 
 
@@ -55,7 +55,7 @@ pip install telemetryharborsdk
 Here is a basic example of how to use the SDK.
 
 ```python
-from telemetryharborsdk import HarborClient, GeneralReading
+from harborscalesdk import HarborClient, GeneralReading
 
 # 1. Initialize the client
 client = HarborClient(

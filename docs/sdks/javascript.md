@@ -7,27 +7,27 @@ sidebar_position: 3
 
 <!-- Telemetry Harbor JavaScript SDK Badges -->
 <!-- npm -->
-[![npm version](https://img.shields.io/npm/v/telemetryharborsdk.svg)](https://www.npmjs.com/package/telemetryharbor-sdk)
-[![npm downloads](https://img.shields.io/npm/dm/telemetryharborsdk.svg)](https://www.npmjs.com/package/telemetryharbor-sdk)
-[![License](https://img.shields.io/npm/l/telemetryharborsdk.svg)](https://github.com/TelemetryHarbor/harbor-sdk-js/blob/main/LICENSE)
-[![Node.js Version](https://img.shields.io/node/v/telemetryharborsdk.svg)](https://nodejs.org)
+[![npm version](https://img.shields.io/npm/v/harborscalesdk.svg)](https://www.npmjs.com/package/harborscale-sdk)
+[![npm downloads](https://img.shields.io/npm/dm/harborscalesdk.svg)](https://www.npmjs.com/package/harborscale-sdk)
+[![License](https://img.shields.io/npm/l/harborscalesdk.svg)](https://github.com/harborscale/harbor-sdk-js/blob/main/LICENSE)
+[![Node.js Version](https://img.shields.io/node/v/harborscalesdk.svg)](https://nodejs.org)
 <!-- GitHub -->
-![Build](https://github.com/TelemetryHarbor/harbor-sdk-js/actions/workflows/publish-to-npm.yml/badge.svg)
-![Last Commit](https://img.shields.io/github/last-commit/TelemetryHarbor/harbor-sdk-js.svg)
-![Issues](https://img.shields.io/github/issues/TelemetryHarbor/harbor-sdk-js.svg)
-![Pull Requests](https://img.shields.io/github/issues-pr/TelemetryHarbor/harbor-sdk-js.svg)
-![Repo Size](https://img.shields.io/github/repo-size/TelemetryHarbor/harbor-sdk-js.svg)
-![Contributors](https://img.shields.io/github/contributors/TelemetryHarbor/harbor-sdk-js.svg)
+![Build](https://github.com/harborscale/harbor-sdk-js/actions/workflows/publish-to-npm.yml/badge.svg)
+![Last Commit](https://img.shields.io/github/last-commit/harborscale/harbor-sdk-js.svg)
+![Issues](https://img.shields.io/github/issues/harborscale/harbor-sdk-js.svg)
+![Pull Requests](https://img.shields.io/github/issues-pr/harborscale/harbor-sdk-js.svg)
+![Repo Size](https://img.shields.io/github/repo-size/harborscale/harbor-sdk-js.svg)
+![Contributors](https://img.shields.io/github/contributors/harborscale/harbor-sdk-js.svg)
 <!-- Fun / Community -->
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
-![Stars](https://img.shields.io/github/stars/TelemetryHarbor/harbor-sdk-js.svg?style=social)
-![Forks](https://img.shields.io/github/forks/TelemetryHarbor/harbor-sdk-js.svg?style=social)
+![Stars](https://img.shields.io/github/stars/harborscale/harbor-sdk-js.svg?style=social)
+![Forks](https://img.shields.io/github/forks/harborscale/harbor-sdk-js.svg?style=social)
 
 A modern, production-ready SDK for sending telemetry data to the **Telemetry Harbor** service from any Node.js or TypeScript application.
 
 This library simplifies sending data by handling HTTP communication, JSON serialization, and robust error handling with automatic retries.
 
-**_Repo Link:_** https://github.com/TelemetryHarbor/harbor-sdk-js
+**_Repo Link:_** https://github.com/harborscale/harbor-sdk-js
 
 
 ## Features
@@ -42,7 +42,7 @@ This library simplifies sending data by handling HTTP communication, JSON serial
 ## Installation
 
 ```bash
-npm install telemetryharborsdk
+npm install harborscalesdk
 ```
 
 
@@ -51,7 +51,7 @@ npm install telemetryharborsdk
 Here is a basic example of how to use the SDK.
 
 ```javascript
-import { HarborClient, GeneralReading } from 'telemetryharborsdk';
+import { HarborClient, GeneralReading } from 'harborscalesdk';
 
 // 1. Initialize the client
 const client = new HarborClient(

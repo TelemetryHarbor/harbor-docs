@@ -10,7 +10,7 @@ This guide will help you get up and running with Telemetry Harbor quickly. Follo
 
 ## 1. Create an Account
 
-1.  Visit [Telemetry Harbor's website](https://www.telemetryharbor.com) and click on "Sign Up".
+1.  Visit [Telemetry Harbor's website](https://www.harborscale.com) and click on "Sign Up".
 2.  Fill in your details and submit the registration form.
 3.  Check your email for a verification link and click it to verify your account.
 
@@ -40,8 +40,8 @@ Your API Key is sensitive. Do not share it publicly or embed it directly in clie
 You can send data using `curl`. Since the API requires a timestamp, we will generate the current time automatically so your data appears in Grafana immediately.
 
 **General Endpoints:**
--   **Single Data Push**: `POST https://telemetryharbor.com/api/v2/ingest/your_harbor_id`
--   **Batch Data Push**: `POST https://telemetryharbor.com/api/v2/ingest/your_harbor_id/batch`
+-   **Single Data Push**: `POST https://harborscale.com/api/v2/ingest/your_harbor_id`
+-   **Batch Data Push**: `POST https://harborscale.com/api/v2/ingest/your_harbor_id/batch`
 
 Replace `YOUR_HARBOR_ID` and `YOUR_API_KEY` in the examples below.
 
@@ -49,7 +49,7 @@ Replace `YOUR_HARBOR_ID` and `YOUR_API_KEY` in the examples below.
 This command automatically inserts the current UTC timestamp:
 
 ```bash
-curl -X POST "https://telemetryharbor.com/api/v2/ingest/YOUR_HARBOR_ID" \
+curl -X POST "https://harborscale.com/api/v2/ingest/YOUR_HARBOR_ID" \
   -H "X-API-Key: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d "{
@@ -67,7 +67,7 @@ Use this command if you are on Windows:
 ```powershell
 $timestamp = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
 
-Invoke-RestMethod -Uri "https://telemetryharbor.com/api/v2/ingest/YOUR_HARBOR_ID" `
+Invoke-RestMethod -Uri "https://harborscale.com/api/v2/ingest/YOUR_HARBOR_ID" `
   -Method Post `
   -Headers @{ "X-API-Key" = "YOUR_API_KEY" } `
   -ContentType "application/json" `
@@ -102,4 +102,4 @@ To get started quickly:
 
 **Congratulations\!** You've set up your Telemetry Harbor account, sent your first data point, and accessed your visualization tools.
 
-For more detailed information on data ingestion, API usage, and advanced Grafana configurations, check out our [Harbor Types documentation](https://docs.telemetryharbor.com/docs/getting-started/harbor-types).
+For more detailed information on data ingestion, API usage, and advanced Grafana configurations, check out our [Harbor Types documentation](https://docs.harborscale.com/docs/getting-started/harbor-types).

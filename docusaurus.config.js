@@ -8,12 +8,12 @@ const config = {
   // SEO: A slightly longer tagline helps with context
   tagline: 'The All-in-One Platform to Collect, Store & Visualize IoT Data', 
   favicon: 'img/favicon.ico',
-  url: 'https://docs.telemetryharbor.com',
+  url: 'https://docs.harborscale.com',
   baseUrl: '/',
 
   // --- DEPLOYMENT & BUILD SETTINGS ---
-  organizationName: 'telemetryharbor',
-  projectName: 'telemetryharbor-docs',
+  organizationName: 'harborscale',
+  projectName: 'harborscale-docs',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
@@ -58,7 +58,7 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          editUrl: 'https://github.com/TelemetryHarbor/harbor-docs/edit/main/',
+          editUrl: 'https://github.com/harborscale/harbor-docs/edit/main/',
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
         },
@@ -68,7 +68,7 @@ const config = {
             type: ['rss', 'atom'],
             copyright: `Copyright © ${new Date().getFullYear()} Telemetry Harbor`,
           },
-          editUrl: 'https://github.com/telemetryharbor/telemetryharbor-docs/edit/main/blog/',
+          editUrl: 'https://github.com/harborscale/harborscale-docs/edit/main/blog/',
           postsPerPage: 5,
         },
         theme: {
@@ -99,14 +99,14 @@ const config = {
         { property: 'og:title', content: 'Telemetry Harbor Documentation' },
         { property: 'og:description', content: 'Collect, Store & Visualize — All in One Place.' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: 'https://docs.telemetryharbor.com' },
+        { property: 'og:url', content: 'https://docs.harborscale.com' },
         
         // Twitter Card (Large Image for better visibility)
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: 'Telemetry Harbor Documentation' },
         { name: 'twitter:description', content: 'The developer-first platform for real-time IoT telemetry and visualization.' },
-        { name: 'twitter:site', content: '@telemetryharbor' }, 
-        { name: 'twitter:image', content: 'https://docs.telemetryharbor.com/img/social-card.jpg' },
+        { name: 'twitter:site', content: '@harborscale' }, 
+        { name: 'twitter:image', content: 'https://docs.harborscale.com/img/social-card.jpg' },
       ],
 
       // --- UI & APPEARANCE ---
@@ -164,7 +164,7 @@ const config = {
             position: 'left',
           },
           {
-            href: 'https://telemetryharbor.com/signup',
+            href: 'https://harborscale.com/signup',
             label: 'Get Started for Free',
             position: 'right',
           },
@@ -187,16 +187,16 @@ const config = {
           {
             title: 'Community',
             items: [
-              { label: 'GitHub', href: 'https://github.com/telemetryharbor' },
-              { label: 'Twitter', href: 'https://twitter.com/telemetryharbor' },
-              { label: 'Discussions', href: 'https://github.com/telemetryharbor/telemetryharbor/discussions' },
+              { label: 'GitHub', href: 'https://github.com/harborscale' },
+              { label: 'Twitter', href: 'https://twitter.com/harborscale' },
+              { label: 'Discussions', href: 'https://github.com/harborscale/harborscale/discussions' },
             ],
           },
           {
             title: 'More',
             items: [
-              { label: 'Login', href: 'https://telemetryharbor.com/login' },
-              { label: 'System Status', href: 'https://status.telemetryharbor.com/' },
+              { label: 'Login', href: 'https://harborscale.com/login' },
+              { label: 'System Status', href: 'https://status.harborscale.com/' },
             ],
           },
         ],

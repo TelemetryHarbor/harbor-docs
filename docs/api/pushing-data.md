@@ -45,8 +45,8 @@ You can send individual data points or batch data for more efficient data transm
 To submit a single telemetry reading to a General Harbor:
 
 **Endpoint:**
--   `Shared`: `POST https://telemetryharbor.com/api/v2/ingest/your_harbor_id`
--   `Enterprise Dedicated`: `POST https://CustomName.harbor.telemetryharbor.com/api/v2/ingest/your_harbor_id`
+-   `Shared`: `POST https://harborscale.com/api/v2/ingest/your_harbor_id`
+-   `Enterprise Dedicated`: `POST https://CustomName.harbor.harborscale.com/api/v2/ingest/your_harbor_id`
 
 Replace `your_harbor_id` with your actual Harbor ID.
 
@@ -64,7 +64,7 @@ Replace `your_harbor_id` with your actual Harbor ID.
 ##### cURL Example
 
 ```bash
-curl -X POST "https://telemetryharbor.com/api/v2/ingest/ingest/your_harbor_id" \
+curl -X POST "https://harborscale.com/api/v2/ingest/ingest/your_harbor_id" \
 -H "X-API-Key: your_api_key" \
 -H "Content-Type: application/json" \
 -d '{
@@ -80,8 +80,8 @@ curl -X POST "https://telemetryharbor.com/api/v2/ingest/ingest/your_harbor_id" \
 To submit multiple telemetry readings at once to a General Harbor, which is more efficient for high-frequency data:
 
 **Endpoint:**
--   `Shared`: `POST https://telemetryharbor.com/api/v2/ingest/ingest/your_harbor_id/batch`
--   `Enterprise Dedicated`: `POST https://CustomName.harbor.telemetryharbor.com/api/v2/ingest/ingest/your_harbor_id/batch`
+-   `Shared`: `POST https://harborscale.com/api/v2/ingest/ingest/your_harbor_id/batch`
+-   `Enterprise Dedicated`: `POST https://CustomName.harbor.harborscale.com/api/v2/ingest/ingest/your_harbor_id/batch`
 
 Replace `your_harbor_id` with your actual Harbor ID.
 
@@ -113,7 +113,7 @@ Replace `your_harbor_id` with your actual Harbor ID.
 ##### cURL Example
 
 ```bash
-curl -X POST "https://telemetryharbor.com/api/v2/ingest/ingest/your_harbor_id/batch" \
+curl -X POST "https://harborscale.com/api/v2/ingest/ingest/your_harbor_id/batch" \
 -H "X-API-Key: your_api_key" \
 -H "Content-Type: application/json" \
 -d '[
@@ -137,8 +137,8 @@ When using a TTN Harbor, data is pushed automatically by **The Things Network** 
 
 **Endpoint:**
 
-  - `Shared`: `POST https://telemetryharbor.com/api/v2/ingest/your_harbor_id/ttn`
-  - `Enterprise Dedicated`: `POST https://CustomName.harbor.telemetryharbor.com/api/v2/ingest/your_harbor_id/ttn`
+  - `Shared`: `POST https://harborscale.com/api/v2/ingest/your_harbor_id/ttn`
+  - `Enterprise Dedicated`: `POST https://CustomName.harbor.harborscale.com/api/v2/ingest/your_harbor_id/ttn`
 
 ### Configuration
 
@@ -147,8 +147,8 @@ Instead of using cURL or an SDK, you configure the "Push" inside the TTN Console
 1.  **Payload Formatter**: Ensure your Javascript formatter returns a `decoded_payload` object containing numbers (e.g., `{ "temp": 24, "hum": 60 }`).
 2.  **Webhook Integration**:
       * **Base URL**:
-          * Shared: `https://telemetryharbor.com/api/v2/ingest/your_harbor_id/ttn`
-          * Enterprise: `https://CustomName.harbor.telemetryharbor.com/api/v2/ingest/your_harbor_id/ttn`
+          * Shared: `https://harborscale.com/api/v2/ingest/your_harbor_id/ttn`
+          * Enterprise: `https://CustomName.harbor.harborscale.com/api/v2/ingest/your_harbor_id/ttn`
       * **Method**: `POST`
       * **Format**: `JSON`
       * **Additional Headers**:

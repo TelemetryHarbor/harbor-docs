@@ -8,7 +8,7 @@ description: Build an ESP32-based environmental sensor to send temperature, humi
 
 This guide will walk you through building a **low-power ESP32-based environmental monitor** using a BME280 sensor. The device uses **deep sleep mode** to conserve power, waking up at set intervals to collect a full set of environmental data and send it to your Telemetry Harbor instance for visualization and analysis.
 
-***Repo Link:*** [https://github.com/TelemetryHarbor/harbor-esp32-bme280](https://github.com/TelemetryHarbor/harbor-esp32-bme280)
+***Repo Link:*** [https://github.com/harborscale/harbor-esp32-bme280](https://github.com/harborscale/harbor-esp32-bme280)
 
 -----
 
@@ -48,7 +48,7 @@ This project wakes up at set intervals, takes a complete set of environmental re
       - Adafruit Unified Sensor
       - **Telemetry Harbor SDK** (Available via Library Manager)
       - WiFi Library (built into ESP32 core)
-  - [Telemetry Harbor](https://telemetryharbor.com) account (free tier available)
+  - [Telemetry Harbor](https://harborscale.com) account (free tier available)
 
 
 
@@ -82,11 +82,11 @@ Connect the BME280 sensor to the ESP32 using I2C:
 3.  Install the required libraries via the Library Manager:
       - Adafruit BME280 Library
       - Adafruit Unified Sensor
-      - **Telemetry Harbor SDK** (Search for "TelemetryHarborSDK")
+      - **Telemetry Harbor SDK** (Search for "harborscaleSDK")
 
 ### 3\. Telemetry Harbor Configuration
 
-1.  Create a [Telemetry Harbor](https://telemetryharbor.com) account.
+1.  Create a [Telemetry Harbor](https://harborscale.com) account.
 2.  Create a new Harbor called "ESP32\_Environmental\_Monitor" (or your preferred name).
 3.  Select "General" harbor type and "Free" specification.
 4.  Copy your API ENDPOINT and API Key from the Harbor details page.

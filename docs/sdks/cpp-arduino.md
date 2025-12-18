@@ -3,28 +3,28 @@ title: C++ (Arduino) SDK
 sidebar_position: 4
 ---
 
-# TelemetryHarborSDK for C++ (Arduino)
+# harborscaleSDK for C++ (Arduino)
 
 <!-- Arduino -->
 ![Arduino Library](https://img.shields.io/badge/Arduino-Library-00979D.svg)
 ![Platform](https://img.shields.io/badge/platform-ESP32-orange.svg)
-![License](https://img.shields.io/github/license/TelemetryHarbor/harbor-sdk-c-plus-plus.svg)
+![License](https://img.shields.io/github/license/harborscale/harbor-sdk-c-plus-plus.svg)
 <!-- GitHub -->
-![Last Commit](https://img.shields.io/github/last-commit/TelemetryHarbor/harbor-sdk-c-plus-plus.svg)
-![Issues](https://img.shields.io/github/issues/TelemetryHarbor/harbor-sdk-c-plus-plus.svg)
-![Pull Requests](https://img.shields.io/github/issues-pr/TelemetryHarbor/harbor-sdk-c-plus-plus.svg)
-![Repo Size](https://img.shields.io/github/repo-size/TelemetryHarbor/harbor-sdk-c-plus-plus.svg)
-![Contributors](https://img.shields.io/github/contributors/TelemetryHarbor/harbor-sdk-c-plus-plus.svg)
+![Last Commit](https://img.shields.io/github/last-commit/harborscale/harbor-sdk-c-plus-plus.svg)
+![Issues](https://img.shields.io/github/issues/harborscale/harbor-sdk-c-plus-plus.svg)
+![Pull Requests](https://img.shields.io/github/issues-pr/harborscale/harbor-sdk-c-plus-plus.svg)
+![Repo Size](https://img.shields.io/github/repo-size/harborscale/harbor-sdk-c-plus-plus.svg)
+![Contributors](https://img.shields.io/github/contributors/harborscale/harbor-sdk-c-plus-plus.svg)
 <!-- Fun / Community -->
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
-![Stars](https://img.shields.io/github/stars/TelemetryHarbor/harbor-sdk-c-plus-plus.svg?style=social)
-![Forks](https://img.shields.io/github/forks/TelemetryHarbor/harbor-sdk-c-plus-plus.svg?style=social)
+![Stars](https://img.shields.io/github/stars/harborscale/harbor-sdk-c-plus-plus.svg?style=social)
+![Forks](https://img.shields.io/github/forks/harborscale/harbor-sdk-c-plus-plus.svg?style=social)
 
 A C++ client SDK for sending telemetry data to the **Telemetry Harbor** service, designed for Arduino-based microcontrollers like the ESP32 and ESP8266.
 
 This library simplifies sending sensor data by handling HTTP communication, JSON serialization, and robust error handling with automatic retries.
 
-**_Repo Link:_** https://github.com/TelemetryHarbor/harbor-sdk-c-plus-plus
+**_Repo Link:_** https://github.com/harborscale/harbor-sdk-c-plus-plus
 
 
 ## Features
@@ -41,7 +41,7 @@ This library simplifies sending sensor data by handling HTTP communication, JSON
 1.  **Install from Library Manager**:
     *   Open the Arduino IDE.
     *   Go to `Sketch` > `Include Library` > `Manage Libraries...`.
-    *   Search for "**TelemetryHarborSDK**" and click "Install".
+    *   Search for "**harborscaleSDK**" and click "Install".
     *   The IDE will prompt you to also install its dependency, "**ArduinoJson**". Click "Install all".
 2.  **Manual Installation**:
     *   Download the latest release from the repository as a ZIP file.

@@ -8,7 +8,7 @@ description: Integrate your Meshtastic devices with Telemetry Harbor for off-gri
 
 This guide explains how to integrate your Meshtastic devices with Telemetry Harbor, allowing you to collect and visualize telemetry data from your off-grid Meshtastic network. This integration uses a Python script to bridge data from your Meshtastic device to your Telemetry Harbor instance.
 
-**_Repo Link:_** https://github.com/TelemetryHarbor/harbor-meshtastic
+**_Repo Link:_** https://github.com/harborscale/harbor-meshtastic
 
 
 ## Prerequisites
@@ -38,7 +38,7 @@ The integration involves a Python script that connects to your Meshtastic device
 
 -   Clone this repository:
     ```bash
-    git clone https://github.com/TelemetryHarbor/harbor-meshtastic.git
+    git clone https://github.com/harborscale/harbor-meshtastic.git
     cd harbor-meshtastic
     ```
 -   Install required dependencies:
@@ -74,4 +74,4 @@ The integration involves a Python script that connects to your Meshtastic device
 -   **API connection errors**: Verify your Telemetry Harbor API Endpoint and API Key are correct. Check your internet connection.
 -   **No data in Grafana**: Confirm the script is running and sending data successfully. Check Grafana's time range and filters.
 
-For more detailed troubleshooting, refer to the `README.md` in the [harbor-meshtastic GitHub repository](https://github.com/TelemetryHarbor/harbor-meshtastic).
+For more detailed troubleshooting, refer to the `README.md` in the [harbor-meshtastic GitHub repository](https://github.com/harborscale/harbor-meshtastic).

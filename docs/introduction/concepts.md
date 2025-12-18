@@ -26,7 +26,7 @@ Telemetry Harbor offers various service tiers (or specifications), each designed
 -   **Feature Access & Support**: Higher tiers unlock more advanced features and provide enhanced support. This includes a progression from basic to advanced backup and recovery options, and a shift from community support to priority email support, culminating in 24/7 dedicated support for Enterprise clients. Resource allocation also scales from shared infrastructure in lower tiers to dedicated resources for Enterprise solutions, ensuring optimal performance and isolation.
 
 :::info Note
-For the most up-to-date information on pricing and features, please refer to the official [Telemetry Harbor Pricing Page](https://www.telemetryharbor.com/pricing).
+For the most up-to-date information on pricing and features, please refer to the official [Telemetry Harbor Pricing Page](https://www.harborscale.com/pricing).
 :::
 
 ## Harbor Types

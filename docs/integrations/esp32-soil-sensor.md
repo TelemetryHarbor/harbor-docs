@@ -8,7 +8,7 @@ description: Build an ESP32-based Soil sensor to send soil moister data to Telem
 
 This guide will walk you through building a **low-power ESP32-based soil monitor** using a Soil sensor. The device uses **deep sleep mode** to conserve power, waking up at set intervals to collect a soil moister data and send it to your Telemetry Harbor instance for visualization and analysis.
 
-***Repo Link:*** [https://github.com/TelemetryHarbor/harbor-esp32-soil-sensor](https://github.com/TelemetryHarbor/harbor-esp32-soil-sensor)
+***Repo Link:*** [https://github.com/harborscale/harbor-esp32-soil-sensor](https://github.com/harborscale/harbor-esp32-soil-sensor)
 
 -----
 
@@ -45,7 +45,7 @@ This project wakes up periodically, reads soil moisture percentage from the 2-pr
 
   * **Telemetry Harbor SDK**
   * WiFi Library (built into ESP32 core)
-* [Telemetry Harbor](https://telemetryharbor.com) account
+* [Telemetry Harbor](https://harborscale.com) account
 
 
 
@@ -91,7 +91,7 @@ Connect the 2-prong soil sensor to the ESP32:
 
 ### 3. Telemetry Harbor Configuration
 
-1. Create a [Telemetry Harbor](https://telemetryharbor.com) account.
+1. Create a [Telemetry Harbor](https://harborscale.com) account.
 2. Create a new Harbor called `"ESP32_Soil_Monitor"` (or your preferred name).
 3. Copy the **API ENDPOINT** and **API Key** from the Harbor details page.
 

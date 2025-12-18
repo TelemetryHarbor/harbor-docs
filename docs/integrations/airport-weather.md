@@ -8,7 +8,7 @@ description: Collect and visualize real-time airport weather data from OpenWeath
 
 This guide explains how to set up a Linux agent to collect real-time weather data for specified airports from OpenWeatherMap and send it to Telemetry Harbor. This allows you to monitor weather conditions globally, analyze trends, and integrate weather data into your operational dashboards.
 
-**_Repo Link:_** https://github.com/TelemetryHarbor/harbor-airport-weather
+**_Repo Link:_** https://github.com/harborscale/harbor-airport-weather
 
 
 ## Prerequisites
@@ -50,7 +50,7 @@ The enhanced airport weather agent collects the following metrics for each airpo
 
 ### 1. Create a Telemetry Harbor Account
 
-1.  **Sign up** at [Telemetry Harbor](https://telemetryharbor.com/)
+1.  **Sign up** at [Telemetry Harbor](https://harborscale.com/)
 2.  **Verify** your email and log in
 3.  **Create a Harbor**:
     -   Click **Create Harbor** on your dashboard
@@ -76,7 +76,7 @@ The enhanced airport weather agent collects the following metrics for each airpo
 
 1.  Download the installation script:
     ```bash
-    curl -sSL -o install-airport-weather.sh https://raw.githubusercontent.com/TelemetryHarbor/harbor-airport-weather/refs/heads/main/install.sh
+    curl -sSL -o install-airport-weather.sh https://raw.githubusercontent.com/harborscale/harbor-airport-weather/refs/heads/main/install.sh
     ```
 2.  Make it executable:
     ```bash
@@ -129,7 +129,7 @@ The installation script includes sample airports from around the world:
 
 1.  **Download the dashboard JSON**:
     ```bash
-    curl -sSL -o airport-weather-dashboard.json https://raw.githubusercontent.com/TelemetryHarbor/harbor-airport-weather/main/airport-weather-dashboard.json
+    curl -sSL -o airport-weather-dashboard.json https://raw.githubusercontent.com/harborscale/harbor-airport-weather/main/airport-weather-dashboard.json
     ```
 2.  **Import into Grafana**:
     -   Log in to your Grafana instance.

@@ -51,7 +51,7 @@ Currently, Telemetry Harbor provides a managed Grafana instance integrated with 
 Yes, Telemetry Harbor offers a free tier that allows you to get started with basic data ingestion and visualization for prototyping and personal projects. Refer to our [Telemetry Harbor Types & Tiers](../introduction/concepts.md#telemetry-harbor-types--tiers) for details.
 
 ### How is pricing calculated?
-Pricing is based on the **selected Harbor tier** and is **billed hourly**. Each tier includes specific limits on data ingestion, storage, and features. You can view a detailed breakdown on our [Pricing page](https://telemetryharbor.com/pricing) and learn more about available [Telemetry Harbor Types & Tiers](../introduction/concepts.md#telemetry-harbor-types--tiers).
+Pricing is based on the **selected Harbor tier** and is **billed hourly**. Each tier includes specific limits on data ingestion, storage, and features. You can view a detailed breakdown on our [Pricing page](https://harborscale.com/pricing) and learn more about available [Telemetry Harbor Types & Tiers](../introduction/concepts.md#telemetry-harbor-types--tiers).
 
 
 ### How do I upgrade my plan?
@@ -79,6 +79,6 @@ If you're sending a batch with, for example, 10 data points but your plan only a
 
 
 ### How do I contact support?
-For technical support, you can use our [GitHub Issues](https://github.com/TelemetryHarbor/telemetry-harbor/issues) page or email `support@telemetryharbor.com`. 
+For technical support, you can use our [GitHub Issues](https://github.com/harborscale/telemetry-harbor/issues) page or email `support@harborscale.com`. 
 
 If your question isn't answered here, please don't hesitate to reach out to our community or support team!

@@ -8,7 +8,7 @@ description: Set up a Linux agent to send system metrics (CPU, RAM, Disk) to Tel
 
 This guide explains how to set up a lightweight monitoring agent on your Linux servers to collect various system metrics and send them to Telemetry Harbor. This allows you to centralize monitoring, create custom dashboards in Grafana, and set up alerts for your Linux infrastructure.
 
-**_Repo Link:_** https://github.com/TelemetryHarbor/harbor-linux-monitor
+**_Repo Link:_** https://github.com/harborscale/harbor-linux-monitor
 
 
 ## Prerequisites
@@ -31,7 +31,7 @@ The Linux monitoring agent is a bash script that leverages standard Linux comman
 
 ### 1. Create a Telemetry Harbor Account
 
-1.  **Sign up** at [Telemetry Harbor](https://telemetryharbor.com/)
+1.  **Sign up** at [Telemetry Harbor](https://harborscale.com/)
 2.  **Verify** your email and log in
 3.  **Create a Harbor**:
     -   Click **Create Harbor** on your dashboard
@@ -51,7 +51,7 @@ The Linux monitoring agent is a bash script that leverages standard Linux comman
 
 1.  Download the installation script:
     ```bash
-    curl -sSL -o install-monitoring.sh https://raw.githubusercontent.com/TelemetryHarbor/harbor-linux-monitor/refs/heads/main/install.sh
+    curl -sSL -o install-monitoring.sh https://raw.githubusercontent.com/harborscale/harbor-linux-monitor/refs/heads/main/install.sh
     ```
 2.  Make it executable:
     ```bash

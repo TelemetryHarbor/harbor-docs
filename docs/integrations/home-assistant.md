@@ -8,7 +8,7 @@ description: Connect your Home Assistant sensors to Telemetry Harbor for advance
 
 This guide demonstrates how to integrate your Home Assistant instance with Telemetry Harbor. By setting up a simple REST command and automation, you can push all your numerical sensor states from Home Assistant to Telemetry Harbor for advanced logging, analysis, and visualization in Grafana.
 
-**_Repo Link:_** https://github.com/TelemetryHarbor/harbor-home-assistant
+**_Repo Link:_** https://github.com/harborscale/harbor-home-assistant
 
 
 ## Prerequisites
@@ -24,7 +24,7 @@ Before starting, ensure you have:
 
 ### 1. Create a Telemetry Harbor Account
 
-1.  **Sign up** at [Telemetry Harbor](https://telemetryharbor.com/)
+1.  **Sign up** at [Telemetry Harbor](https://harborscale.com/)
 2.  **Verify** your email and log in
 3.  **Create a Harbor**:
     -   Click **Create Harbor** on your dashboard

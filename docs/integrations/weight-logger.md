@@ -35,7 +35,7 @@ Each run creates a **single timestamped log entry**, ensuring no duplicates.
 
 ### 1. Create a Telemetry Harbor Account
 
-1.  **Sign up** at [Telemetry Harbor](https://telemetryharbor.com/).  
+1.  **Sign up** at [Telemetry Harbor](https://harborscale.com/).  
 2.  **Verify** your email and log in.  
 3.  **Create a Harbor**:  
     -   Click **Create Harbor** on your dashboard.  

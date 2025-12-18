@@ -32,8 +32,8 @@ You can send individual data points or batch data for more efficient data transm
 To submit a single telemetry reading to a General Harbor:
 
 **Endpoint:**
--   `Shared`: `POST https://telemetryharbor.com/api/v2/ingest/your_harbor_id`
--   `Enterprise Dedicated`: `POST https://CustomName.harbor.telemetryharbor.com/api/v2/ingest/your_harbor_id`
+-   `Shared`: `POST https://harborscale.com/api/v2/ingest/your_harbor_id`
+-   `Enterprise Dedicated`: `POST https://CustomName.harbor.harborscale.com/api/v2/ingest/your_harbor_id`
 
 Replace `your_harbor_id` with your actual Harbor ID.
 
@@ -51,7 +51,7 @@ Replace `your_harbor_id` with your actual Harbor ID.
 ##### cURL Example
 
 ```bash
-curl -X POST "https://telemetryharbor.com/api/v2/ingest/ingest/your_harbor_id" \
+curl -X POST "https://harborscale.com/api/v2/ingest/ingest/your_harbor_id" \
 -H "X-API-Key: your_api_key" \
 -H "Content-Type: application/json" \
 -d '{
@@ -67,8 +67,8 @@ curl -X POST "https://telemetryharbor.com/api/v2/ingest/ingest/your_harbor_id" \
 To submit multiple telemetry readings at once to a General Harbor, which is more efficient for high-frequency data:
 
 **Endpoint:**
--   `Shared`: `POST https://telemetryharbor.com/api/v2/ingest/ingest/your_harbor_id/batch`
--   `Enterprise Dedicated`: `POST https://CustomName.harbor.telemetryharbor.com/api/v2/ingest/ingest/your_harbor_id/batch`
+-   `Shared`: `POST https://harborscale.com/api/v2/ingest/ingest/your_harbor_id/batch`
+-   `Enterprise Dedicated`: `POST https://CustomName.harbor.harborscale.com/api/v2/ingest/ingest/your_harbor_id/batch`
 
 Replace `your_harbor_id` with your actual Harbor ID.
 
@@ -100,7 +100,7 @@ Replace `your_harbor_id` with your actual Harbor ID.
 ##### cURL Example
 
 ```bash
-curl -X POST "https://telemetryharbor.com/api/v2/ingest/ingest/your_harbor_id/batch" \
+curl -X POST "https://harborscale.com/api/v2/ingest/ingest/your_harbor_id/batch" \
 -H "X-API-Key: your_api_key" \
 -H "Content-Type: application/json" \
 -d '[
@@ -173,8 +173,8 @@ To connect a TTN Application to this Harbor:
 4.  Click **Add Webhook** \> **Custom Webhook**.
 5.  **Webhook Settings**:
       * **Base URL**:
-          * Shared: `https://telemetryharbor.com/api/v2/ingest/your_harbor_id/ttn`
-          * Enterprise: `https://CustomName.harbor.telemetryharbor.com/api/v2/ingest/your_harbor_id/ttn`
+          * Shared: `https://harborscale.com/api/v2/ingest/your_harbor_id/ttn`
+          * Enterprise: `https://CustomName.harbor.harborscale.com/api/v2/ingest/your_harbor_id/ttn`
       * **Method**: `POST`
       * **Format**: `JSON`
       * **Additional Headers**:

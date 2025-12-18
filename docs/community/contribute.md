@@ -33,7 +33,7 @@ For documentation changes within this Docusaurus site:
 -   **Fork the `harbor-docs` Repository**:
 
     ```bash
-    git clone https://github.com/TelemetryHarbor/harbor-docs.git
+    git clone https://github.com/harborscale/harbor-docs.git
     cd telemetry-harbor-docs
     ```
 -   **Create a Branch**: `git checkout -b docs/my-improvement`
@@ -53,12 +53,12 @@ For documentation changes within this Docusaurus site:
 
 ### 3. Bug Reports & Feature Requests
 
--   **GitHub Issues**: Use the [GitHub Issues](https://github.com/TelemetryHarbor/telemetry-harbor/issues) page of the relevant repository to:
+-   **GitHub Issues**: Use the [GitHub Issues](https://github.com/harborscale/telemetry-harbor/issues) page of the relevant repository to:
     -   **Report Bugs**: Provide clear steps to reproduce, expected behavior, and actual behavior. Include error messages and logs if possible.
     -   **Request Features**: Describe the feature, its use case, and why it would be valuable.
 
 ## Code of Conduct
 
-Please review our [Code of Conduct](https://github.com/TelemetryHarbor/telemetry-harbor/blob/main/CODE_OF_CONDUCT.md) before contributing. We are committed to fostering an open and welcoming environment.
+Please review our [Code of Conduct](https://github.com/harborscale/telemetry-harbor/blob/main/CODE_OF_CONDUCT.md) before contributing. We are committed to fostering an open and welcoming environment.
 
 Thank you for helping us build Telemetry Harbor!

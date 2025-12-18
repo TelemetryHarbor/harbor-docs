@@ -15,7 +15,7 @@ Rate limiting is applied **per second**, across two main categories:
 - **Single Data Requests** – Limits individual data point submissions (e.g., one JSON payload per request).
 - **Batch Requests** – Apply to requests that contain multiple data points in a single payload.
 
-Refer to your Harbor's limits under [Telemetry Harbor Tiers](https://telemetryharbor.com/pricing) for exact thresholds.
+Refer to your Harbor's limits under [Telemetry Harbor Tiers](https://harborscale.com/pricing) for exact thresholds.
 
 
 ## Common HTTP Errors
@@ -45,7 +45,7 @@ You have exceeded your rate limit.
 
 * Use exponential backoff with jitter to retry after a delay.
 * Avoid sending bursts of requests. Optimize your submission frequency.
-* If your use case requires higher throughput, consider upgrading your Harbor plan. See [Telemetry Harbor Tiers](https://telemetryharbor.com/pricing).
+* If your use case requires higher throughput, consider upgrading your Harbor plan. See [Telemetry Harbor Tiers](https://harborscale.com/pricing).
 
 
 
@@ -112,6 +112,6 @@ If you're consistently hitting rate or size limits, upgrading to a higher-tier H
 - Advanced Backup
 - Priority Support
 
-See [Telemetry Harbor Tiers](https://telemetryharbor.com/pricing) for details.
+See [Telemetry Harbor Tiers](https://harborscale.com/pricing) for details.
 
 

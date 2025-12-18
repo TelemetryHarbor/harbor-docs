@@ -25,7 +25,7 @@ Instead of running an agent on a server, this integration relies on a **Webhook*
 
 ### 1. Create a TTN Harbor
 
-1.  **Log in** to your [Telemetry Harbor Dashboard](https://telemetryharbor.com/app/harbors).
+1.  **Log in** to your [Telemetry Harbor Dashboard](https://harborscale.com/app/harbors).
 2.  **Create a Harbor**:
     -   Click **Create Harbor**.
     -   Choose a **name** (e.g., "Field Sensors").
@@ -34,7 +34,7 @@ Instead of running an agent on a server, this integration relies on a **Webhook*
 3.  **Retrieve your credentials**:
     -   Go to **View Details** for your new harbor.
     -   Note down:
-        -   `TTN Webhook Endpoint` (e.g., `https://telemetryharbor.com/api/v2/ingest/123/ttn`)
+        -   `TTN Webhook Endpoint` (e.g., `https://harborscale.com/api/v2/ingest/123/ttn`)
         -   `API Key`
 
 ### 2. Configure Payload Formatter (Crucial Step)
