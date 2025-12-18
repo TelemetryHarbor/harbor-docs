@@ -6,11 +6,11 @@ description: Leverage AI to query your data and understand the underlying SQL.
 
 # Harbor AI with SQL Query Insights
 
-Telemetry Harbor's AI-powered insights feature allows you to query your data using natural language. This powerful tool not only provides answers but also reveals the underlying SQL queries used to generate those answers, making it an excellent learning resource for understanding your data and building custom Grafana dashboards.
+Harbor Scale's AI-powered insights feature allows you to query your data using natural language. This powerful tool not only provides answers but also reveals the underlying SQL queries used to generate those answers, making it an excellent learning resource for understanding your data and building custom Grafana dashboards.
 
 ## How Harbor AI Works
 
-Harbor AI leverages Large Language Models (LLMs) to translate your natural language questions into precise SQL queries. These queries are then executed against your Telemetry Harbor data, and the results are presented in an easy-to-understand format.
+Harbor AI leverages Large Language Models (LLMs) to translate your natural language questions into precise SQL queries. These queries are then executed against your Harbor Scale data, and the results are presented in an easy-to-understand format.
 
 <img src="/placeholder.svg?height=400&width=600" alt="Diagram showing natural language query to AI, AI generates SQL, SQL queries database, results returned to user" />
 

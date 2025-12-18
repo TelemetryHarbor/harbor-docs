@@ -2,13 +2,13 @@
 sidebar_position: 1
 ---
 
-# Introduction to Telemetry Harbor
+# Introduction to Harbor Scale
 
-Welcome to Telemetry Harbor, your comprehensive solution for ingesting, storing, and visualizing telemetry data from a wide array of sources. Whether you're tracking maritime vessels, monitoring IoT devices, overseeing industrial equipment, or managing any other time-series data, Telemetry Harbor provides the robust tools and scalable infrastructure you need to harness the power of your data.
+Welcome to Harbor Scale, your comprehensive solution for ingesting, storing, and visualizing telemetry data from a wide array of sources. Whether you're tracking maritime vessels, monitoring IoT devices, overseeing industrial equipment, or managing any other time-series data, Harbor Scale provides the robust tools and scalable infrastructure you need to harness the power of your data.
 
-## What is Telemetry Harbor?
+## What is Harbor Scale?
 
-Telemetry Harbor is a cloud-based platform designed to handle the complexities of large-scale telemetry data management. It offers a seamless experience from data ingestion to visualization, enabling businesses and organizations to make data-driven decisions with ease and confidence.
+Harbor Scale is a cloud-based platform designed to handle the complexities of large-scale telemetry data management. It offers a seamless experience from data ingestion to visualization, enabling businesses and organizations to make data-driven decisions with ease and confidence.
 
 
 ## Key Features
@@ -39,7 +39,7 @@ Telemetry Harbor is a cloud-based platform designed to handle the complexities o
 
 ## Use Cases
 
-Telemetry Harbor is versatile and can be applied across various industries and scenarios:
+Harbor Scale is versatile and can be applied across various industries and scenarios:
 
 1. **Maritime Tracking and Logistics**
    - Monitor vessel positions, speed, and heading in real-time
@@ -73,5 +73,5 @@ Telemetry Harbor is versatile and can be applied across various industries and s
 
 
 
-Join the growing community of businesses and developers who trust Telemetry Harbor for their telemetry data needs. Start your journey towards more insightful, data-driven decision-making today!
+Join the growing community of businesses and developers who trust Harbor Scale for their telemetry data needs. Start your journey towards more insightful, data-driven decision-making today!
 

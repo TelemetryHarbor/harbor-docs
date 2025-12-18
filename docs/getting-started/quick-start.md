@@ -1,22 +1,22 @@
 ---
 sidebar_position: 1
 title: Quick Start Guide
-description: Get started with Telemetry Harbor in minutes. Create an account, set up a harbor, send data, and visualize.
+description: Get started with Harbor Scale in minutes. Create an account, set up a harbor, send data, and visualize.
 ---
 
 # Quick Start Guide
 
-This guide will help you get up and running with Telemetry Harbor quickly. Follow these steps to create your account, set up a harbor, send your first data point, and visualize it in Grafana.
+This guide will help you get up and running with Harbor Scale quickly. Follow these steps to create your account, set up a harbor, send your first data point, and visualize it in Grafana.
 
 ## 1. Create an Account
 
-1.  Visit [Telemetry Harbor's website](https://www.harborscale.com) and click on "Sign Up".
+1.  Visit [Harbor Scale's website](https://www.harborscale.com) and click on "Sign Up".
 2.  Fill in your details and submit the registration form.
 3.  Check your email for a verification link and click it to verify your account.
 
 ## 2. Create a Harbor
 
-1.  Log in to your Telemetry Harbor dashboard.
+1.  Log in to your Harbor Scale dashboard.
 2.  Click on "Create New Harbor" and select **General** for the type and **Free** for the specs.
 3.  Once created, you can view the Harbor Details.
 
@@ -81,12 +81,12 @@ Invoke-RestMethod -Uri "https://harborscale.com/api/v2/ingest/YOUR_HARBOR_ID" `
 
 ## 5\. Visualize Your Data
 
-Telemetry Harbor integrates seamlessly with Grafana for powerful data visualization.
+Harbor Scale integrates seamlessly with Grafana for powerful data visualization.
 
 1.  From the Harbor Details, copy the **Grafana Endpoint** and **Grafana Password**.
     > **Note:** Your Grafana password is different from your main account password.
 2.  Open the Grafana endpoint in your browser and log in using:
-      - **Username**: [Your Telemetry Harbor Account Email]
+      - **Username**: [Your Harbor Scale Account Email]
       - **Password**: [The password from Harbor Details]
 3.  You'll find pre-configured dashboards ready for your data.
 
@@ -100,6 +100,6 @@ To get started quickly:
 
 -----
 
-**Congratulations\!** You've set up your Telemetry Harbor account, sent your first data point, and accessed your visualization tools.
+**Congratulations\!** You've set up your Harbor Scale account, sent your first data point, and accessed your visualization tools.
 
 For more detailed information on data ingestion, API usage, and advanced Grafana configurations, check out our [Harbor Types documentation](https://docs.harborscale.com/docs/getting-started/harbor-types).

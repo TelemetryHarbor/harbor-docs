@@ -20,7 +20,7 @@ sidebar_position: 4
 ![Stars](https://img.shields.io/github/stars/harborscale/harbor-sdk-c-plus-plus.svg?style=social)
 ![Forks](https://img.shields.io/github/forks/harborscale/harbor-sdk-c-plus-plus.svg?style=social)
 
-A C++ client SDK for sending telemetry data to the **Telemetry Harbor** service, designed for Arduino-based microcontrollers like the ESP32 and ESP8266.
+A C++ client SDK for sending telemetry data to the **Harbor Scale** service, designed for Arduino-based microcontrollers like the ESP32 and ESP8266.
 
 This library simplifies sending sensor data by handling HTTP communication, JSON serialization, and robust error handling with automatic retries.
 
@@ -106,7 +106,7 @@ void loop() {
 ### `HarborClient(const char* endpoint, const char* api_key)`
 
 The constructor for the client.
-*   `endpoint`: The URL of your Telemetry Harbor ingestion endpoint.
+*   `endpoint`: The URL of your Harbor Scale ingestion endpoint.
 *   `api_key`: Your unique API key for authentication.
 
 ### `int send(const GeneralReading& reading)`

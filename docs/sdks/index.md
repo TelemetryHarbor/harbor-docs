@@ -3,9 +3,9 @@ title: Overview
 sidebar_position: 1
 ---
 
-# Telemetry Harbor SDKs
+# Harbor Scale SDKs
 
-Telemetry Harbor provides a robust and easy-to-use platform for ingesting telemetry data from various sources. To simplify integration with your applications and devices, we offer official Software Development Kits (SDKs) for popular programming languages and platforms.
+Harbor Scale provides a robust and easy-to-use platform for ingesting telemetry data from various sources. To simplify integration with your applications and devices, we offer official Software Development Kits (SDKs) for popular programming languages and platforms.
 
 Our SDKs are designed to handle the complexities of API communication, including request formatting, authentication, and retry logic, allowing you to focus on collecting and sending your valuable data.
 

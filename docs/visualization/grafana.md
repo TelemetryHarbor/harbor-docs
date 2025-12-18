@@ -1,16 +1,16 @@
 ---
 sidebar_position: 1
 title: Grafana Visualization Guide
-description: A comprehensive guide to visualizing your Telemetry Harbor data in Grafana.
+description: A comprehensive guide to visualizing your Harbor Scale data in Grafana.
 ---
 
 # Grafana Visualization Guide
 
-Telemetry Harbor integrates seamlessly with Grafana to provide powerful data visualization capabilities for your telemetry data. This guide will walk you through setting up your first graphs, using variables, and exploring advanced features.
+Harbor Scale integrates seamlessly with Grafana to provide powerful data visualization capabilities for your telemetry data. This guide will walk you through setting up your first graphs, using variables, and exploring advanced features.
 
 ## Database Schema Overview
 
-Telemetry Harbor uses TimescaleDB (PostgreSQL extension) to store time-series data. The main table structure is:
+Harbor Scale uses TimescaleDB (PostgreSQL extension) to store time-series data. The main table structure is:
 
 ### `cargo_data` Table
 
@@ -31,7 +31,7 @@ CREATE TABLE cargo_data (
 
 ## Setting Up Your First Graph
 
-1.  **Log In**: Access Grafana using your Telemetry Harbor credentials (Email/Provided Password).
+1.  **Log In**: Access Grafana using your Harbor Scale credentials (Email/Provided Password).
 2.  **Change the default password** for extra security.
 3.  **Data Source Setup**: Verify that the TimescaleDB data source is properly connected.
 4.  **Create a New Dashboard**:

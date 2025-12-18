@@ -1,12 +1,12 @@
 ---
 sidebar_position: 4
 title: Harbor Types
-description: Learn about the different types of Harbors available in Telemetry Harbor, their data models, and ingestion methods.
+description: Learn about the different types of Harbors available in Harbor Scale, their data models, and ingestion methods.
 ---
 
 # Harbor Types
 
-Telemetry Harbor offers different "Harbor Types" to cater to various data storage and processing needs. Each Harbor Type is optimized for specific use cases and may have its own data model and ingestion endpoints.
+Harbor Scale offers different "Harbor Types" to cater to various data storage and processing needs. Each Harbor Type is optimized for specific use cases and may have its own data model and ingestion endpoints.
 
 ## General Harbor
 
@@ -122,7 +122,7 @@ curl -X POST "https://harborscale.com/api/v2/ingest/ingest/your_harbor_id/batch"
 
 ### Querying General Harbor Data
 
-Telemetry Harbor stores your General Harbor data in a PostgreSQL database with TimescaleDB extensions. Understanding the underlying table schema is crucial for writing effective SQL queries, especially when building custom dashboards in Grafana.
+Harbor Scale stores your General Harbor data in a PostgreSQL database with TimescaleDB extensions. Understanding the underlying table schema is crucial for writing effective SQL queries, especially when building custom dashboards in Grafana.
 
 #### `cargo_data` Table Schema
 
@@ -146,7 +146,7 @@ The "TTN Harbor" is a specialized harbor type built specifically for **LoRaWAN**
 
 This Harbor type treats your LoRaWAN infrastructure as follows:
 
-| TTN Concept | Telemetry Harbor Concept | Description |
+| TTN Concept | Harbor Scale Concept | Description |
 | :--- | :--- | :--- |
 | `device_id` | `ship_id` | The unique end-device ID from TTN becomes the Ship ID. |
 | `decoded_payload` keys | `cargo_id` | Keys in your decoded payload (e.g., "temp") become Cargo IDs. |
@@ -167,7 +167,7 @@ In addition to your payload, the TTN Harbor automatically tracks the following "
 
 To connect a TTN Application to this Harbor:
 
-1.  **Create a TTN Harbor** in your Telemetry Harbor dashboard.
+1.  **Create a TTN Harbor** in your Harbor Scale dashboard.
 2.  Copy your **Harbor ID** and **API Key**.
 3.  Go to your **TTN Console** \> **Integrations** \> **Webhooks**.
 4.  Click **Add Webhook** \> **Custom Webhook**.
@@ -185,7 +185,7 @@ To connect a TTN Application to this Harbor:
 > **Important:** Ensure your TTN **Payload Formatter** returns a flat JSON object in the `decoded_payload` field containing numbers. Nested objects or strings in the payload will be ignored.
 ### Querying TTN Harbor Data
 
-Telemetry Harbor stores your TTN Harbor data in a PostgreSQL database with TimescaleDB extensions. Understanding the underlying table schema is crucial for writing effective SQL queries, especially when building custom dashboards in Grafana.
+Harbor Scale stores your TTN Harbor data in a PostgreSQL database with TimescaleDB extensions. Understanding the underlying table schema is crucial for writing effective SQL queries, especially when building custom dashboards in Grafana.
 
 #### `cargo_data` Table Schema
 

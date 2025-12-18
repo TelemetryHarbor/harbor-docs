@@ -1,12 +1,12 @@
 ---
 sidebar_position: 2
 title: Home Assistant Integration
-description: Connect your Home Assistant sensors to Telemetry Harbor for advanced data logging and visualization.
+description: Connect your Home Assistant sensors to Harbor Scale for advanced data logging and visualization.
 ---
 
 # Home Assistant Integration
 
-This guide demonstrates how to integrate your Home Assistant instance with Telemetry Harbor. By setting up a simple REST command and automation, you can push all your numerical sensor states from Home Assistant to Telemetry Harbor for advanced logging, analysis, and visualization in Grafana.
+This guide demonstrates how to integrate your Home Assistant instance with Harbor Scale. By setting up a simple REST command and automation, you can push all your numerical sensor states from Home Assistant to Harbor Scale for advanced logging, analysis, and visualization in Grafana.
 
 **_Repo Link:_** https://github.com/harborscale/harbor-home-assistant
 
@@ -18,13 +18,13 @@ Before starting, ensure you have:
 -   **Home Assistant** installed and running.
 -   A working knowledge of **YAML** for Home Assistant configurations.
 -   Smart home **sensors** or **devices** set up in Home Assistant.
--   A **Telemetry Harbor account** (free tier available).
+-   A **Harbor Scale account** (free tier available).
 
 ## Setup
 
-### 1. Create a Telemetry Harbor Account
+### 1. Create a Harbor Scale Account
 
-1.  **Sign up** at [Telemetry Harbor](https://harborscale.com/)
+1.  **Sign up** at [Harbor Scale](https://harborscale.com/)
 2.  **Verify** your email and log in
 3.  **Create a Harbor**:
     -   Click **Create Harbor** on your dashboard
@@ -42,7 +42,7 @@ Before starting, ensure you have:
 
 ### 2. Configure Home Assistant
 
-Edit your `configuration.yaml` to include the following REST command. This command will collect all numerical sensor states and send them as a batch to Telemetry Harbor.
+Edit your `configuration.yaml` to include the following REST command. This command will collect all numerical sensor states and send them as a batch to Harbor Scale.
 
 **`configuration.yaml`**
 ```yaml
@@ -68,7 +68,7 @@ rest_command:
       ]
 ```
 
-Replace `YOUR_API_BATCH_ENDPOINT` and `YOUR_API_KEY` with your actual Telemetry Harbor credentials.
+Replace `YOUR_API_BATCH_ENDPOINT` and `YOUR_API_KEY` with your actual Harbor Scale credentials.
 
 ### 3. Save & Restart
 
@@ -79,7 +79,7 @@ Save your `configuration.yaml` file and restart your Home Assistant instance for
 To automatically push data at regular intervals, you can create an automation in Home Assistant. Add this to your `automations.yaml` or directly in the Home Assistant UI.
 
 ```yaml
-  - alias: 'Push all sensors data to Telemetry Harbor'
+  - alias: 'Push all sensors data to Harbor Scale'
     trigger:
       - platform: time_pattern
         minutes: "/5" # Every 5 minutes
@@ -89,6 +89,6 @@ To automatically push data at regular intervals, you can create an automation in
 
 ## Visualizing Data in Grafana
 
-Once data starts flowing from Home Assistant to Telemetry Harbor, you can visualize it in Grafana. Use the `ship_id` (derived from entity ID) and `cargo_id` (derived from friendly name or entity ID) to filter and display your smart home sensor data.
+Once data starts flowing from Home Assistant to Harbor Scale, you can visualize it in Grafana. Use the `ship_id` (derived from entity ID) and `cargo_id` (derived from friendly name or entity ID) to filter and display your smart home sensor data.
 
 Refer to the [Grafana Visualization Guide](../visualization/grafana.md) for detailed instructions on creating dashboards.

@@ -4,7 +4,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   // --- SITE METADATA ---
-  title: 'Telemetry Harbor',
+  title: 'Harbor Scale',
   // SEO: A slightly longer tagline helps with context
   tagline: 'The All-in-One Platform to Collect, Store & Visualize IoT Data', 
   favicon: 'img/favicon.ico',
@@ -66,7 +66,7 @@ const config = {
           showReadingTime: true,
           feedOptions: {
             type: ['rss', 'atom'],
-            copyright: `Copyright © ${new Date().getFullYear()} Telemetry Harbor`,
+            copyright: `Copyright © ${new Date().getFullYear()} Harbor Scale`,
           },
           editUrl: 'https://github.com/harborscale/harborscale-docs/edit/main/blog/',
           postsPerPage: 5,
@@ -93,17 +93,17 @@ const config = {
       metadata: [
         // SEO: Expanded keywords for better discoverability
         { name: 'keywords', content: 'telemetry, iot, data platform, real-time analytics, visualization, harbor, api, sdk, developer tools, time-series data, mqtt, http' },
-        { name: 'description', content: 'Telemetry Harbor documentation: The complete guide to collecting, storing, and visualizing your device data in real-time.' },
+        { name: 'description', content: 'Harbor Scale documentation: The complete guide to collecting, storing, and visualizing your device data in real-time.' },
         
         // Open Graph (Facebook/LinkedIn)
-        { property: 'og:title', content: 'Telemetry Harbor Documentation' },
+        { property: 'og:title', content: 'Harbor Scale Documentation' },
         { property: 'og:description', content: 'Collect, Store & Visualize — All in One Place.' },
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: 'https://docs.harborscale.com' },
         
         // Twitter Card (Large Image for better visibility)
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'Telemetry Harbor Documentation' },
+        { name: 'twitter:title', content: 'Harbor Scale Documentation' },
         { name: 'twitter:description', content: 'The developer-first platform for real-time IoT telemetry and visualization.' },
         { name: 'twitter:site', content: '@harborscale' }, 
         { name: 'twitter:image', content: 'https://docs.harborscale.com/img/social-card.jpg' },
@@ -130,7 +130,7 @@ const config = {
       announcementBar: {
         id: 'github_star',
         content:
-          '⭐️ If you find Telemetry Harbor useful, please <b>star us on GitHub</b>! ⭐️',
+          '⭐️ If you find Harbor Scale useful, please <b>star us on GitHub</b>! ⭐️',
         // THEME: International Orange background
         backgroundColor: '#FF4F00', 
         textColor: '#ffffff',
@@ -139,10 +139,10 @@ const config = {
 
       // --- NAVBAR ---
       navbar: {
-        title: 'Telemetry Harbor',
+        title: 'Harbor Scale',
         hideOnScroll: true,
         logo: {
-          alt: 'Telemetry Harbor Logo',
+          alt: 'Harbor Scale Logo',
           src: 'img/lightIcon.svg',
           srcDark: 'img/darkIcon.svg',
         },
@@ -200,7 +200,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Telemetry Harbor.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Harbor Scale.`,
       },
 
       // --- CODE BLOCK STYLING ---

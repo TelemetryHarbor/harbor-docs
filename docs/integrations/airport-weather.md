@@ -6,7 +6,7 @@ description: Collect and visualize real-time airport weather data from OpenWeath
 
 # Airport Weather Monitoring
 
-This guide explains how to set up a Linux agent to collect real-time weather data for specified airports from OpenWeatherMap and send it to Telemetry Harbor. This allows you to monitor weather conditions globally, analyze trends, and integrate weather data into your operational dashboards.
+This guide explains how to set up a Linux agent to collect real-time weather data for specified airports from OpenWeatherMap and send it to Harbor Scale. This allows you to monitor weather conditions globally, analyze trends, and integrate weather data into your operational dashboards.
 
 **_Repo Link:_** https://github.com/harborscale/harbor-airport-weather
 
@@ -17,14 +17,14 @@ Before starting, ensure you have:
 
 -   A **Linux** system with **root/sudo** access.
 -   **curl** installed for API communication.
--   A working internet connection to fetch weather data and send to Telemetry Harbor.
+-   A working internet connection to fetch weather data and send to Harbor Scale.
 -   **OpenWeatherMap API key** (free tier available at [https://openweathermap.org/api](https://openweathermap.org/api)).
--   A **Telemetry Harbor account** (free tier available).
+-   A **Harbor Scale account** (free tier available).
 -   Basic knowledge of Linux terminal commands.
 
 ## How it Works
 
-The airport weather agent is a bash script that fetches current weather data and air pollution data from the OpenWeatherMap API for a list of configured airports. It then formats this data into the Telemetry Harbor [General Harbor Data Type Model](../introduction/concepts.md#general-harbor-data-type-model) and sends it in batches to your Telemetry Harbor ingestion endpoint at a configurable interval. The agent runs as a `systemd` service for continuous operation.
+The airport weather agent is a bash script that fetches current weather data and air pollution data from the OpenWeatherMap API for a list of configured airports. It then formats this data into the Harbor Scale [General Harbor Data Type Model](../introduction/concepts.md#general-harbor-data-type-model) and sends it in batches to your Harbor Scale ingestion endpoint at a configurable interval. The agent runs as a `systemd` service for continuous operation.
 
 
 ## Available Metrics
@@ -48,9 +48,9 @@ The enhanced airport weather agent collects the following metrics for each airpo
 
 ## Setup
 
-### 1. Create a Telemetry Harbor Account
+### 1. Create a Harbor Scale Account
 
-1.  **Sign up** at [Telemetry Harbor](https://harborscale.com/)
+1.  **Sign up** at [Harbor Scale](https://harborscale.com/)
 2.  **Verify** your email and log in
 3.  **Create a Harbor**:
     -   Click **Create Harbor** on your dashboard
@@ -91,7 +91,7 @@ The enhanced airport weather agent collects the following metrics for each airpo
 
 During installation, you'll be prompted to:
 
-1.  **Enter your Telemetry Harbor API details**:
+1.  **Enter your Harbor Scale API details**:
     -   API Batch Endpoint URL
     -   API Key
 2.  **Enter your OpenWeatherMap API key**.
@@ -196,7 +196,7 @@ systemctl enable harbor-airport
 
 -   Check the service logs: `journalctl -u harbor-airport -f`.
 -   Verify the airports you selected are valid ICAO codes.
--   Ensure your Telemetry Harbor account is active.
+-   Ensure your Harbor Scale account is active.
 
 **Missing or incomplete weather data**
 

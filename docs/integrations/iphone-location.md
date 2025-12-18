@@ -1,12 +1,12 @@
 ---
 sidebar_position: 6
 title: iPhone Location Tracking
-description: Use iOS Shortcuts to send your iPhone's location data to Telemetry Harbor.
+description: Use iOS Shortcuts to send your iPhone's location data to Harbor Scale.
 ---
 
 # iPhone Location Tracking
 
-This guide explains how to use iOS Shortcuts to automatically send your iPhone's location data (latitude and longitude) to Telemetry Harbor. This allows you to track your device's movement, visualize routes, and integrate location data with other telemetry.
+This guide explains how to use iOS Shortcuts to automatically send your iPhone's location data (latitude and longitude) to Harbor Scale. This allows you to track your device's movement, visualize routes, and integrate location data with other telemetry.
 
 **_Shortcut Link:_** https://routinehub.co/shortcut/22659/
 
@@ -19,20 +19,20 @@ Before starting, ensure you have:
 -   **iOS Shortcuts app** (pre-installed on modern iOS).
 -   An active **internet connection** (WiFi or cellular).
 -   **Location Services** enabled on your iPhone.
--   A **Telemetry Harbor account** (free tier available).
+-   A **Harbor Scale account** (free tier available).
 -   Basic knowledge of iOS Shortcuts configuration.
 
 ## How it Works
 
-This integration leverages the powerful automation capabilities of iOS Shortcuts. A custom shortcut is created that fetches your iPhone's current location, formats the latitude and longitude into two separate Telemetry Harbor [General Harbor Data Type Model](../introduction/concepts.md#general-harbor-data-type-model) data points, and then sends them to your Telemetry Harbor single ingestion endpoint using HTTP POST requests. You can then set up automations to trigger this shortcut periodically or based on specific events.
+This integration leverages the powerful automation capabilities of iOS Shortcuts. A custom shortcut is created that fetches your iPhone's current location, formats the latitude and longitude into two separate Harbor Scale [General Harbor Data Type Model](../introduction/concepts.md#general-harbor-data-type-model) data points, and then sends them to your Harbor Scale single ingestion endpoint using HTTP POST requests. You can then set up automations to trigger this shortcut periodically or based on specific events.
 
-<img src="/placeholder.svg?height=300&width=500" alt="Diagram showing iPhone to iOS Shortcut to Telemetry Harbor" />
+<img src="/placeholder.svg?height=300&width=500" alt="Diagram showing iPhone to iOS Shortcut to Harbor Scale" />
 
 ## Setup
 
-### 1. Create a Telemetry Harbor Account
+### 1. Create a Harbor Scale Account
 
-1.  **Sign up** at [Telemetry Harbor](https://harborscale.com/)
+1.  **Sign up** at [Harbor Scale](https://harborscale.com/)
 2.  **Verify** your email and log in
 3.  **Create a Harbor**:
     -   Click **Create Harbor** on your dashboard
@@ -56,12 +56,12 @@ This integration leverages the powerful automation capabilities of iOS Shortcuts
     -   When prompted, tap **Add Shortcut** to install it to your Shortcuts library.
 2.  **Configure the shortcut**:
     -   Open the **Shortcuts app** on your iPhone.
-    -   Find the "iPhone Location Tracker - Telemetry Harbor" shortcut.
+    -   Find the "iPhone Location Tracker - Harbor Scale" shortcut.
     -   Tap the **three dots (⋯)** to edit the shortcut workflow.
 3.  **Update API settings**:
     -   Look for the **Get Contents of URL** actions (there are two - one for latitude, one for longitude).
     -   In each action, update:
-        -   **URL field**: Replace `https://YOUR_ENDPOINT/` with your Telemetry Harbor API endpoint.
+        -   **URL field**: Replace `https://YOUR_ENDPOINT/` with your Harbor Scale API endpoint.
         -   **Headers section**: Replace `API-KEY-HERE` with your actual API key.
         -   **Request Body**: Customize the `ship_id` value to identify your device.
 
@@ -69,7 +69,7 @@ This integration leverages the powerful automation capabilities of iOS Shortcuts
 
 During shortcut configuration, you'll need to:
 
-1.  **Enter your Telemetry Harbor API details**:
+1.  **Enter your Harbor Scale API details**:
     -   API Endpoint URL
     -   API Key
 2.  **Configure device identification**:
@@ -170,7 +170,7 @@ Check your Grafana dashboard to confirm data arrival:
 
 -   Check the time range in your Grafana dashboard.
 -   Verify `ship_id` and `cargo_id` filters match your shortcut configuration.
--   Ensure your Telemetry Harbor account has sufficient quota.
+-   Ensure your Harbor Scale account has sufficient quota.
 
 **"Invalid format" error in shortcut**
 
@@ -186,7 +186,7 @@ Check your Grafana dashboard to confirm data arrival:
 
 ## Visualizing Data in Grafana
 
-Once your iPhone location data is flowing into Telemetry Harbor, you can visualize it in Grafana:
+Once your iPhone location data is flowing into Harbor Scale, you can visualize it in Grafana:
 
 1.  Log in to your Grafana instance using the credentials from your Harbor setup.
 2.  Navigate to **Dashboards** → **Comprehensive Telemetry Dashboard**.

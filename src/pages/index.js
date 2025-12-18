@@ -16,7 +16,7 @@ function HomepageHeader() {
         </Heading>
         <p className={styles.heroSubtitle}>Collect, Store & Visualize — All in One Place.</p>
         <p className={styles.heroDescription}>
-          From seamless ingestion to intelligent visualization, Telemetry Harbor provides the robust, scalable
+          From seamless ingestion to intelligent visualization, Harbor Scale provides the robust, scalable
           platform you need to transform raw IoT data into actionable insights. Build smarter, react faster, and
           innovate with confidence.
         </p>
@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Telemetry Harbor | Your IoT Data Harbor | Ingest, store, and visualize your data in seconds.">
+      description="Harbor Scale | Your IoT Data Harbor | Ingest, store, and visualize your data in seconds.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

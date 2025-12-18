@@ -1,12 +1,12 @@
 ---
 sidebar_position: 3
 title: ESP32 BME280 Environmental Monitor
-description: Build an ESP32-based environmental sensor to send temperature, humidity, and pressure data to Telemetry Harbor.
+description: Build an ESP32-based environmental sensor to send temperature, humidity, and pressure data to Harbor Scale.
 ---
 
 # ESP32 BME280 Environmental Monitor
 
-This guide will walk you through building a **low-power ESP32-based environmental monitor** using a BME280 sensor. The device uses **deep sleep mode** to conserve power, waking up at set intervals to collect a full set of environmental data and send it to your Telemetry Harbor instance for visualization and analysis.
+This guide will walk you through building a **low-power ESP32-based environmental monitor** using a BME280 sensor. The device uses **deep sleep mode** to conserve power, waking up at set intervals to collect a full set of environmental data and send it to your Harbor Scale instance for visualization and analysis.
 
 ***Repo Link:*** [https://github.com/harborscale/harbor-esp32-bme280](https://github.com/harborscale/harbor-esp32-bme280)
 
@@ -14,15 +14,15 @@ This guide will walk you through building a **low-power ESP32-based environmenta
 
 ## Overview
 
-This project wakes up at set intervals, takes a complete set of environmental readings (temperature, humidity, pressure, and altitude), sends the data to Telemetry Harbor, and then returns to a deep sleep state to conserve power.
+This project wakes up at set intervals, takes a complete set of environmental readings (temperature, humidity, pressure, and altitude), sends the data to Harbor Scale, and then returns to a deep sleep state to conserve power.
 
 ## Features
 
   - **Ultra-Low Power**: Uses **ESP32 Deep Sleep mode** to achieve minimal power consumption, extending battery life significantly.
-  - **Batch Data Transmission**: All sensor readings are collected in a single wakeup cycle and sent to the cloud in a single, efficient request using the new Telemetry Harbor SDK.
+  - **Batch Data Transmission**: All sensor readings are collected in a single wakeup cycle and sent to the cloud in a single, efficient request using the new Harbor Scale SDK.
   - **Comprehensive Data**: Measures temperature, humidity, pressure, and estimated altitude.
-  - **Telemetry Harbor SDK**: Uses the official SDK for simplified and reliable API communication.
-  - **Cloud Connectivity**: Seamless data transmission to Telemetry Harbor.
+  - **Harbor Scale SDK**: Uses the official SDK for simplified and reliable API communication.
+  - **Cloud Connectivity**: Seamless data transmission to Harbor Scale.
   - **Beautiful Visualizations**: Ready-to-use Grafana dashboards for powerful data analysis.
 
 
@@ -46,9 +46,9 @@ This project wakes up at set intervals, takes a complete set of environmental re
   - Required libraries:
       - Adafruit BME280 Library
       - Adafruit Unified Sensor
-      - **Telemetry Harbor SDK** (Available via Library Manager)
+      - **Harbor Scale SDK** (Available via Library Manager)
       - WiFi Library (built into ESP32 core)
-  - [Telemetry Harbor](https://harborscale.com) account (free tier available)
+  - [Harbor Scale](https://harborscale.com) account (free tier available)
 
 
 
@@ -82,11 +82,11 @@ Connect the BME280 sensor to the ESP32 using I2C:
 3.  Install the required libraries via the Library Manager:
       - Adafruit BME280 Library
       - Adafruit Unified Sensor
-      - **Telemetry Harbor SDK** (Search for "harborscaleSDK")
+      - **Harbor Scale SDK** (Search for "harborscaleSDK")
 
-### 3\. Telemetry Harbor Configuration
+### 3\. Harbor Scale Configuration
 
-1.  Create a [Telemetry Harbor](https://harborscale.com) account.
+1.  Create a [Harbor Scale](https://harborscale.com) account.
 2.  Create a new Harbor called "ESP32\_Environmental\_Monitor" (or your preferred name).
 3.  Select "General" harbor type and "Free" specification.
 4.  Copy your API ENDPOINT and API Key from the Harbor details page.
@@ -96,7 +96,7 @@ Connect the BME280 sensor to the ESP32 using I2C:
 1.  Open the `ESP32_BME280_Telemetry.ino` file in the Arduino IDE.
 2.  Update the following variables at the top of the file:
       - WiFi SSID and password
-      - Telemetry Harbor API Endpoint URL and API Key
+      - Harbor Scale API Endpoint URL and API Key
       - Adjust the `shipId` to your desired name (e.g., "Living Room").
 3.  Select your ESP32 board model from Tools \> Board.
 4.  Select the correct COM port from Tools \> Port.
@@ -104,10 +104,10 @@ Connect the BME280 sensor to the ESP32 using I2C:
 
 ### 5\. Visualize Your Data
 
-1.  Access your Telemetry Harbor account.
+1.  Access your Harbor Scale account.
 2.  Navigate to the Harbor details page and copy your Grafana password.
 3.  Access the Grafana dashboard using the provided endpoint.
-4.  Login with your Telemetry Harbor email and the Grafana password.
+4.  Login with your Harbor Scale email and the Grafana password.
 5.  Navigate to Dashboards and select the Comprehensive Telemetry Dashboard to see your data.
 
 
@@ -140,7 +140,7 @@ const float PRESSURE_OFFSET = 0.0; // Adjust pressure by hPa
 
   - **BME280 not found**: Double-check wiring or try alternate I2C address (0x76 or 0x77).
   - **WiFi connection failure**: Verify credentials. The code will automatically go back to sleep if it can't connect, so wait for the next wakeup cycle.
-  - **Data not appearing in Telemetry Harbor**: Verify API key and API Endpoint URL are correct.
+  - **Data not appearing in Harbor Scale**: Verify API key and API Endpoint URL are correct.
 
 ### Debug Mode
 

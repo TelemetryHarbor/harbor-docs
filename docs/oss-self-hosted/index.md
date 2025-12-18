@@ -1,10 +1,10 @@
 ---
 title: Overview
-description: Telemetry Harbor OSS is the open-source ingestion and visualization stack behind Telemetry Harbor.
+description: Harbor Scale OSS is the open-source ingestion and visualization stack behind Harbor Scale.
 sidebar_position: 1
 ---
 
-# Telemetry Harbor OSS
+# Harbor Scale OSS
 
 <!-- OSS Badges -->
 ![License](https://img.shields.io/github/license/harborscale/telemetry-harbor-oss.svg)
@@ -19,7 +19,7 @@ sidebar_position: 1
 ![Stars](https://img.shields.io/github/stars/harborscale/telemetry-harbor-oss.svg?style=social)
 ![Forks](https://img.shields.io/github/forks/harborscale/telemetry-harbor-oss.svg?style=social)
 
-Telemetry Harbor OSS is the open-source ingestion and visualization stack behind Telemetry Harbor. Self-host your own telemetry backend with full control over your data and infrastructure.
+Harbor Scale OSS is the open-source ingestion and visualization stack behind Harbor Scale. Self-host your own telemetry backend with full control over your data and infrastructure.
 
 **_Repo Link:_** https://github.com/harborscale/telemetry-harbor-oss
 
@@ -32,13 +32,13 @@ Telemetry Harbor OSS is the open-source ingestion and visualization stack behind
 * 📊 **Grafana Integration** - Pre-configured dashboards and datasource
 * 🗄️ **TimescaleDB** - Optimized time-series database for telemetry data
 * 🔄 **Redis Queue** - Reliable message queue management
-* 🛠️ **SDK Compatible** - Works with all official Telemetry Harbor SDKs
+* 🛠️ **SDK Compatible** - Works with all official Harbor Scale SDKs
 
 
 
 ## 🚀 Quick Start
 
-Get your self-hosted Telemetry Harbor instance running in minutes:
+Get your self-hosted Harbor Scale instance running in minutes:
 
 ```bash
 git clone https://github.com/harborscale/telemetry-harbor-oss.git
@@ -74,7 +74,7 @@ Failure to do so will leave your system vulnerable.
 
 ## 📡 API Ingestion
 
-Replace Telemetry Harbor Cloud URLs with your own domain, omitting the harbor ID.
+Replace Harbor Scale Cloud URLs with your own domain, omitting the harbor ID.
 
 ### Single Data Push
 ```
@@ -88,7 +88,7 @@ POST http://yourdomain.com/api/v2/ingest/batch
 
 ### The Things Network (TTN) Webhook
 
-Telemetry Harbor OSS supports direct ingestion from TTN v3 Webhooks. We automatically extract `decoded_payload` values, RSSI, SNR, and Frequency.
+Harbor Scale OSS supports direct ingestion from TTN v3 Webhooks. We automatically extract `decoded_payload` values, RSSI, SNR, and Frequency.
 
 **Configuration in TTN Console:**
 
@@ -139,7 +139,7 @@ curl -X POST "http://localhost:8000/api/v2/ingest/batch" \
 ## 📊 Visualization with Grafana
 
 Grafana comes pre-configured with:
-*   **Telemetry Harbor Datasource** (TimescaleDB connection)
+*   **Harbor Scale Datasource** (TimescaleDB connection)
 *   **Comprehensive Telemetry Dashboard** 
 *   **Ready-to-use panels** for time-series visualization
 
@@ -152,15 +152,15 @@ Want a different retention period? Just tweak it in [`init.sql`](https://github.
 
 ## 🛠️ SDK Compatibility
 
-Telemetry Harbor OSS is fully compatible with all official Telemetry Harbor SDKs:
+Harbor Scale OSS is fully compatible with all official Harbor Scale SDKs:
 
-  * [**Telemetry Harbor SDKs**](https://docs.harborscale.com/docs/category/sdks/)
+  * [**Harbor Scale SDKs**](https://docs.harborscale.com/docs/category/sdks/)
 
 Just replace your ingest endpoint with your OSS URL - no code changes needed\!
 
 ## ☁️ OSS vs Cloud Comparison
 
-| Feature | OSS Self-hosted | Telemetry Harbor Cloud |
+| Feature | OSS Self-hosted | Harbor Scale Cloud |
 |---------|----------------|-------------------------|
 | **Pricing** | Free | Free/Paid |
 | **Rate Limits** | No rate limits (your hardware) | Rate limits based on plan |
@@ -204,7 +204,7 @@ This project is licensed under the **Apache License 2.0**.
 
 See [LICENSE](https://github.com/harborscale/telemetry-harbor-oss/blob/main/LICENSE) for details.
 
-If you use this project in your product, please credit Telemetry Harbor with a link to https://harborscale.com.
+If you use this project in your product, please credit Harbor Scale with a link to https://harborscale.com.
 
 
 

@@ -1,12 +1,12 @@
 ---
 sidebar_position: 8
 title: Weight Logging Integration
-description: Use iOS Shortcuts to manually log your weight into Telemetry Harbor.
+description: Use iOS Shortcuts to manually log your weight into Harbor Scale.
 ---
 
 # Weight Logging Integration
 
-This guide explains how to use iOS Shortcuts to manually log your **weight** into Telemetry Harbor. Once logged, your data is instantly viewable in **Grafana dashboards**, allowing you to monitor trends and correlate them with other telemetry (steps, calories, sleep, etc.).
+This guide explains how to use iOS Shortcuts to manually log your **weight** into Harbor Scale. Once logged, your data is instantly viewable in **Grafana dashboards**, allowing you to monitor trends and correlate them with other telemetry (steps, calories, sleep, etc.).
 
 **_Shortcut Link:_** https://routinehub.co/shortcut/23593/
 
@@ -18,7 +18,7 @@ Before starting, ensure you have:
 -   An **iPhone** running **iOS 14 or later**.  
 -   **iOS Shortcuts app** (pre-installed on modern iOS).  
 -   An active **internet connection** (WiFi or cellular).  
--   A **Telemetry Harbor account** (free tier available).  
+-   A **Harbor Scale account** (free tier available).  
 -   Basic knowledge of iOS Shortcuts configuration.  
 
 ## How it Works
@@ -26,16 +26,16 @@ Before starting, ensure you have:
 This Shortcut is designed for **manual entry**:  
 
 1. When run, it **asks you for your current weight**.  
-2. Packages that input into **Telemetry Harbor’s General Data Model**.  
+2. Packages that input into **Harbor Scale’s General Data Model**.  
 3. Sends it to your Harbor endpoint via HTTP POST.  
 
 Each run creates a **single timestamped log entry**, ensuring no duplicates.  
 
 ## Setup
 
-### 1. Create a Telemetry Harbor Account
+### 1. Create a Harbor Scale Account
 
-1.  **Sign up** at [Telemetry Harbor](https://harborscale.com/).  
+1.  **Sign up** at [Harbor Scale](https://harborscale.com/).  
 2.  **Verify** your email and log in.  
 3.  **Create a Harbor**:  
     -   Click **Create Harbor** on your dashboard.  
@@ -58,7 +58,7 @@ Each run creates a **single timestamped log entry**, ensuring no duplicates.
     -   Tap **Get Shortcut** → **Add Shortcut**.  
 2.  **Configure the shortcut**:  
     -   Open the **Shortcuts app**.  
-    -   Locate `"Weight Logger - Telemetry Harbor"`.  
+    -   Locate `"Weight Logger - Harbor Scale"`.  
     -   Tap the **three dots (⋯)** to edit.  
 3.  **Update API settings**:  
     -   In the **Get Contents of URL** action, update:  
@@ -71,7 +71,7 @@ Each run creates a **single timestamped log entry**, ensuring no duplicates.
 
 1.  Run the Shortcut manually (via **Shortcuts app**, **Home Screen**, or **Siri**).  
 2.  Enter your weight when prompted.  
-3.  The Shortcut sends the log entry to Telemetry Harbor.  
+3.  The Shortcut sends the log entry to Harbor Scale.  
 
 ---
 
@@ -112,7 +112,7 @@ Automation Options:
 
 **Shortcut not running**
 
-* Confirm Telemetry Harbor credentials are correct.
+* Confirm Harbor Scale credentials are correct.
 
 **No data in Grafana**
 
@@ -121,12 +121,12 @@ Automation Options:
 
 **Duplicate logs**
 
-* Each run creates a new timestamped entry. Telemetry Harbor prevents duplication of identical logs.
+* Each run creates a new timestamped entry. Harbor Scale prevents duplication of identical logs.
 
 
 ## Visualizing Data in Grafana
 
-Once your weight data is flowing into Telemetry Harbor:
+Once your weight data is flowing into Harbor Scale:
 
 1. Log in to Grafana with your Harbor credentials.
 2. Navigate to **Dashboards → Comprehensive Telemetry Dashboard**.

@@ -3,9 +3,9 @@ title: JavaScript/TypeScript SDK
 sidebar_position: 3
 ---
 
-# Telemetry Harbor SDK for Node.js
+# Harbor Scale SDK for Node.js
 
-<!-- Telemetry Harbor JavaScript SDK Badges -->
+<!-- Harbor Scale JavaScript SDK Badges -->
 <!-- npm -->
 [![npm version](https://img.shields.io/npm/v/harborscalesdk.svg)](https://www.npmjs.com/package/harborscale-sdk)
 [![npm downloads](https://img.shields.io/npm/dm/harborscalesdk.svg)](https://www.npmjs.com/package/harborscale-sdk)
@@ -23,7 +23,7 @@ sidebar_position: 3
 ![Stars](https://img.shields.io/github/stars/harborscale/harbor-sdk-js.svg?style=social)
 ![Forks](https://img.shields.io/github/forks/harborscale/harbor-sdk-js.svg?style=social)
 
-A modern, production-ready SDK for sending telemetry data to the **Telemetry Harbor** service from any Node.js or TypeScript application.
+A modern, production-ready SDK for sending telemetry data to the **Harbor Scale** service from any Node.js or TypeScript application.
 
 This library simplifies sending data by handling HTTP communication, JSON serialization, and robust error handling with automatic retries.
 
@@ -93,7 +93,7 @@ main();
 ### `HarborClient(endpoint, apiKey, [maxRetries], [initialBackoff])`
 
 The constructor for the client.
-*   `endpoint` (string): The URL of your Telemetry Harbor ingestion endpoint.
+*   `endpoint` (string): The URL of your Harbor Scale ingestion endpoint.
 *   `apiKey` (string): Your unique API key for authentication.
 *   `maxRetries` (number, optional): The maximum number of retries. Defaults to `5`.
 *   `initialBackoff` (number, optional): The initial backoff delay in milliseconds. Defaults to `1000`.

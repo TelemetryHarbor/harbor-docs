@@ -1,6 +1,6 @@
-# Telemetry Harbor Docs
+# Harbor Scale Docs
 
-This repository contains the documentation source files for **Telemetry Harbor** — a platform for collecting, storing, and analyzing telemetry data across cloud, edge, and offline deployments.
+This repository contains the documentation source files for **Harbor Scale** — a platform for collecting, storing, and analyzing telemetry data across cloud, edge, and offline deployments.
 
 ## 📁 About
 

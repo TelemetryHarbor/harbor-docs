@@ -1,12 +1,12 @@
 ---
 sidebar_position: 3
 title: SDKs Overview
-description: An introduction to Telemetry Harbor's Software Development Kits and tools.
+description: An introduction to Harbor Scale's Software Development Kits and tools.
 ---
 
 # SDKs & Tools Overview
 
-Telemetry Harbor provides a suite of Software Development Kits (SDKs) and tools to simplify the process of integrating your applications and devices with our platform. Our SDKs abstract away the complexities of API interactions, allowing you to focus on collecting and sending your telemetry data efficiently.
+Harbor Scale provides a suite of Software Development Kits (SDKs) and tools to simplify the process of integrating your applications and devices with our platform. Our SDKs abstract away the complexities of API interactions, allowing you to focus on collecting and sending your telemetry data efficiently.
 
 ## Why Use an SDK?
 
@@ -21,7 +21,7 @@ Using an SDK offers several advantages over direct API calls:
 
 ## Available SDKs
 
-Telemetry Harbor currently offers official SDKs for the following popular programming languages:
+Harbor Scale currently offers official SDKs for the following popular programming languages:
 
 | SDK           | Description                                                              |
 | :------------ | :----------------------------------------------------------------------- |
@@ -34,7 +34,7 @@ Telemetry Harbor currently offers official SDKs for the following popular progra
 
 Our SDKs typically provide:
 
-1.  **Client Initialization**: Functions to set up your connection to Telemetry Harbor using your API endpoint and key.
+1.  **Client Initialization**: Functions to set up your connection to Harbor Scale using your API endpoint and key.
 2.  **Data Model Classes**: Convenient classes to structure your telemetry data (e.g., `GeneralReading` for the General Harbor Type).
 3.  **Ingestion Methods**: Functions to send single data points or batch data efficiently.
 4.  **Utility Functions**: Helpers for common tasks like timestamp formatting or error parsing.
@@ -43,8 +43,8 @@ Our SDKs typically provide:
 
 1.  **Install the SDK**: Use your language's package manager (e.g., `pip` for Python, `npm` for JavaScript).
 2.  **Import the Client**: Import the necessary classes into your project.
-3.  **Initialize the Client**: Provide your Telemetry Harbor API endpoint and API key.
+3.  **Initialize the Client**: Provide your Harbor Scale API endpoint and API key.
 4.  **Create Data**: Instantiate data model objects with your `time`, `ship_id`, `cargo_id`, and `value`.
-5.  **Send Data**: Call the appropriate method to send your data to Telemetry Harbor.
+5.  **Send Data**: Call the appropriate method to send your data to Harbor Scale.
 
 For detailed instructions and code examples, refer to the documentation for each specific SDK.

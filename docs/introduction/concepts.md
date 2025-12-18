@@ -1,16 +1,16 @@
 ---
 sidebar_position: 3
 title: Core Concepts
-description: Understand Telemetry Harbor's core concepts, including data types and AI-powered insights.
+description: Understand Harbor Scale's core concepts, including data types and AI-powered insights.
 ---
 
 # Core Concepts
 
-Telemetry Harbor is built upon a set of core concepts that define how data is ingested, stored, and analyzed. This section provides an overview of our data model, the flow of AI-powered insights, and how we structure our services.
+Harbor Scale is built upon a set of core concepts that define how data is ingested, stored, and analyzed. This section provides an overview of our data model, the flow of AI-powered insights, and how we structure our services.
 
 ## Key Terminology
 
-To help you understand Telemetry Harbor, here are some core terms:
+To help you understand Harbor Scale, here are some core terms:
 
 -   **Harbors**: Secure data collection points that organize and manage your IoT information streams.
 -   **Ships**: Individual devices or data sources that send telemetry information to your harbors.
@@ -18,7 +18,7 @@ To help you understand Telemetry Harbor, here are some core terms:
 
 ## Harbor Tiers/Specs
 
-Telemetry Harbor offers various service tiers (or specifications), each designed to meet different data volume, retention, and feature requirements. These tiers define the operational limits and capabilities of your Harbors, scaling to support your growth from individual projects to large-scale enterprise deployments.
+Harbor Scale offers various service tiers (or specifications), each designed to meet different data volume, retention, and feature requirements. These tiers define the operational limits and capabilities of your Harbors, scaling to support your growth from individual projects to large-scale enterprise deployments.
 
 -   **Data Ingestion Limits**: These limits define the maximum rate at which you can send data, including single requests per second, batch requests per second, and the number of data points allowed per batch. As you move up the tiers, these capacities increase significantly, allowing for higher throughput and more frequent data updates.
 -   **Data Storage & Retention**: While storage capacity is generally unlimited across all tiers, the duration for which your data is retained varies. Free Harbors offer a 7-day retention, which expands to 90-day, 1-year, and custom retention periods in higher tiers, providing greater historical data access for long-term analysis.
@@ -26,12 +26,12 @@ Telemetry Harbor offers various service tiers (or specifications), each designed
 -   **Feature Access & Support**: Higher tiers unlock more advanced features and provide enhanced support. This includes a progression from basic to advanced backup and recovery options, and a shift from community support to priority email support, culminating in 24/7 dedicated support for Enterprise clients. Resource allocation also scales from shared infrastructure in lower tiers to dedicated resources for Enterprise solutions, ensuring optimal performance and isolation.
 
 :::info Note
-For the most up-to-date information on pricing and features, please refer to the official [Telemetry Harbor Pricing Page](https://www.harborscale.com/pricing).
+For the most up-to-date information on pricing and features, please refer to the official [Harbor Scale Pricing Page](https://www.harborscale.com/pricing).
 :::
 
 ## Harbor Types
 
-Telemetry Harbor supports a variety of **Harbor Types**, each tailored to a specific category of telemetry data. A Harbor Type defines the **data model** and **ingestion structure** best suited for its intended domain. This ensures more efficient storage, faster querying, and a better developer experience.
+Harbor Scale supports a variety of **Harbor Types**, each tailored to a specific category of telemetry data. A Harbor Type defines the **data model** and **ingestion structure** best suited for its intended domain. This ensures more efficient storage, faster querying, and a better developer experience.
 
 Think of it as choosing the right schema and ingestion pattern based on what kind of data you're working with.
 
@@ -56,7 +56,7 @@ For a full list of supported and upcoming Harbor Types, check the [Harbor Types 
 
 ## Harbor AI
 
-**Harbor AI** is an intelligent assistant built into Telemetry Harbor that allows you to explore and interact with your telemetry data through natural language. It’s powered by large language models and integrated with your Harbor’s data.
+**Harbor AI** is an intelligent assistant built into Harbor Scale that allows you to explore and interact with your telemetry data through natural language. It’s powered by large language models and integrated with your Harbor’s data.
 
 Harbor AI understands the structure and domain of your Harbor Type, enabling it to generate insights, answer complex queries, and assist in diagnostics — without requiring SQL, dashboards, or scripting.
 
@@ -78,7 +78,7 @@ All AI-assisted queries respect the limits defined by your Harbor Tier. For adva
 
 ## Visualization with Grafana
 
-Telemetry Harbor includes built-in integration with **Grafana**, a leading visualization platform. Every user is provisioned with a Grafana account, and each Harbor is automatically configured as a data source, allowing for instant dashboarding and data exploration.
+Harbor Scale includes built-in integration with **Grafana**, a leading visualization platform. Every user is provisioned with a Grafana account, and each Harbor is automatically configured as a data source, allowing for instant dashboarding and data exploration.
 
 Through Grafana, you can:
 

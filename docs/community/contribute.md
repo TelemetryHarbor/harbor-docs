@@ -1,12 +1,12 @@
 ---
 sidebar_position: 1
 title: How to Contribute
-description: Learn how to contribute to Telemetry Harbor's open-source projects and documentation.
+description: Learn how to contribute to Harbor Scale's open-source projects and documentation.
 ---
 
 # How to Contribute
 
-Telemetry Harbor is an open and evolving platform, and we welcome contributions from our community! Whether you want to improve our documentation, add a new SDK, fix a bug, or suggest a new feature, your input is valuable.
+Harbor Scale is an open and evolving platform, and we welcome contributions from our community! Whether you want to improve our documentation, add a new SDK, fix a bug, or suggest a new feature, your input is valuable.
 
 ## Contribution Guidelines
 
@@ -61,4 +61,4 @@ For documentation changes within this Docusaurus site:
 
 Please review our [Code of Conduct](https://github.com/harborscale/telemetry-harbor/blob/main/CODE_OF_CONDUCT.md) before contributing. We are committed to fostering an open and welcoming environment.
 
-Thank you for helping us build Telemetry Harbor!
+Thank you for helping us build Harbor Scale!

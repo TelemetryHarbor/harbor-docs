@@ -9,7 +9,7 @@ export default function HomepageFeatures() {
     <div className={styles.container}>
       <div className={styles.section}>
         <Heading as="h2" className={styles.title}>
-          Getting Started with Telemetry Harbor
+          Getting Started with Harbor Scale
         </Heading>
         
         <table className={styles.stepsTable}>
@@ -57,7 +57,7 @@ export default function HomepageFeatures() {
           Understanding the Building Blocks
         </Heading>
         <p className={styles.description}>
-          Learn the key concepts that power Telemetry Harbor's flexible IoT data platform.
+          Learn the key concepts that power Harbor Scale's flexible IoT data platform.
         </p>
         
         <table className={styles.clientsTable}>

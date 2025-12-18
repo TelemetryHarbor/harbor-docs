@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # GPS Data
 
-Telemetry Harbor supports GPS data ingestion for location-based IoT applications. When submitting GPS data, follow these guidelines:
+Harbor Scale supports GPS data ingestion for location-based IoT applications. When submitting GPS data, follow these guidelines:
 
 - Use the same timestamp for both latitude and longitude values.
 - Use distinct cargo_id values for latitude and longitude (e.g., "sen_lat" and "sen_long").

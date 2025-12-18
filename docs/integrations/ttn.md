@@ -1,12 +1,12 @@
 ---
 sidebar_position: 10
 title: The Things Network Integration
-description: Connect your LoRaWAN devices from The Things Network V3 to Telemetry Harbor via Webhooks.
+description: Connect your LoRaWAN devices from The Things Network V3 to Harbor Scale via Webhooks.
 ---
 
 # The Things Network Integration
 
-This guide explains how to integrate **The Things Network (TTN) V3** with Telemetry Harbor. By configuring a simple Webhook, you can automatically ingest telemetry from your LoRaWAN fleet, complete with signal quality metadata (RSSI, SNR), without writing any backend code.
+This guide explains how to integrate **The Things Network (TTN) V3** with Harbor Scale. By configuring a simple Webhook, you can automatically ingest telemetry from your LoRaWAN fleet, complete with signal quality metadata (RSSI, SNR), without writing any backend code.
 
 ## Prerequisites
 
@@ -14,18 +14,18 @@ Before starting, ensure you have:
 
 -   A **The Things Network** account (V3 / The Things Stack).
 -   A registered **LoRaWAN device** in TTN that is successfully sending data.
--   A **Telemetry Harbor account** (free tier available).
+-   A **Harbor Scale account** (free tier available).
 -   Access to the **Payload Formatters** section in your TTN Console.
 
 ## How it Works
 
-Instead of running an agent on a server, this integration relies on a **Webhook**. When your LoRaWAN device sends a message, The Things Network receives it, decodes it using your Payload Formatter, and immediately pushes the JSON result to Telemetry Harbor's specialized TTN ingestion endpoint.
+Instead of running an agent on a server, this integration relies on a **Webhook**. When your LoRaWAN device sends a message, The Things Network receives it, decodes it using your Payload Formatter, and immediately pushes the JSON result to Harbor Scale's specialized TTN ingestion endpoint.
 
 ## Setup
 
 ### 1. Create a TTN Harbor
 
-1.  **Log in** to your [Telemetry Harbor Dashboard](https://harborscale.com/app/harbors).
+1.  **Log in** to your [Harbor Scale Dashboard](https://harborscale.com/app/harbors).
 2.  **Create a Harbor**:
     -   Click **Create Harbor**.
     -   Choose a **name** (e.g., "Field Sensors").
@@ -39,7 +39,7 @@ Instead of running an agent on a server, this integration relies on a **Webhook*
 
 ### 2. Configure Payload Formatter (Crucial Step)
 
-Telemetry Harbor requires your data to be numerical and flat. You must configure a **Javascript Payload Formatter** in TTN to convert your device's binary payload into a clean JSON object.
+Harbor Scale requires your data to be numerical and flat. You must configure a **Javascript Payload Formatter** in TTN to convert your device's binary payload into a clean JSON object.
 
 1.  Go to your **TTN Console** > **Applications** > **Payload Formatters** > **Uplink**.
 2.  Select **Javascript**.
@@ -87,7 +87,7 @@ function decodeUplink(input) {
       - **Download API Key**: (Leave blank)
       - **Additional Headers**:
           - Key: `X-API-Key`
-          - Value: `Paste Your Telemetry Harbor API Key`
+          - Value: `Paste Your Harbor Scale API Key`
 5.  **Enabled Messages**:
       - Check **Uplink message**.
       - (Optional) Uncheck others to reduce noise.
@@ -95,9 +95,9 @@ function decodeUplink(input) {
 
 ## Automatic Data Mapping
 
-Once the Webhook is running, Telemetry Harbor automatically maps the incoming data fields. You do not need to configure this mapping manually.
+Once the Webhook is running, Harbor Scale automatically maps the incoming data fields. You do not need to configure this mapping manually.
 
-| Data Source | Telemetry Harbor Field | Description |
+| Data Source | Harbor Scale Field | Description |
 | :--- | :--- | :--- |
 | `end_device_ids.device_id` | `ship_id` | Your TTN Device ID becomes the Ship ID. |
 | `decoded_payload` Keys | `cargo_id` | e.g., "temperature", "humidity". |
@@ -136,4 +136,4 @@ In addition to your sensor data (`decoded_payload`), the TTN Harbor automaticall
 **Duplicate Data**
 
   - **Cause:** TTN sometimes sends retries if the network is slow.
-  - **Fix:** Telemetry Harbor automatically handles deduplication based on the timestamp and device ID, so no action is needed.
+  - **Fix:** Harbor Scale automatically handles deduplication based on the timestamp and device ID, so no action is needed.

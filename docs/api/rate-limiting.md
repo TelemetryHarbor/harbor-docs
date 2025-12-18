@@ -6,7 +6,7 @@ description: Understand API error responses and how to handle rate limits.
 
 # Rate Limiting
 
-Telemetry Harbor enforces rate limits to ensure system stability and fair usage across tenants. These limits vary depending on your **Harbor type** and **subscription plan**.
+Harbor Scale enforces rate limits to ensure system stability and fair usage across tenants. These limits vary depending on your **Harbor type** and **subscription plan**.
 
 ## Categories of Limits
 
@@ -15,7 +15,7 @@ Rate limiting is applied **per second**, across two main categories:
 - **Single Data Requests** – Limits individual data point submissions (e.g., one JSON payload per request).
 - **Batch Requests** – Apply to requests that contain multiple data points in a single payload.
 
-Refer to your Harbor's limits under [Telemetry Harbor Tiers](https://harborscale.com/pricing) for exact thresholds.
+Refer to your Harbor's limits under [Harbor Scale Tiers](https://harborscale.com/pricing) for exact thresholds.
 
 
 ## Common HTTP Errors
@@ -34,7 +34,7 @@ The API returns specific HTTP status codes when request limits or formats are vi
 
 ## Handling API Errors Gracefully
 
-Telemetry Harbor APIs return specific HTTP status codes to help you identify and handle issues correctly. Below are the common error types and how your client should respond to each.
+Harbor Scale APIs return specific HTTP status codes to help you identify and handle issues correctly. Below are the common error types and how your client should respond to each.
 
 ### 429 Too Many Requests
 
@@ -45,7 +45,7 @@ You have exceeded your rate limit.
 
 * Use exponential backoff with jitter to retry after a delay.
 * Avoid sending bursts of requests. Optimize your submission frequency.
-* If your use case requires higher throughput, consider upgrading your Harbor plan. See [Telemetry Harbor Tiers](https://harborscale.com/pricing).
+* If your use case requires higher throughput, consider upgrading your Harbor plan. See [Harbor Scale Tiers](https://harborscale.com/pricing).
 
 
 
@@ -112,6 +112,6 @@ If you're consistently hitting rate or size limits, upgrading to a higher-tier H
 - Advanced Backup
 - Priority Support
 
-See [Telemetry Harbor Tiers](https://harborscale.com/pricing) for details.
+See [Harbor Scale Tiers](https://harborscale.com/pricing) for details.
 
 

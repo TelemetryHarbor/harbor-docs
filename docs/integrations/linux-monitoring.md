@@ -1,12 +1,12 @@
 ---
 sidebar_position: 4
 title: Linux System Monitoring
-description: Set up a Linux agent to send system metrics (CPU, RAM, Disk) to Telemetry Harbor.
+description: Set up a Linux agent to send system metrics (CPU, RAM, Disk) to Harbor Scale.
 ---
 
 # Linux System Monitoring
 
-This guide explains how to set up a lightweight monitoring agent on your Linux servers to collect various system metrics and send them to Telemetry Harbor. This allows you to centralize monitoring, create custom dashboards in Grafana, and set up alerts for your Linux infrastructure.
+This guide explains how to set up a lightweight monitoring agent on your Linux servers to collect various system metrics and send them to Harbor Scale. This allows you to centralize monitoring, create custom dashboards in Grafana, and set up alerts for your Linux infrastructure.
 
 **_Repo Link:_** https://github.com/harborscale/harbor-linux-monitor
 
@@ -17,21 +17,21 @@ Before starting, ensure you have:
 
 -   A **Linux** system with **root/sudo** access.
 -   **curl** installed for API communication.
--   A working internet connection to send metrics to Telemetry Harbor.
--   A **Telemetry Harbor account** (free tier available).
+-   A working internet connection to send metrics to Harbor Scale.
+-   A **Harbor Scale account** (free tier available).
 -   Basic knowledge of Linux terminal commands.
 
 ## How it Works
 
-The Linux monitoring agent is a bash script that leverages standard Linux commands (like `top`, `free`, `df`, `netstat`, `sensors`) to collect system performance metrics. It then formats these metrics into the Telemetry Harbor [General Harbor Data Type Model](../introduction/concepts.md#general-harbor-data-type-model) and sends them in batches to your Telemetry Harbor ingestion endpoint at a configurable interval. The agent runs as a `systemd` service for reliability.
+The Linux monitoring agent is a bash script that leverages standard Linux commands (like `top`, `free`, `df`, `netstat`, `sensors`) to collect system performance metrics. It then formats these metrics into the Harbor Scale [General Harbor Data Type Model](../introduction/concepts.md#general-harbor-data-type-model) and sends them in batches to your Harbor Scale ingestion endpoint at a configurable interval. The agent runs as a `systemd` service for reliability.
 
-<img src="/placeholder.svg?height=300&width=500" alt="Diagram showing Linux server to monitoring agent to Telemetry Harbor" />
+<img src="/placeholder.svg?height=300&width=500" alt="Diagram showing Linux server to monitoring agent to Harbor Scale" />
 
 ## Setup
 
-### 1. Create a Telemetry Harbor Account
+### 1. Create a Harbor Scale Account
 
-1.  **Sign up** at [Telemetry Harbor](https://harborscale.com/)
+1.  **Sign up** at [Harbor Scale](https://harborscale.com/)
 2.  **Verify** your email and log in
 3.  **Create a Harbor**:
     -   Click **Create Harbor** on your dashboard
@@ -66,7 +66,7 @@ The Linux monitoring agent is a bash script that leverages standard Linux comman
 
 During installation, you'll be prompted to:
 
-1.  **Enter your Telemetry Harbor API details**:
+1.  **Enter your Harbor Scale API details**:
     -   API Batch Endpoint URL
     -   API Key
 2.  **Select a sampling rate** for how often metrics are collected:
@@ -164,7 +164,7 @@ sudo ./install-monitoring.sh --uninstall
 
 -   Check the service logs: `journalctl -u harbor-monitor -f`.
 -   Verify the metrics are being collected correctly.
--   Ensure your Telemetry Harbor account is active.
+-   Ensure your Harbor Scale account is active.
 
 **High CPU usage from the monitoring service**
 

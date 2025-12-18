@@ -3,6 +3,6 @@
   "position": 8,
   "link": {
     "type": "generated-index",
-    "description": "Telemetry Harbor OSS is the open-source ingestion and visualization stack behind Telemetry Harbor"
+    "description": "Harbor Scale OSS is the open-source ingestion and visualization stack behind Harbor Scale"
   }
 }

@@ -1,12 +1,12 @@
 ---
 sidebar_position: 2
 title: Pushing Telemetry Data
-description: Learn the general principles of sending single and batch telemetry data points to Telemetry Harbor.
+description: Learn the general principles of sending single and batch telemetry data points to Harbor Scale.
 ---
 
 # Pushing Telemetry Data
 
-Telemetry Harbor provides robust endpoints for pushing your telemetry data to our platform. You can send individual data points or batch data for more efficient data transmission.
+Harbor Scale provides robust endpoints for pushing your telemetry data to our platform. You can send individual data points or batch data for more efficient data transmission.
 
 :::info Important
 The specific data model (payload structure) and API endpoints for ingestion depend on the **Harbor Type** you have created. This page provides a general overview of pushing data. For detailed information on the data model and endpoints for each Harbor Type, please refer to the [Harbor Types](../getting-started/harbor-types.md) documentation.
@@ -159,6 +159,6 @@ Instead of using cURL or an SDK, you configure the "Push" inside the TTN Console
             - (Optional) Uncheck others to reduce noise. 
       
 
-Once configured, every uplink message received by The Things Network is automatically pushed to Telemetry Harbor.
+Once configured, every uplink message received by The Things Network is automatically pushed to Harbor Scale.
 
 

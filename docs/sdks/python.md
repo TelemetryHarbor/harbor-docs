@@ -3,9 +3,9 @@ title: Python SDK
 sidebar_position: 2
 ---
 
-# Telemetry Harbor Python SDK
+# Harbor Scale Python SDK
 
-<!-- Telemetry Harbor SDK Badges -->
+<!-- Harbor Scale SDK Badges -->
 <!-- PyPI -->
 ![PyPI](https://img.shields.io/pypi/v/harborscalesdk.svg)
 ![Python Versions](https://img.shields.io/pypi/pyversions/harborscalesdk.svg)
@@ -27,7 +27,7 @@ sidebar_position: 2
 ![Stars](https://img.shields.io/github/stars/harborscale/harbor-sdk-python.svg?style=social)
 ![Forks](https://img.shields.io/github/forks/harborscale/harbor-sdk-python.svg?style=social)
 
-A modern, production-ready SDK for sending telemetry data to the **Telemetry Harbor** service from any Python application.
+A modern, production-ready SDK for sending telemetry data to the **Harbor Scale** service from any Python application.
 
 This SDK simplifies data sending by handling HTTP communication, JSON serialization, and robust error handling with automatic retries.
 
@@ -134,7 +134,7 @@ ORDER BY time;
 ### `HarborClient(endpoint, api_key, max_retries=5, initial_backoff=1.0)`
 
 Create a new client instance.
-*   `endpoint` (str): Telemetry Harbor ingestion URL.
+*   `endpoint` (str): Harbor Scale ingestion URL.
 *   `api_key` (str): Your API key.
 *   `max_retries` (int, optional): Retry attempts on failure (default 5).
 *   `initial_backoff` (float, optional): Initial backoff in seconds (default 1.0).

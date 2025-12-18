@@ -1,12 +1,12 @@
 ---
 sidebar_position: 7
 title: Apple Health Integration
-description: Use iOS Shortcuts to send Apple Health data (steps, heart rate, etc.) to Telemetry Harbor.
+description: Use iOS Shortcuts to send Apple Health data (steps, heart rate, etc.) to Harbor Scale.
 ---
 
 # Apple Health Integration
 
-This guide explains how to use iOS Shortcuts to automatically send Apple Health data (such as steps, heart rate, calories, or sleep) to Telemetry Harbor. This allows you to monitor your health metrics, visualize trends, and correlate them with other telemetry in **Grafana dashboards**.
+This guide explains how to use iOS Shortcuts to automatically send Apple Health data (such as steps, heart rate, calories, or sleep) to Harbor Scale. This allows you to monitor your health metrics, visualize trends, and correlate them with other telemetry in **Grafana dashboards**.
 
 **_Shortcut Link:_** https://routinehub.co/shortcut/23264/
 
@@ -18,12 +18,12 @@ Before starting, ensure you have:
 -   **iOS Shortcuts app** (pre-installed on modern iOS).
 -   An active **internet connection** (WiFi or cellular).
 -   **Apple Health** app enabled with the relevant permissions.
--   A **Telemetry Harbor account** (free tier available).
+-   A **Harbor Scale account** (free tier available).
 -   Basic knowledge of iOS Shortcuts configuration.
 
 ## How it Works
 
-This integration uses iOS Shortcuts to fetch health data directly from the Apple Health app, package it into **Telemetry Harbor’s General Data Model**, and send it to your Harbor endpoint via HTTP POST.  
+This integration uses iOS Shortcuts to fetch health data directly from the Apple Health app, package it into **Harbor Scale’s General Data Model**, and send it to your Harbor endpoint via HTTP POST.  
 
 Unlike single-purpose shortcuts, this one is **fully customizable**: you select which health metric (steps, heart rate, calories, etc.) to track. You can even **duplicate the shortcut** to send multiple types of health data in parallel.  
 
@@ -32,9 +32,9 @@ Data is transmitted as a **daily log of raw points** (not aggregated totals). Ea
 
 ## Setup
 
-### 1. Create a Telemetry Harbor Account
+### 1. Create a Harbor Scale Account
 
-1.  **Sign up** at [Telemetry Harbor](https://harborscale.com/)
+1.  **Sign up** at [Harbor Scale](https://harborscale.com/)
 2.  **Verify** your email and log in
 3.  **Create a Harbor**:
     -   Click **Create Harbor** on your dashboard
@@ -58,7 +58,7 @@ Data is transmitted as a **daily log of raw points** (not aggregated totals). Ea
     -   When prompted, tap **Add Shortcut** to install it into your Shortcuts library.
 2.  **Configure the shortcut**:
     -   Open the **Shortcuts app**.
-    -   Find the "Telemetry Harbor - Apple Health Tracker" shortcut.
+    -   Find the "Harbor Scale - Apple Health Tracker" shortcut.
     -   Tap the **three dots (⋯)** to edit the workflow.
 3.  **Select Health Metric**:
     -   In the shortcut actions, choose which Apple Health data type to export (steps, heart rate, sleep, etc.).
@@ -75,7 +75,7 @@ During setup, you’ll need to:
 1.  **Select the health metric**:
     -   Choose one Apple Health data type to export with this shortcut.
     -   To track multiple metrics, **duplicate the shortcut** and configure each separately.
-2.  **Enter your Telemetry Harbor API details**:
+2.  **Enter your Harbor Scale API details**:
     -   API Endpoint URL
     -   API Key
 3.  **Grant permissions**:
@@ -124,7 +124,7 @@ Automation Options:
 
 ````
 
-⚠️ If you run **multiple duplicated shortcuts**, make sure to leave a time gap between them. Running several at the same time may exceed your Telemetry Harbor plan’s rate limits.
+⚠️ If you run **multiple duplicated shortcuts**, make sure to leave a time gap between them. Running several at the same time may exceed your Harbor Scale plan’s rate limits.
 
 ### Automation Setup Steps
 
@@ -170,7 +170,7 @@ Check your Grafana dashboard:
 
 -   Adjust Grafana dashboard time range.
 -   Confirm correct `ship_id` and `cargo_id`.
--   Ensure Telemetry Harbor quota is not exceeded.
+-   Ensure Harbor Scale quota is not exceeded.
 
 **Duplicate runs**
 
@@ -178,7 +178,7 @@ Check your Grafana dashboard:
 
 ## Visualizing Data in Grafana
 
-Once your Apple Health data is flowing into Telemetry Harbor:
+Once your Apple Health data is flowing into Harbor Scale:
 
 1.  Log in to Grafana using your Harbor credentials.
 2.  Navigate to **Dashboards** → **Comprehensive Telemetry Dashboard**.
