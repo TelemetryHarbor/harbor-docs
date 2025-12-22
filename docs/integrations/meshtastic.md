@@ -9,6 +9,9 @@ description: Turn any computer into a Telemetry Gateway for your Meshtastic LoRa
 This guide explains how to integrate your Meshtastic LoRa mesh network with Harbor Scale. By using the **Harbor Lighthouse** agent, you can turn a computer (Raspberry Pi, Laptop, or Server) connected to a Meshtastic device into a telemetry gateway.
 
 
+![Image](https://i.imgur.com/DLqunXx.jpeg)
+
+
 
 Unlike previous methods that required manual Python scripts, Lighthouse now handles this natively via the `mesh_engine` driver. It acts as a gateway, reporting battery levels, environmental metrics, and signal statistics for **every node** in your mesh, not just the connected device.
 
