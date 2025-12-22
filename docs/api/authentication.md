@@ -1,53 +1,58 @@
 ---
 sidebar_position: 1
 title: Authentication
-description: How to authenticate your requests to the Harbor Scale API using API Keys.
+description: How to authenticate your requests using API Keys.
 ---
 
 # Authentication
 
-Harbor Scale uses API Key authentication to secure access to our API. To authenticate your requests, you must include your API key in the header of each request.
+Harbor Scale uses **API Keys** to secure your ingestion endpoints. Every Harbor you deploy has its own unique API Key.
 
 ## API Key Header
 
-Include the following header in all your API requests:
+To authenticate, you must include the following header in all your HTTP requests:
+
 
 ```
+
 X-API-Key: your_api_key_here
+
 ```
 
-Replace \`your_api_key_here\` with the actual API key provided to you by Harbor Scale. If you don't have an API key, please contact our support team or retrieve it from your [Harbor Details page](../getting-started/quick-start.md#3-get-your-api-endpoints-and-key).
+## Where to find your Key
 
+You can retrieve your key instantly from the Dashboard:
+
+2.  **Harbor Details:** Open your Harbors page, click the **...** tab, and click the 👁️ (Show) icon next to **Access Key**.
 
 ## Security Best Practices
 
-To ensure the security of your Harbor Scale account and data, follow these best practices for managing your API keys:
+To ensure the security of your account, follow these rules:
 
--   **Keep your API key confidential and secure.** Treat it like a password.
--   **Do not share your API key in publicly accessible areas** such as GitHub repositories, client-side code (e.g., JavaScript in a browser), or public forums.
--   **Rotate your API key periodically** for enhanced security. If you suspect your API key has been compromised, generate a new one immediately from your Harbor Scale dashboard.
--   **Use environment variables** to store your API key in your applications. This prevents hardcoding sensitive information directly into your codebase.
+-   **Treat it like a password.** Never share screenshots of your dashboard containing the visible key.
+-   **Do not commit it to GitHub.** If you are writing code, use Environment Variables (see below).
+-   **Rotate if compromised.** You can instantly generate a new key by clicking the "Refresh" icon in the **Details** tab. *Note: This will break existing devices until you update them.*
 
-  **Example (Node.js):**
-  ```javascript
-  // In your application code
-  const API_KEY = process.env.TELEMETRY_HARBOR_API_KEY;
+### Using Environment Variables (Recommended)
 
-  // In your .env file (for local development)
-  // TELEMETRY_HARBOR_API_KEY=your_actual_api_key
-  ```
+Instead of hardcoding the key, store it in an `.env` file or your server's environment settings.
 
-  **Example (Python):**
-  ```python
-  import os
+**Node.js Example:**
+```javascript
+// Good Practice
+const API_KEY = process.env.HARBOR_API_KEY;
 
-  # In your application code
-  API_KEY = os.environ.get("TELEMETRY_HARBOR_API_KEY")
+// Bad Practice
+// const API_KEY = "hs_live_12345..."; 
 
-  # In your .env file (for local development)
-  # TELEMETRY_HARBOR_API_KEY=your_actual_api_key
-  ```
+```
 
--   **Implement server-side ingestion** for sensitive data. Avoid sending data directly from client-side applications (e.g., web browsers, mobile apps) if it requires your private API key. Instead, route data through a secure backend server that holds your API key.
+**Python Example:**
 
-By adhering to these practices, you can significantly enhance the security posture of your Harbor Scale integration.
+```python
+import os
+
+# Good Practice
+api_key = os.environ.get("HARBOR_API_KEY")
+
+```

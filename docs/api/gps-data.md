@@ -1,75 +1,44 @@
 ---
 sidebar_position: 3
+title: Handling GPS Data
+description: Best practices for ingesting location data (Latitude/Longitude).
 ---
 
-# GPS Data
+# Handling GPS Data
 
-Harbor Scale supports GPS data ingestion for location-based IoT applications. When submitting GPS data, follow these guidelines:
+Harbor Scale treats GPS location not as a special data type, but as two distinct standard metrics: `latitude` and `longitude`.
 
-- Use the same timestamp for both latitude and longitude values.
-- Use distinct cargo_id values for latitude and longitude (e.g., "sen_lat" and "sen_long").
-- The ship_id should correspond to the device sending the GPS data.
+To successfully track a moving device on a map, you must follow one strict rule: **Latitude and Longitude must share the exact same timestamp.**
 
-## Example GPS Data Submission
+## Best Practice: Use Batch Ingestion
+Never send GPS data as single requests. If you send Latitude, and then 1 second later send Longitude, your map visualization will fail to join them. Always bundle them in a single batch request.
 
-When submitting GPS data, you would include two separate data points for each location update: one for latitude and one for longitude. Both would share the same timestamp and ship_id, but have different cargo_id values.
+### The Schema
+Use specific `cargo_id` names to make visualization easier later:
+* `latitude` (or `lat`)
+* `longitude` (or `long` / `lon`)
 
-# Single GPS Location Ingestion
+### Example Batch Payload
+Send this array to the batch endpoint: `POST /api/v2/ingest/YOUR_HARBOR_ID/batch`
 
-To submit a single ship GPS location:
-
-`Shared`
-- Single Data Push: `POST https://harborscale.com/api/v2/ingest/ingest/harbor_id`
-
-`Enterprise Dedicated`
-- Single Data Push: `POST https://CustomName.harbor.harborscale.com/api/v2/ingest/ingest/harbor_id`
-
-Example request body:
-```
-{
-  "time": "2024-11-18T19:24:00.948Z",
-  "ship_id": "Ship1",
-  "cargo_id": "longitude",
-  "value": 0
-}
-```
-```
-{
-  "time": "2024-11-18T19:24:00.948Z",
-  "ship_id": "Ship1",
-  "cargo_id": "latitude",
-  "value": 0
-}
-```
-
-Include a JSON object with time, ship_id, cargo_id, and value fields.
-
-## Batch Data Ingestion
-
-To submit multiple ship readings at once:
-
-`Shared`
-- Batch Data Push: `POST https://harborscale.com/api/v2/ingest/ingest/harbor_id/batch`
-`Enterprise Dedicated`
-- Batch Data Push: `POST https://CustomName.harbor.harborscale.com/api/v2/ingest/ingest/harbor_id/batch`
-
-Example request body:
-```
+```json
 [
   {
-    "time": "2024-11-18T19:24:19.687Z",
-    "ship_id": "Ship1",
-    "cargo_id": "longitude",
-    "value": 0
+    "time": "2024-11-18T19:24:00.000Z",
+    "ship_id": "delivery-truck-05",
+    "cargo_id": "latitude",
+    "value": 40.7128
   },
   {
-    "time": "2024-11-18T19:24:19.687Z",
-    "ship_id": "Ship1",
-    "cargo_id": "latitude",
-    "value": 0
+    "time": "2024-11-18T19:24:00.000Z",
+    "ship_id": "delivery-truck-05",
+    "cargo_id": "longitude",
+    "value": -74.0060
+  },
+  {
+    "time": "2024-11-18T19:24:00.000Z",
+    "ship_id": "delivery-truck-05",
+    "cargo_id": "speed_kmh",
+    "value": 45.2
   }
 ]
-```
-Include an array of JSON objects, each with time, ship_id, cargo_id, and value fields.
-
-This format allows you to submit GPS coordinates as part of your regular ship data stream, enabling seamless integration of location data with other ship readings.

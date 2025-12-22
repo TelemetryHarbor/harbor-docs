@@ -1,77 +1,19 @@
----
-sidebar_position: 1
----
+# Welcome to Harbor Scale
 
-# Introduction to Harbor Scale
+Harbor Scale is a high-performance ingestion engine for your IoT and Telemetry data. We solved the hardest part of IoT: **getting the data from the device to the dashboard.**
 
-Welcome to Harbor Scale, your comprehensive solution for ingesting, storing, and visualizing telemetry data from a wide array of sources. Whether you're tracking maritime vessels, monitoring IoT devices, overseeing industrial equipment, or managing any other time-series data, Harbor Scale provides the robust tools and scalable infrastructure you need to harness the power of your data.
+Most platforms force you to write complex boilerplate code, manage MQTT topics, or configure server agents manually. Harbor flips this model:
 
-## What is Harbor Scale?
+1.  **Define:** Tell us what hardware you have (e.g., ESP32, Raspberry Pi).
+2.  **Generate:** Our **Embedded Wizard** writes the custom firmware for you—credentials included.
+3.  **Deploy:** Flash the code or run the script. You are done.
 
-Harbor Scale is a cloud-based platform designed to handle the complexities of large-scale telemetry data management. It offers a seamless experience from data ingestion to visualization, enabling businesses and organizations to make data-driven decisions with ease and confidence.
+### The Ecosystem
 
+* **Harbors:** Your dedicated data ingestion nodes. Think of them as the "Server."
+* **Ships:** The devices sending data (ESP32, Servers, Docker containers).
+* **Cargo:** The actual metrics (Temperature, CPU Load, GPS).
+* **Lighthouse:** A plug-and-play agent that instantly monitors Linux, Windows, and Docker without any coding.
+* **Grafana:** Every Harbor comes with a dedicated, managed Grafana instance for visualization.
 
-## Key Features
-
-- **Real-time Data Ingestion**: Collect data from your IoT devices in real-time, ensuring you always have the latest information.
-
-- **Multi-protocol Support**: Support for various IoT protocols including MQTT, CoAP, and HTTP, enabling seamless device integration.
-
-- **Secure Data Transmission**: End-to-end encryption ensures your data remains secure from device to harbor.
-
-- **AI-Powered Insights**: Leverage artificial intelligence to uncover hidden patterns and anomalies in your data.
-
-- **Scalable Infrastructure**: Our cloud-based platform grows with your needs, from small projects to enterprise-scale deployments.
-
-- **Smart Alerts**: Set up custom notifications for specific events or data thresholds across your harbors.
-
-- **Data Retention Control**: Flexible data storage options with customizable retention policies to meet your specific needs.
-
-- **Lightning-Fast Ingestion**: Ingest millions of data points per second with our optimized pipeline.
-
-- **Powerful Visualization**: Create stunning dashboards and alerts with our Grafana integration.
-
-- **High Availability**: Ensure maximum uptime and data reliability for mission-critical IoT applications.
-
-- **Automated Backups**: Regular automated backups to keep your data safe and easily recoverable.
-
-- **GPS Data**: Seamlessly ingest and analyze GPS data including longitude and latitude for location-based insights.
-
-## Use Cases
-
-Harbor Scale is versatile and can be applied across various industries and scenarios:
-
-1. **Maritime Tracking and Logistics**
-   - Monitor vessel positions, speed, and heading in real-time
-   - Track fuel consumption and efficiency
-   - Manage fleet performance and maintenance schedules
-
-2. **IoT Device Monitoring**
-   - Collect and analyze data from thousands of IoT devices
-   - Monitor device health and performance
-   - Detect anomalies and trigger maintenance alerts
-
-3. **Industrial Sensor Data Management**
-   - Track production line efficiency
-   - Monitor equipment performance and predict maintenance needs
-   - Ensure compliance with safety and environmental regulations
-
-4. **Smart City Infrastructure**
-   - Monitor traffic patterns and optimize traffic light timing
-   - Track energy consumption across city buildings
-   - Manage waste collection routes based on fill-level sensors
-
-5. **Environmental Monitoring**
-   - Track air quality indices across multiple locations
-   - Monitor water levels and quality in rivers and reservoirs
-   - Analyze weather patterns and climate trends
-
-6. **Healthcare and Fitness Tracking**
-   - Aggregate and analyze data from wearable devices
-   - Monitor patient vital signs in hospital settings
-   - Track fitness trends and performance metrics for athletes
-
-
-
-Join the growing community of businesses and developers who trust Harbor Scale for their telemetry data needs. Start your journey towards more insightful, data-driven decision-making today!
-
+Ready to see data flow? [Jump to the Quick Start](../getting-started/quick-start.md).

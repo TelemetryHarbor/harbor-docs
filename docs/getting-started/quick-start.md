@@ -1,105 +1,66 @@
 ---
 sidebar_position: 1
 title: Quick Start Guide
-description: Get started with Harbor Scale in minutes. Create an account, set up a harbor, send data, and visualize.
+description: Get your first data point into Harbor Scale in under 2 minutes.
 ---
 
 # Quick Start Guide
 
-This guide will help you get up and running with Harbor Scale quickly. Follow these steps to create your account, set up a harbor, send your first data point, and visualize it in Grafana.
+Harbor Scale is designed to get you from "Zero" to "Dashboard" in minutes. We automate the code writing process so you can focus on the data.
 
-## 1. Create an Account
+## 1. Create a Harbor
+1.  Log in to your [Harbor Scale Dashboard](https://harborscale.com).
+2.  Click **Deploy Harbor**.
+3.  Select **General** (unless you are specifically using LoRaWAN).
+4.  Click **Create**.
 
-1.  Visit [Harbor Scale's website](https://www.harborscale.com) and click on "Sign Up".
-2.  Fill in your details and submit the registration form.
-3.  Check your email for a verification link and click it to verify your account.
+## 2. Connect Your Device
+We don't ask you to read API docs. We generate the firmware for you.
 
-## 2. Create a Harbor
+1.  Click the **Connect** tab inside your new Harbor.
+2.  Browse the categories to find your device type:
 
-1.  Log in to your Harbor Scale dashboard.
-2.  Click on "Create New Harbor" and select **General** for the type and **Free** for the specs.
-3.  Once created, you can view the Harbor Details.
+### 🏗️ Path A: Lighthouse (Servers & Laptops)
+Best for monitoring the computer you are using right now (Linux, Windows, or Docker).
 
-## 3. Get Your API Endpoints and Key
+1.  Look for the **Harbor Lighthouse** section.
+2.  Click the tile matching your OS (e.g., **Linux System** or **Windows System**).
+3.  Copy the **One-Line Install Script** displayed in the window.
+4.  Paste it into your terminal and run it.
+5.  *Success! Data is now flowing.*
 
-From the Harbor Details page, you will find the necessary credentials:
+### 🔌 Path B: Microcontrollers (ESP32 / Arduino)
+Best for custom sensors and hardware.
 
-1.  Copy the **Single Ingestion Endpoint** or **Batch Ingestion Endpoint**.
-2.  Copy your **API Key**. Keep this secure, as it's used to authenticate your requests.
+1.  Look for the **Microcontrollers** section.
+2.  Click on your specific board (e.g., **ESP32**, **ESP8266**, or **Pico W**).
+3.  A wizard will open. Enter your **WiFi Credentials** and select a **Sensor Strategy** (e.g., Simulated).
+4.  **Copy the Code.** It is automatically generated with your API Key and WiFi details included.
+5.  Flash it to your device using Arduino IDE or PlatformIO.
 
-:::warning
-**Security Notice**
+### ☁️ Path C: No-Code Integrations
+Best for 3rd party apps.
 
-Your API Key is sensitive. Do not share it publicly or embed it directly in client-side code. Use environment variables for secure storage.
+1.  Look for the **Cloud & Mobile** section.
+2.  Select an integration like **iPhone Location** or **Home Assistant**.
+3.  Follow the visual instructions to copy the Webhook URL or Shortcut into your app.
+
+### 🛠️ Path D: Manual / API (Hardcore)
+Best for developers who want raw HTTP access or are building custom backends.
+
+1.  Look for the **Cloud & Mobile** section.
+2.  Click the **Manual / cURL** tile.
+3.  Here you will see your raw **API Key** and **Ingest URL**.
+4.  Copy the generated **cURL command** to test your connection instantly from your terminal.
+
+## 3. Visualize in Grafana
+Every Harbor comes with a dedicated Grafana instance.
+
+1.  Click the **Visualize** tab.
+2.  Click **Launch Dashboard**.
+3.  Login with the credentials shown on the screen.
+4.  Open the **"Comprehensive Telemetry"** dashboard to see your data instantly.
+
+:::tip Pro Tip
+You can also ask **Harbor AI** questions about your data immediately, such as *"What is the average CPU usage for the last 10 minutes?"*
 :::
-
-
-
-## 4. Send Your First Data Point
-
-You can send data using `curl`. Since the API requires a timestamp, we will generate the current time automatically so your data appears in Grafana immediately.
-
-**General Endpoints:**
--   **Single Data Push**: `POST https://harborscale.com/api/v2/ingest/your_harbor_id`
--   **Batch Data Push**: `POST https://harborscale.com/api/v2/ingest/your_harbor_id/batch`
-
-Replace `YOUR_HARBOR_ID` and `YOUR_API_KEY` in the examples below.
-
-### Linux / MacOS (Bash)
-This command automatically inserts the current UTC timestamp:
-
-```bash
-curl -X POST "https://harborscale.com/api/v2/ingest/YOUR_HARBOR_ID" \
-  -H "X-API-Key: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d "{
-    \"time\": \"$(date -u +"%Y-%m-%dT%H:%M:%S.%3NZ")\",
-    \"ship_id\": \"quickstart_ship\",
-    \"cargo_id\": \"temperature\",
-    \"value\": 24.5
-  }"
-````
-
-### Windows (PowerShell)
-
-Use this command if you are on Windows:
-
-```powershell
-$timestamp = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
-
-Invoke-RestMethod -Uri "https://harborscale.com/api/v2/ingest/YOUR_HARBOR_ID" `
-  -Method Post `
-  -Headers @{ "X-API-Key" = "YOUR_API_KEY" } `
-  -ContentType "application/json" `
-  -Body (@{
-    time = $timestamp
-    ship_id = "quickstart_ship"
-    cargo_id = "temperature"
-    value = 24.5
-  } | ConvertTo-Json)
-```
-
-## 5\. Visualize Your Data
-
-Harbor Scale integrates seamlessly with Grafana for powerful data visualization.
-
-1.  From the Harbor Details, copy the **Grafana Endpoint** and **Grafana Password**.
-    > **Note:** Your Grafana password is different from your main account password.
-2.  Open the Grafana endpoint in your browser and log in using:
-      - **Username**: [Your Harbor Scale Account Email]
-      - **Password**: [The password from Harbor Details]
-3.  You'll find pre-configured dashboards ready for your data.
-
-## 6\. Explore the Demo Dashboard
-
-To get started quickly:
-
-1.  In Grafana, look for the **"Comprehensive Telemetry Dashboard"** in your list of dashboards.
-2.  Open it to see example visualizations of the data you just sent.
-3.  Use this as a template to create your own custom dashboards.
-
------
-
-**Congratulations\!** You've set up your Harbor Scale account, sent your first data point, and accessed your visualization tools.
-
-For more detailed information on data ingestion, API usage, and advanced Grafana configurations, check out our [Harbor Types documentation](https://docs.harborscale.com/docs/getting-started/harbor-types).

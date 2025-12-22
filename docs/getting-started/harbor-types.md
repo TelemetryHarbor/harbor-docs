@@ -1,203 +1,74 @@
 ---
 sidebar_position: 4
 title: Harbor Types
-description: Learn about the different types of Harbors available in Harbor Scale, their data models, and ingestion methods.
+description: Understanding the data models for General and TTN Harbors.
 ---
 
 # Harbor Types
 
-Harbor Scale offers different "Harbor Types" to cater to various data storage and processing needs. Each Harbor Type is optimized for specific use cases and may have its own data model and ingestion endpoints.
+Harbor Scale uses different "Types" to handle specific ingestion protocols. Choosing the right type ensures your data is parsed and stored correctly.
 
-## General Harbor
+## 1. General Harbor (Standard)
+**Best for:** ESP32, Python, Lighthouse, Arduino, REST API.
 
-The "General" Harbor is designed for broad applicability, allowing you to ingest any numerical time-series data. It's the default and recommended choice for most users.
+The General Harbor is a flexible engine that accepts raw JSON telemetry. It does not perform decoding; it stores exactly what you send.
 
-### General Harbor Data Model
+### The Data Model
+When you send data to a General Harbor, it is stored in the `cargo_data` table. This is important to know for building Grafana dashboards.
 
-When submitting telemetry readings to a General Harbor, use the following data model:
-
-| Field      | Type       | Description                                                              | Example Value                 |
-| :--------- | :--------- | :----------------------------------------------------------------------- | :---------------------------- |
-| `time`     | `string`   | Timestamp of the reading in ISO 8601 format (UTC recommended).           | `"2024-01-01T12:30:00.000Z"`  |
-| `ship_id`  | `string`   | Unique identifier for the device or entity sending the data.             | `"sensor-node-1"`, `"truck-A"` |
-| `cargo_id` | `string`   | Unique identifier for the specific metric or event being recorded.       | `"temperature"`, `"latitude"`, `"engine_rpm"` |
-| `value`    | `number`   | The numerical value of the metric (double precision float).              | `25.7`, `40.12345`, `980.5`   |
-
-### Ingesting Data to a General Harbor
-
-You can send individual data points or batch data for more efficient data transmission.
-
-#### Single Data Point Ingestion
-
-To submit a single telemetry reading to a General Harbor:
-
-**Endpoint:**
--   `Shared`: `POST https://harborscale.com/api/v2/ingest/your_harbor_id`
--   `Enterprise Dedicated`: `POST https://CustomName.harbor.harborscale.com/api/v2/ingest/your_harbor_id`
-
-Replace `your_harbor_id` with your actual Harbor ID.
-
-##### Example Request Body
+Every piece of data sent to Harbor follows this simple JSON structure:
 
 ```json
 {
   "time": "2024-11-18T19:24:00.948Z",
-  "ship_id": "my_device_alpha",
-  "cargo_id": "battery_level",
-  "value": 85.5
+  "ship_id": "esp32-node-01",
+  "cargo_id": "temperature",
+  "value": 24.5
 }
+
 ```
 
-##### cURL Example
-
-```bash
-curl -X POST "https://harborscale.com/api/v2/ingest/ingest/your_harbor_id" \
--H "X-API-Key: your_api_key" \
--H "Content-Type: application/json" \
--d '{
-  "time": "2024-11-18T19:24:00.948Z",
-  "ship_id": "test_device_single",
-  "cargo_id": "test_metric",
-  "value": 123.45
-}'
-```
-
-#### Batch Data Ingestion
-
-To submit multiple telemetry readings at once to a General Harbor, which is more efficient for high-frequency data:
-
-**Endpoint:**
--   `Shared`: `POST https://harborscale.com/api/v2/ingest/ingest/your_harbor_id/batch`
--   `Enterprise Dedicated`: `POST https://CustomName.harbor.harborscale.com/api/v2/ingest/ingest/your_harbor_id/batch`
-
-Replace `your_harbor_id` with your actual Harbor ID.
-
-##### Example Request Body
-
-```json
-[
-  {
-    "time": "2024-11-18T19:24:19.687Z",
-    "ship_id": "my_device_beta",
-    "cargo_id": "temperature",
-    "value": 26.1
-  },
-  {
-    "time": "2024-11-18T19:24:19.687Z",
-    "ship_id": "my_device_beta",
-    "cargo_id": "humidity",
-    "value": 68.3
-  },
-  {
-    "time": "2024-11-18T19:24:20.000Z",
-    "ship_id": "my_device_gamma",
-    "cargo_id": "pressure",
-    "value": 1010.5
-  }
-]
-```
-
-##### cURL Example
-
-```bash
-curl -X POST "https://harborscale.com/api/v2/ingest/ingest/your_harbor_id/batch" \
--H "X-API-Key: your_api_key" \
--H "Content-Type: application/json" \
--d '[
-  {
-    "time": "2024-11-18T19:24:19.687Z",
-    "ship_id": "test_device_batch",
-    "cargo_id": "test_metric_1",
-    "value": 10.0
-  },
-  {
-    "time": "2024-11-18T19:24:19.687Z",
-    "ship_id": "test_device_batch",
-    "cargo_id": "test_metric_2",
-    "value": 20.0
-  }
-]'
-```
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| `time` | `timestamp` | When the event happened. |
+| `ship_id` | `text` | The device name (e.g., `sensor-01`). |
+| `cargo_id` | `text` | The metric name (e.g., `temperature`). |
+| `value` | `double` | The numerical reading. |
 
 
-### Querying General Harbor Data
 
-Harbor Scale stores your General Harbor data in a PostgreSQL database with TimescaleDB extensions. Understanding the underlying table schema is crucial for writing effective SQL queries, especially when building custom dashboards in Grafana.
+### Ingestion Methods
+You do not need to memorize API endpoints.
+1.  Go to your Harbor Dashboard.
+2.  Click **Connect**.
+3.  Select **Embedded Wizard** (for hardware) or **Lighthouse** (for servers).
+4.  The system will generate the code with the correct endpoints and keys pre-filled.
 
-#### `cargo_data` Table Schema
+---
 
-All telemetry readings for a General Harbor are stored in the `cargo_data` table. Here's its structure:
+## 2. The Things Network (TTN) Harbor
+**Best for:** LoRaWAN devices using The Things Stack (v3).
 
-```sql
-CREATE TABLE cargo_data (
-    time TIMESTAMPTZ NOT NULL, -- The timestamp of the reading in ISO 8601 format. This is the primary time dimension for all queries.
-    ship_id TEXT NOT NULL, -- A unique identifier for the device, sensor, or entity that sent the data. Useful for filtering and grouping data by source.
-    cargo_id TEXT NOT NULL, -- A unique identifier for the specific metric or event being recorded (e.g., "temperature", "engine_rpm"). This distinguishes different types of readings from the same ship_id
-    value DOUBLE PRECISION NOT NULL -- The numerical value of the reading.
-);
-```
-
-## The Things Network (TTN) Harbor
-
-The "TTN Harbor" is a specialized harbor type built specifically for **LoRaWAN** devices managed via **The Things Network (V3)**. It is designed to consume TTN Webhooks directly without any intermediate translation layer.
-
+This Harbor Type is a specialized **Webhook Receiver**. It is designed to "catch" the complex JSON payloads sent by The Things Network, automatically decode them, and flatten them into our simple data model.
 
 ### Automatic Data Mapping
+You do not need to write a parser. We automatically map TTN fields to Harbor columns:
 
-This Harbor type treats your LoRaWAN infrastructure as follows:
+| TTN Field | Maps to Harbor Column |
+| :--- | :--- |
+| `end_device_ids.device_id` | `ship_id` |
+| `uplink_message.decoded_payload` | `cargo_id` & `value` |
+| `received_at` | `time` |
 
-| TTN Concept | Harbor Scale Concept | Description |
-| :--- | :--- | :--- |
-| `device_id` | `ship_id` | The unique end-device ID from TTN becomes the Ship ID. |
-| `decoded_payload` keys | `cargo_id` | Keys in your decoded payload (e.g., "temp") become Cargo IDs. |
-| `decoded_payload` values | `value` | The values associated with those keys are stored as the metric values. |
-| `received_at` | `time` | The time the packet arrived at the network server (or `time` from payload if provided). |
+### Metadata Extraction
+In addition to your sensor data, we automatically extract network health metrics as distinct `cargo_id` entries:
+* `rssi` (Signal Strength)
+* `snr` (Signal-to-Noise Ratio)
+* `frequency`
+* `spreading_factor`
 
-### Built-in Metadata Cargo
-
-In addition to your payload, the TTN Harbor automatically tracks the following "Cargo" for every ship (device):
-
-  * `rssi`: Received Signal Strength Indicator (dBm)
-  * `snr`: Signal-to-Noise Ratio (dB)
-  * `frequency`: Transmission frequency (Hz)
-  * `bandwidth`: Bandwidth used (Hz)
-  * `spreading_factor`: LoRa Spreading Factor (7-12)
-
-### Configuration
-
-To connect a TTN Application to this Harbor:
-
-1.  **Create a TTN Harbor** in your Harbor Scale dashboard.
-2.  Copy your **Harbor ID** and **API Key**.
-3.  Go to your **TTN Console** \> **Integrations** \> **Webhooks**.
-4.  Click **Add Webhook** \> **Custom Webhook**.
-5.  **Webhook Settings**:
-      * **Base URL**:
-          * Shared: `https://harborscale.com/api/v2/ingest/your_harbor_id/ttn`
-          * Enterprise: `https://CustomName.harbor.harborscale.com/api/v2/ingest/your_harbor_id/ttn`
-      * **Method**: `POST`
-      * **Format**: `JSON`
-      * **Additional Headers**:
-          * Key: `X-API-Key`
-          * Value: `your_api_key_here`
-6.  **Enabled Messages**: Check **Uplink message**.
-
-> **Important:** Ensure your TTN **Payload Formatter** returns a flat JSON object in the `decoded_payload` field containing numbers. Nested objects or strings in the payload will be ignored.
-### Querying TTN Harbor Data
-
-Harbor Scale stores your TTN Harbor data in a PostgreSQL database with TimescaleDB extensions. Understanding the underlying table schema is crucial for writing effective SQL queries, especially when building custom dashboards in Grafana.
-
-#### `cargo_data` Table Schema
-
-All telemetry readings for a TTN Harbor are stored in the `cargo_data` table. Here's its structure:
-
-```sql
-CREATE TABLE cargo_data (
-    time TIMESTAMPTZ NOT NULL, -- The timestamp of the reading in ISO 8601 format. This is the primary time dimension for all queries.
-    ship_id TEXT NOT NULL, -- A unique identifier for the device, sensor, or entity that sent the data. Useful for filtering and grouping data by source.
-    cargo_id TEXT NOT NULL, -- A unique identifier for the specific metric or event being recorded (e.g., "temperature", "engine_rpm"). This distinguishes different types of readings from the same ship_id
-    value DOUBLE PRECISION NOT NULL -- The numerical value of the reading.
-);
-```
-
-
+### Setup
+1.  Create a **TTN Harbor**.
+2.  Go to the **Connect** tab.
+3.  Select **The Things Network**.
+4.  Copy the **Webhook URL** provided and paste it into your TTN Console under *Integrations > Webhooks*.

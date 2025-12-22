@@ -1,117 +1,112 @@
----
-sidebar_position: 3
-title: Rate Limiting & Error Codes
-description: Understand API error responses and how to handle rate limits.
+Here is a polished and formatted version of your documentation. I have enhanced the structure to improve readability, using blockquotes for actionable steps and ensuring the error handling sections are easy to scan.
+
 ---
 
-# Rate Limiting
+# Rate Limiting & Error Codes
 
-Harbor Scale enforces rate limits to ensure system stability and fair usage across tenants. These limits vary depending on your **Harbor type** and **subscription plan**.
+**Harbor Scale** enforces rate limits to ensure system stability and fair usage across all tenants. These limits are dynamic, determined by your **Harbor type** and **subscription plan**.
 
 ## Categories of Limits
 
-Rate limiting is applied **per second**, across two main categories:
+Rate limiting is applied **per second** across two main categories:
 
-- **Single Data Requests** – Limits individual data point submissions (e.g., one JSON payload per request).
-- **Batch Requests** – Apply to requests that contain multiple data points in a single payload.
+* **Single Data Requests:** Limits individual data point submissions (e.g., one JSON payload per request).
+* **Batch Requests:** Applies to requests containing multiple data points within a single payload.
 
-Refer to your Harbor's limits under [Harbor Scale Tiers](https://harborscale.com/pricing) for exact thresholds.
+> **Note:** For exact thresholds regarding your plan, refer to the [Harbor Scale Tiers](https://harborscale.com/pricing).
 
+---
 
 ## Common HTTP Errors
 
-The API returns specific HTTP status codes when request limits or formats are violated:
+The API returns standard HTTP status codes to indicate success or specific failure types. Use the table below as a quick reference for troubleshooting.
 
-| Status Code | Meaning                                                                 |
-|-------------|-------------------------------------------------------------------------|
-| `429`       | **Rate limit exceeded** – Too many requests in a short time.           |
-| `403`       | **Invalid API key** – Your key is missing, expired, or unauthorized.   |
-| `400`       | **Batch size exceeded** – You sent too many items in a single request. |
-| `422`       | **Invalid payload structure** – Your data format doesn't match the expected schema for your Harbor type. |
-| `404`       | **Harbor not found** – The specified Harbor does not exist or is offline. |
-| `500`       | **Internal server error** – Something went wrong on our side.          |
+| Status Code | Error Type | Meaning |
+| --- | --- | --- |
+| **`429`** | Rate Limit Exceeded | Too many requests sent within a short timeframe. |
+| **`403`** | Forbidden | API key is missing, expired, or unauthorized. |
+| **`400`** | Bad Request | Batch size exceeded or malformed syntax. |
+| **`422`** | Unprocessable Entity | Data format does not match the expected schema. |
+| **`404`** | Not Found | The specified Harbor ID does not exist or is offline. |
+| **`500`** | Internal Server Error | An unexpected server-side issue occurred. |
 
+---
 
 ## Handling API Errors Gracefully
 
-Harbor Scale APIs return specific HTTP status codes to help you identify and handle issues correctly. Below are the common error types and how your client should respond to each.
+When your client encounters an error, it should respond programmatically to ensure data integrity and system stability.
 
-### 429 Too Many Requests
+### `429` Too Many Requests
 
-You have exceeded your rate limit.
+You have exceeded the rate limit for your tier.
 
+> **How to handle it:**
+> * **Implement Backoff:** Use an exponential backoff strategy with jitter to retry the request after a delay.
+> * **Pacing:** Avoid sending sudden bursts of traffic; smooth out your submission frequency.
+> * **Upgrade:** If high throughput is a requirement, check [Harbor Scale Tiers](https://harborscale.com/pricing) for a higher plan.
+> 
+> 
 
-**How to handle it:**
+### `403` Forbidden
 
-* Use exponential backoff with jitter to retry after a delay.
-* Avoid sending bursts of requests. Optimize your submission frequency.
-* If your use case requires higher throughput, consider upgrading your Harbor plan. See [Harbor Scale Tiers](https://harborscale.com/pricing).
+Your API key is invalid, expired, or does not have permission for this resource.
 
+> **How to handle it:**
+> * Verify that your API key is correct and included in the headers.
+> * Ensure the key has not expired and has access permissions for the target Harbor.
+> * Regenerate the key in your dashboard if compromised or lost.
+> 
+> 
 
+### `400` Bad Request
 
-### 403 Forbidden
+The request was malformed, or the batch size limit was exceeded.
 
-Your API key is invalid, expired, or unauthorized.
+> **How to handle it:**
+> * **Chunking:** Break large batch requests into smaller chunks.
+> * **Validation:** Check your request syntax against the documentation limits.
+> 
+> 
 
+### `422` Unprocessable Entity
 
-**How to handle it:**
+The server understands the content type, but the payload structure is invalid (e.g., missing required fields or wrong data types).
 
-* Check if your API key is valid.
-* Ensure your key has access to the target Harbor.
-* Regenerate your key if necessary.
+> **How to handle it:**
+> * Validate your JSON structure against the schema defined for your Harbor type.
+> * Check field names, data types, and nesting before resubmitting.
+> 
+> 
 
+### `404` Not Found
 
-### 400 Bad Request
+The requested resource or Harbor endpoint is unavailable.
 
-You may have exceeded the batch size or sent a malformed request.
+> **How to handle it:**
+> * Double-check the **Harbor ID** in the URL.
+> * Verify that the Harbor instance is currently online and active.
+> 
+> 
 
+### `500` Internal Server Error
 
-**How to handle it:**
+An error occurred on the Harbor Scale servers.
 
-* Break large batches into smaller chunks.
-* Verify limits for your Harbor type.
+> **How to handle it:**
+> * Wait briefly and retry the request.
+> * If the error persists, please contact support.
+> 
+> 
 
+---
 
-### 422 Unprocessable Entity
+### Need Higher Limits?
 
-Your payload structure doesn't match the expected schema.
+If you consistently hit `429` Rate Limit or `400` Batch Size errors, your workload may have outgrown your current plan. Upgrading offers:
 
+* **Increased throughput** (Higher rate & batch limits)
+* **Unlimited Storage**
+* **Advanced Backup & Priority Support**
 
-**How to handle it:**
-
-* Ensure your payload follows the schema defined for your Harbor type.
-* Validate JSON structure, field names, and data types before submission.
-
-
-### 404 Not Found
-
-The specified Harbor does not exist or is unreachable.
-
-**How to handle it:**
-
-* Double-check the Harbor ID or endpoint.
-* Make sure the Harbor is online and accessible.
-
-
-### 500 Internal Server Error
-
-An unexpected error occurred on the server.
-
-**How to handle it:**
-
-* Wait briefly and retry.
-* If the issue persists, contact support.
-
-
-### Consider Upgrading
-
-If you're consistently hitting rate or size limits, upgrading to a higher-tier Harbor can give you:
-
-- Increased rate and batch limits
-- Unlimited GB Storage
-- Advanced Backup
-- Priority Support
-
-See [Harbor Scale Tiers](https://harborscale.com/pricing) for details.
-
+[View Pricing & Tiers](https://harborscale.com/pricing)
 

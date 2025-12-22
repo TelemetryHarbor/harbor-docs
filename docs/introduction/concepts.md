@@ -1,94 +1,65 @@
 ---
 sidebar_position: 3
 title: Core Concepts
-description: Understand Harbor Scale's core concepts, including data types and AI-powered insights.
+description: Understand Harbor Scale's core terminology and data model.
 ---
 
 # Core Concepts
 
-Harbor Scale is built upon a set of core concepts that define how data is ingested, stored, and analyzed. This section provides an overview of our data model, the flow of AI-powered insights, and how we structure our services.
+Harbor Scale uses a maritime metaphor to simplify IoT structure. You don't need to learn a complex query language; you just need to understand the relationship between the Harbor, the Ship, and the Cargo.
 
 ## Key Terminology
 
-To help you understand Harbor Scale, here are some core terms:
+-   **Harbors** (The Destination): A secure, scalable endpoint that receives data. You can have multiple Harbors for different projects (e.g., "Production," "Testing").
+-   **Ships** (The Source): The device sending the data. This `ship_id` can be anything unique: a serial number, a hostname (e.g., `server-01`), or a friendly name (e.g., `living-room-sensor`).
+-   **Cargo** (The Data): The named metric being delivered. The `cargo_id` describes what the value represents (e.g., `temperature`, `cpu_usage`, `battery_level`).
 
--   **Harbors**: Secure data collection points that organize and manage your IoT information streams.
--   **Ships**: Individual devices or data sources that send telemetry information to your harbors.
--   **Cargo**: The valuable sensor data and metrics flowing from your devices for analysis.
+### The Data Model
+Every piece of data sent to Harbor follows this simple JSON structure:
 
-## Harbor Tiers/Specs
+```json
+{
+  "ship_id": "esp32-node-01",
+  "cargo_id": "temperature",
+  "value": 24.5
+}
 
-Harbor Scale offers various service tiers (or specifications), each designed to meet different data volume, retention, and feature requirements. These tiers define the operational limits and capabilities of your Harbors, scaling to support your growth from individual projects to large-scale enterprise deployments.
-
--   **Data Ingestion Limits**: These limits define the maximum rate at which you can send data, including single requests per second, batch requests per second, and the number of data points allowed per batch. As you move up the tiers, these capacities increase significantly, allowing for higher throughput and more frequent data updates.
--   **Data Storage & Retention**: While storage capacity is generally unlimited across all tiers, the duration for which your data is retained varies. Free Harbors offer a 7-day retention, which expands to 90-day, 1-year, and custom retention periods in higher tiers, providing greater historical data access for long-term analysis.
-- **AI/ML Query Limits**: Each Harbor tier includes specific limits for AI-assisted queries, model interactions, and inference workloads. Higher tiers support more frequent and complex requests, enabling advanced use cases such as real-time diagnostics, anomaly detection, and large-scale analytics while ensuring fair resource allocation across tenants.
--   **Feature Access & Support**: Higher tiers unlock more advanced features and provide enhanced support. This includes a progression from basic to advanced backup and recovery options, and a shift from community support to priority email support, culminating in 24/7 dedicated support for Enterprise clients. Resource allocation also scales from shared infrastructure in lower tiers to dedicated resources for Enterprise solutions, ensuring optimal performance and isolation.
-
-:::info Note
-For the most up-to-date information on pricing and features, please refer to the official [Harbor Scale Pricing Page](https://www.harborscale.com/pricing).
-:::
+```
 
 ## Harbor Types
 
-Harbor Scale supports a variety of **Harbor Types**, each tailored to a specific category of telemetry data. A Harbor Type defines the **data model** and **ingestion structure** best suited for its intended domain. This ensures more efficient storage, faster querying, and a better developer experience.
+When creating a Harbor, you choose a "Type" which defines how the system parses incoming data.
 
-Think of it as choosing the right schema and ingestion pattern based on what kind of data you're working with.
-
-- **General Type**: A flexible, catch-all Harbor Type designed for structured numerical data. Ideal for battery levels, sensor readings, or any use case where devices push named metrics (e.g., temperature, pressure, humidity) with associated metadata like device ID and timestamp.
-
-- **Environmental Type** (planned): Optimized for weather stations, air quality sensors, or agricultural systems. Supports multidimensional time-series data with spatial tagging for use in GIS-aware dashboards and alerting systems.
-
-- **Fleet/Vehicle Type** (planned): Intended for real-time vehicle telemetry such as location, speed, engine metrics, and driving events. Structured to enable efficient filtering by device, route, or time interval, with potential support for geofencing.
-
-- **Log/Event Type** (planned): Suited for ingesting structured logs, alerts, or event-based data such as faults, user actions, or status changes. Useful for monitoring systems, audit trails, and anomaly detection.
-
-- **Industrial/Machine Type** (planned): Focused on manufacturing and machinery data like vibration, RPM, operational status, or predictive maintenance metrics. Supports high-frequency sampling and tagging by unit/line.
-
-- **Custom Type**: For advanced users with unique requirements, custom Harbor Types may be provisioned with dedicated schemas and tailored ingestion formats, optimized per workload.
-
-Each Harbor Type comes with a purpose-built schema behind the scenes, so you don’t have to worry about database design — just pick the type that matches your data domain, and start pushing data.
+1. **General Type (Recommended):**
+* **Best for:** ESP32, Arduino, Python Scripts, Lighthouse, and Webhooks.
+* **Protocol:** Standard HTTP REST.
+* **Behavior:** Accepts the standard JSON format shown above.
 
 
-:::info Note
-For a full list of supported and upcoming Harbor Types, check the [Harbor Types reference](../getting-started/harbor-types/).
-:::
+2. **The Things Network (TTN) Type:**
+* **Best for:** LoRaWAN devices connected via The Things Stack.
+* **Protocol:** Webhook.
+* **Behavior:** It automatically ingests the complex JSON sent by TTN and extracts decoded payloads, SNR, and RSSI without you writing a parser.
 
-## Harbor AI
 
-**Harbor AI** is an intelligent assistant built into Harbor Scale that allows you to explore and interact with your telemetry data through natural language. It’s powered by large language models and integrated with your Harbor’s data.
 
-Harbor AI understands the structure and domain of your Harbor Type, enabling it to generate insights, answer complex queries, and assist in diagnostics — without requiring SQL, dashboards, or scripting.
+## Visualization & AI
 
-Use cases include:
+Harbor isn't just a database; it's an intelligence layer.
 
-- Asking questions like _“What was the average battery level for Ship A this week?”_
-- Summarizing trends, such as _“Summarize cargo fluctuations for the last 24 hours.”_
-- Investigating anomalies or sudden changes in your data.
-- Generating quick diagnostics or health reports.
-- Build a complex Grafana dashboard using the SQL Snippet feature.
+* **Grafana:** Every Harbor includes a managed Grafana instance. We automatically map your `Ships` and `Cargo` to SQL tables, so you can drag-and-drop dashboards immediately.
+* **Harbor AI:** An integrated LLM that understands your data schema. You can ask questions like *"What was the average battery level for Ship X yesterday?"* and it will write the SQL and return the answer.
 
-Each response also reveals the underlying SQL query used to generate the answer. This helps you validate results, understand the data model, and reuse the query to build dashboards or trigger alerts.
+## Tiers & Retention
 
-Harbor AI is tightly scoped to your selected Harbor, ensuring context-aware analysis based on your data model and tier. As you upgrade to higher service tiers, Harbor AI supports more frequent, complex, and longer-running queries.
+Harbor Scale offers different tiers to match your workload. Higher tiers provide:
+
+* **Longer Retention:** Keep data for 7 days, 90 days, or 1 year.
+* **Higher Limits:** Send data more frequently (e.g., every second vs. every minute).
+* **AI Allowance:** More frequent AI queries and analysis.
 
 :::info Note
-All AI-assisted queries respect the limits defined by your Harbor Tier. For advanced workflows, you can combine Harbor AI with API queries and dashboards.
+For specific limits on data points per second and retention periods, please refer to the [Pricing Page](https://www.harborscale.com/pricing).
 :::
 
-## Visualization with Grafana
 
-Harbor Scale includes built-in integration with **Grafana**, a leading visualization platform. Every user is provisioned with a Grafana account, and each Harbor is automatically configured as a data source, allowing for instant dashboarding and data exploration.
-
-Through Grafana, you can:
-
-- Visualize time-series data from your Harbors using prebuilt or custom panels.
-- Set up thresholds, alerts, and status boards tailored to your environment.
-- Create multi-Harbor dashboards to compare and analyze data across different telemetry sources.
-- Share real-time dashboards with your team or stakeholders.
-
-For **Enterprise Harbors**, Grafana instances are fully isolated and dedicated, offering additional performance, security, and customization capabilities.
-
-:::info Tip
-Use Grafana to complement Harbor AI. While Harbor AI offers natural language insights, Grafana excels at long-term monitoring, alerting, and visual storytelling.
-:::
