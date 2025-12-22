@@ -1,77 +1,131 @@
 ---
 sidebar_position: 1
 title: Meshtastic Integration
-description: Integrate your Meshtastic devices with Harbor Scale for off-grid data collection.
+description: Turn any computer into a Telemetry Gateway for your Meshtastic LoRa mesh network using Harbor Lighthouse.
 ---
 
 # Meshtastic Integration
 
-This guide explains how to integrate your Meshtastic devices with Harbor Scale, allowing you to collect and visualize telemetry data from your off-grid Meshtastic network. This integration uses a Python script to bridge data from your Meshtastic device to your Harbor Scale instance.
+This guide explains how to integrate your Meshtastic LoRa mesh network with Harbor Scale. By using the **Harbor Lighthouse** agent, you can turn a computer (Raspberry Pi, Laptop, or Server) connected to a Meshtastic device into a telemetry gateway.
 
-**_Repo Link:_** https://github.com/harborscale/harbor-meshtastic
 
+
+Unlike previous methods that required manual Python scripts, Lighthouse now handles this natively via the `mesh_engine` driver. It acts as a gateway, reporting battery levels, environmental metrics, and signal statistics for **every node** in your mesh, not just the connected device.
 
 ## Prerequisites
 
 Before starting, ensure you have:
 
--   A **Meshtastic device** (e.g., LoRa ESP32) configured and operational.
--   A **computer** (Linux, macOS, or Windows) with Python 3 installed.
--   **pip** for Python package management.
--   A **Harbor Scale account** (free tier available).
--   Basic knowledge of Meshtastic and Python.
+-   A **Meshtastic device** (e.g., LoRa ESP32, T-Beam, Rak WisBlock) connected via USB to your host computer.
+-   **Harbor Lighthouse** installed on the host computer. (See [Installation Guide](/docs/lighthouse/)).
+-   A **Harbor Scale account** (Cloud) or a self-hosted instance.
 
-## How it Works
+## Architecture
 
-The integration involves a Python script that connects to your Meshtastic device via its serial port. It listens for incoming telemetry messages (e.g., sensor data from other nodes) or can be configured to send data from the connected device itself. This data is then formatted into the Harbor Scale [General Harbor Data Type Model](../introduction/concepts.md#general-harbor-data-type-model) and pushed to your Harbor Scale API ingestion endpoint.
+The integration works by using the Lighthouse `exec` collector combined with a specialized binary called `mesh_engine`.
 
-<img src="/placeholder.svg?height=300&width=500" alt="Diagram showing Meshtastic device to Python script to Harbor Scale" />
+1.  **The Mesh Engine** talks to your USB device over serial.
+2.  It decodes packets from the mesh (JSON).
+3.  **Lighthouse** manages the engine, ensures it stays running, and securely ships the data to Harbor Scale.
 
-## Setup
+---
 
-### 1. Prepare Your Meshtastic Device:
+## Setup Guide
 
--   Ensure your Meshtastic device is connected and operational.
--   Note the COM port associated with the device (e.g., `/dev/ttyUSB0` on Linux, `COM3` on Windows).
+### Step 1: Install the Mesh Engine
 
-### 2. Set Up the Script:
+First, you need to download the driver that allows Lighthouse to communicate with LoRa hardware.
 
--   Clone this repository:
-    ```bash
-    git clone https://github.com/harborscale/harbor-meshtastic.git
-    cd harbor-meshtastic
-    ```
--   Install required dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
+**🐧 Linux / 🍎 macOS / 🥧 Raspberry Pi**
+```bash
+curl -sL get.harborscale.com/meshtastic | sudo bash
+```
 
-### 3. Run the Script:
+**🪟 Windows (PowerShell)**
 
--   Execute the script and provide the required information:
-    -   **API Endpoint**: Obtain this from your Harbor Scale account.
-    -   **API Key**: Your unique key for secure communication.
-    -   **COM Port**: The port your Meshtastic device is connected to.
-    ```bash
-    python app.py
-    ```
-    The script will prompt you for the necessary details.
+```powershell
+iwr get.harborscale.com/meshtastic | iex
+```
 
-### 4. Stream Data:
+### Step 2: Add the Monitor
 
--   Once running, the script will continuously push telemetry data from your Meshtastic device to the Harbor Scale endpoint. You should see output in your terminal indicating data being sent.
+Use the `lighthouse` command to configure the gateway. This will register the agent to start the `mesh_engine` automatically.
 
-### 5. Visualize in Grafana:
+**For Harbor Scale Cloud:**
 
--   Log in to your Harbor Scale Grafana instance.
--   Access pre-configured dashboards (if available for Meshtastic) or create new panels using the `ship_id` and `cargo_id` values sent by the script to view and analyze your Meshtastic data.
+```bash
+lighthouse --add \
+  --name "meshtastic-gateway" \
+  --harbor-id "YOUR_HARBOR_ID" \
+  --key "YOUR_API_KEY" \
+  --source exec \
+  --param command="mesh_engine --ttl 3600"
+
+```
+
+**For Self-Hosted / OSS:**
+
+```bash
+lighthouse --add \
+  --name "meshtastic-gateway" \
+  --endpoint "http://YOUR_IP:8000" \
+  --key "YOUR_OSS_KEY" \
+  --source exec \
+  --param command="mesh_engine --ttl 3600"
+
+```
+
+> **Note:** Replace `YOUR_HARBOR_ID`, `YOUR_API_KEY`, and `YOUR_OSS_KEY` with your actual credentials.
+
+---
+
+## Configuration Options
+
+You can customize how the engine behaves by modifying the `--param command="..."` string.
+
+### Setting a Specific Port
+
+By default, the engine attempts to auto-detect the Meshtastic device. If you have multiple devices or auto-detection fails, force a specific port.
+
+* **Linux/Mac:** `mesh_engine --port /dev/ttyUSB0`
+* **Windows:** `mesh_engine --port COM3`
+
+**Example Update:**
+
+```bash
+--param command="mesh_engine --port /dev/ttyUSB0 --ttl 3600"
+```
+
+### Adjusting Node TTL
+
+The `--ttl` (Time To Live) flag determines how long a node remains "active" in the report if no new packets are received. The default is `3600` seconds (1 hour).
+
+* To report nodes only if heard within the last 10 minutes: `--ttl 600`
+
+---
 
 ## Troubleshooting
 
 ### Common Issues
 
--   **Device not found**: Ensure the COM port is correct and the Meshtastic device is properly connected and powered on.
--   **API connection errors**: Verify your Harbor Scale API Endpoint and API Key are correct. Check your internet connection.
--   **No data in Grafana**: Confirm the script is running and sending data successfully. Check Grafana's time range and filters.
+* **Permission Denied (Linux):** Ensure the user running Lighthouse has permission to access serial ports. You may need to add the user to the `dialout` group:
+```bash
+sudo usermod -a -G dialout $USER
+```
 
-For more detailed troubleshooting, refer to the `README.md` in the [harbor-meshtastic GitHub repository](https://github.com/harborscale/harbor-meshtastic).
+
+*Restart the computer after running this command.*
+* **Device Not Found:**
+1. Check your USB cable (ensure it is a data cable, not just power).
+2. Verify the device shows up in `/dev/` (Linux/Mac) or Device Manager (Windows).
+3. Try explicitly setting the `--port` flag as shown above.
+
+
+* **No Data in Dashboard:**
+Run the logs command to see what the engine is doing:
+```bash
+lighthouse --logs "meshtastic-gateway"
+```
+
+You should see JSON output representing the nodes in your mesh.
+
