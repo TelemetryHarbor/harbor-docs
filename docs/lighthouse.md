@@ -1,4 +1,10 @@
-
+---
+sidebar_position: 3
+id: overview
+slug: /lighthouse
+title: Harbor Lighthouse
+description: The tiny, universal telemetry agent for Harbor Scale.
+---
 # 🚢 Harbor Lighthouse
 
 **The Universal Telemetry Agent for [Harbor Scale](https://harborscale.com)**
