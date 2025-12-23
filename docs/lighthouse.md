@@ -23,7 +23,6 @@ Copy and paste this into your terminal:
 
 ```bash
 curl -sL get.harborscale.com | sudo bash
-
 ```
 
 ### 🪟 Windows (PowerShell)
@@ -32,7 +31,6 @@ Open PowerShell as Administrator and run:
 
 ```powershell
 iwr get.harborscale.com | iex
-
 ```
 
 > **Note:** This installs Lighthouse as a system service. It will start automatically on boot.
@@ -53,7 +51,6 @@ lighthouse --add \
   --harbor-id "123" \
   --key "hs_live_key_xxx" \
   --source linux
-
 ```
 
 ### 2. Add a Monitor (Self-Hosted / OSS) 🏠
@@ -66,7 +63,6 @@ lighthouse --add \
   --endpoint "http://192.168.1.50:8000" \
   --key "your_oss_api_key" \
   --source linux
-
 ```
 
 > **Note:** When using `--endpoint`, the `--harbor-id` flag is optional.
@@ -82,7 +78,6 @@ lighthouse --add \
   --key "hs_live_key_xxx" \
   --source exec \
   --param command="python3 /opt/weather.py"
-
 ```
 
 ### 4. Manage the Agent
@@ -130,7 +125,6 @@ lighthouse --add \
   --harbor-id "123" \
   --key "hs_live_key_xxx" \
   --source linux
-
 ```
 
 * **Note:** On Windows or Mac, simply swap `--source linux` for `--source windows` or `--source macos`.
@@ -147,7 +141,6 @@ lighthouse --add \
   --harbor-id "123" \
   --key "hs_live_key_xxx" \
   --source docker
-
 ```
 
 * **Requirement:** The user running Lighthouse must have permission to access `/var/run/docker.sock` (usually the `docker` group).
@@ -165,7 +158,6 @@ lighthouse --add \
   --key "hs_live_key_xxx" \
   --source uptime \
   --param target_url="https://google.com"
-
 ```
 
 * **Optional Params:** `--param timeout_ms=5000` (Set connection timeout in milliseconds).
@@ -183,7 +175,6 @@ lighthouse --add \
   --key "hs_live_key_xxx" \
   --source exec \
   --param command="python3 /opt/sensor.py"
-
 ```
 
 * **Optional Params:** `--param timeout_ms=10000` (Kill script if it hangs longer than this).
@@ -206,7 +197,6 @@ lighthouse --add \
   --key "hs_live_key_xxx" \
   --source exec \
   --param command="mesh_engine --ttl 3600"
-
 ```
 
 * **Optional Params:**
@@ -231,7 +221,6 @@ Your script prints a single JSON object. Lighthouse assigns the `--name` you con
   "temperature": 24.5,
   "humidity": 60
 }
-
 ```
 
 ### Mode B: Many Ships (Advanced)
@@ -251,7 +240,6 @@ Your script acts as a gateway for multiple devices. It prints a JSON **Array** `
     "temperature": 25.5
   }
 ]
-
 ```
 
 > **Note:** If you provide `ship_id` in the JSON, it overrides the `--name` flag for that specific data point.
@@ -267,7 +255,6 @@ Your script acts as a gateway for multiple devices. It prints a JSON **Array** `
 ```bash
 git clone https://github.com/harborscale/harbor-lighthouse.git
 cd harbor-lighthouse
-
 ```
 
 2. **Build:**
@@ -278,7 +265,6 @@ go build -o lighthouse cmd/lighthouse/main.go
 
 # Windows
 GOOS=windows GOARCH=amd64 go build -o lighthouse.exe cmd/lighthouse/main.go
-
 ```
 
 ---
