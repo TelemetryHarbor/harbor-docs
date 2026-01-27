@@ -1,5 +1,7 @@
-
-
+---
+sidebar_position: 4
+title: Rate Limiting
+description: Technical reference for the rate limiting & erroe codes.
 ---
 
 # Rate Limiting & Error Codes
