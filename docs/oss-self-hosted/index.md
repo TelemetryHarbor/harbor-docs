@@ -1,3 +1,4 @@
+---
 title: Overview
 description: Harbor Scale OSS is the open-source ingestion and visualization stack behind Harbor Scale.
 sidebar_position: 1
