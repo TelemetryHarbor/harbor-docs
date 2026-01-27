@@ -28,7 +28,7 @@ A "Harbor" in Harbor Scale refers to a secure, dedicated data collection point t
 ## Technical Questions
 
 ### How do I send data to Harbor Scale?
-You can send data using our official [SDKs (Python, JavaScript, C++)](../getting-started/sdk-overview.md) or directly via our [API endpoints](../api/pushing-data.md) using HTTP POST requests. We support both single data point and batch ingestion.
+You can send data using our official [SDKs (Python, JavaScript, C++)](../sdks/sdk-overview.md) or directly via our [API endpoints](../api/pushing-data.md) using HTTP POST requests. We support both single data point and batch ingestion.
 
 ### What is the API Key used for?
 The API Key is used for authenticating your requests to the Harbor Scale API. It ensures that only authorized applications and devices can send data to your Harbor. Keep your API key confidential and secure. Learn more in [Authentication](../api/authentication.md).
