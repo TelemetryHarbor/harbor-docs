@@ -158,22 +158,22 @@ After installation, the airport weather service runs automatically. You can mana
 
 ```bash
 # Check service status
-systemctl status harbor-airport
+sudo systemctl status harbor-airport
 
 # View logs
-journalctl -u harbor-airport -f
+sudo journalctl -u harbor-airport -f
 
 # Stop the service
-systemctl stop harbor-airport
+sudo systemctl stop harbor-airport
 
 # Start the service
-systemctl start harbor-airport
+sudo systemctl start harbor-airport
 
 # Disable automatic startup
-systemctl disable harbor-airport
+sudo systemctl disable harbor-airport
 
 # Enable automatic startup
-systemctl enable harbor-airport
+sudo systemctl enable harbor-airport
 ```
 
 ## Troubleshooting
@@ -194,7 +194,7 @@ systemctl enable harbor-airport
 
 **Service starts but no data appears in Grafana**
 
--   Check the service logs: `journalctl -u harbor-airport -f`.
+-   Check the service logs: `sudo journalctl -u harbor-airport -f`.
 -   Verify the airports you selected are valid ICAO codes.
 -   Ensure your Harbor Scale account is active.
 

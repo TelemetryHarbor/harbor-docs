@@ -20,14 +20,14 @@ Before starting, ensure you have:
 
 ## How it Works
 
-Unlike other solutions that require you to deploy a separate "sidecar" container to monitor Docker, Lighthouse runs as a lightweight binary on the host system. It communicates with the Docker Engine via the Unix socket (`/var/run/docker.sock`) to fetch statistics without overhead.
+Unlike other solutions that require you to deploy a separate "sidecar" container to monitor Docker, Lighthouse runs as a lightweight binary on the host system. It communicates with the Docker Engine via the Unix socket (`/var/run/docker.sock` on Linux) or named pipe (on Windows) to fetch statistics without overhead.
 
 
 ---
 
 ## Setup Guide
 
-### 1. Configure Permissions (Crucial)
+### 1. Configure Permissions (Linux/macOS)
 
 To allow Lighthouse to read Docker stats, the user running the agent (usually your current user or root) must have access to the Docker socket.
 
@@ -39,28 +39,34 @@ sudo usermod -aG docker $USER
 
 > **Note:** You may need to log out and log back in (or restart the service) for these permissions to take effect.
 
+**Windows:** Run PowerShell as Administrator when installing and running Lighthouse.
+
 ### 2. Add the Monitor
 
 Use the `lighthouse` CLI to enable the Docker collector.
 
-**For Harbor Scale Cloud:**
+**For Harbor Scale Cloud (Linux/macOS):**
 
 ```bash
-lighthouse --add \
-  --name "docker-host-01" \
-  --harbor-id "YOUR_HARBOR_ID" \
-  --key "YOUR_API_KEY" \
-  --source docker
+sudo lighthouse --add --name "docker-host-01" --harbor-id "YOUR_HARBOR_ID" --key "YOUR_API_KEY" --source docker
 ```
 
-**For Self-Hosted / OSS:**
+**For Harbor Scale Cloud (Windows):**
+
+```powershell
+lighthouse --add --name "docker-host-01" --harbor-id "YOUR_HARBOR_ID" --key "YOUR_API_KEY" --source docker
+```
+
+**For Self-Hosted / OSS (Linux/macOS):**
 
 ```bash
-lighthouse --add \
-  --name "docker-host-01" \
-  --endpoint "http://YOUR_IP:8000" \
-  --key "YOUR_API_KEY" \
-  --source docker
+sudo lighthouse --add --name "docker-host-01" --endpoint "http://YOUR_IP:8000" --key "YOUR_API_KEY" --source docker
+```
+
+**For Self-Hosted / OSS (Windows):**
+
+```powershell
+lighthouse --add --name "docker-host-01" --endpoint "http://YOUR_IP:8000" --key "YOUR_API_KEY" --source docker
 ```
 
 ---
@@ -79,13 +85,14 @@ You can customize the Docker monitor using standard Lighthouse flags.
 
 If you are debugging a crash loop and need granular data:
 
+**Linux/macOS:**
 ```bash
-lighthouse --add \
-  --name "debug-host" \
-  --harbor-id "123" \
-  --key "xyz" \
-  --source docker \
-  --interval 10
+sudo lighthouse --add --name "debug-host" --harbor-id "123" --key "xyz" --source docker --interval 10
+```
+
+**Windows:**
+```powershell
+lighthouse --add --name "debug-host" --harbor-id "123" --key "xyz" --source docker --interval 10
 ```
 
 ---
@@ -109,10 +116,15 @@ The `docker` source collects the following data for **each** container:
 
 ### Common Issues
 
-**"Permission denied: /var/run/docker.sock"**
+**"Permission denied: /var/run/docker.sock" (Linux/macOS)**
 
 * **Cause:** The Lighthouse agent does not have permission to talk to the Docker Daemon.
-* **Fix:** Ensure the user running the process is in the `docker` group (see Step 1 above), or run Lighthouse as `root` (e.g., via `sudo lighthouse --install`).
+* **Fix:** Ensure the user running the process is in the `docker` group (see Step 1 above), or run Lighthouse with `sudo`.
+
+**"Access denied" (Windows)**
+
+* **Cause:** Lighthouse needs Administrator privileges to access Docker.
+* **Fix:** Run PowerShell as Administrator.
 
 **No containers showing in Dashboard**
 
@@ -122,11 +134,9 @@ The `docker` source collects the following data for **each** container:
 lighthouse --logs "docker-host-01"
 ```
 
-
 * If the logs show success but no data appears, ensure your containers are not in a "Created" state (they must be Running or Exited to report stats).
 
 **High CPU Usage by Agent**
 
 * If you have hundreds of containers, polling every second can be expensive.
 * **Fix:** Increase the interval to 60 seconds or more using `--interval 60`.
-

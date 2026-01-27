@@ -1,4 +1,3 @@
----
 title: Overview
 description: Harbor Scale OSS is the open-source ingestion and visualization stack behind Harbor Scale.
 sidebar_position: 1
@@ -65,7 +64,7 @@ Once started:
 This repository ships with default credentials for ease of testing. **Before using in production**, you must change the following in `docker-compose.yml`:
 
 *   `POSTGRES_PASSWORD` - TimescaleDB password
-*   `REDIS_PASSWORD` - Redis authentication password  
+*   `REDIS_PASSWORD` - Redis authentication password
 *   `API_KEY` - API authentication key for data ingestion
 *   `GF_SECURITY_ADMIN_PASSWORD` - Grafana admin password
 
@@ -81,7 +80,7 @@ Replace Harbor Scale Cloud URLs with your own domain, omitting the harbor ID.
 POST http://yourdomain.com/api/v2/ingest/
 ```
 
-### Batch Data Push  
+### Batch Data Push
 ```
 POST http://yourdomain.com/api/v2/ingest/batch
 ```
@@ -103,51 +102,27 @@ Harbor Scale OSS supports direct ingestion from TTN v3 Webhooks. We automaticall
 **Single Data Point:**
 
 ```bash
-curl -X POST "http://localhost:8000/api/v2/ingest/" \
--H "X-API-Key: your_api_key_here" \
--H "Content-Type: application/json" \
--d '{
-  "time": "2025-01-18T19:24:00.948Z",
-  "ship_id": "test_device_single",
-  "cargo_id": "test_metric",
-  "value": 123.45
-}'
+curl -X POST "http://localhost:8000/api/v2/ingest/" -H "X-API-Key: your_api_key_here" -H "Content-Type: application/json" -d '{"time": "2025-01-18T19:24:00.948Z", "ship_id": "test_device_single", "cargo_id": "test_metric", "value": 123.45}'
 ```
 
 **Batch Data:**
 
 ```bash
-curl -X POST "http://localhost:8000/api/v2/ingest/batch" \
--H "X-API-Key: your_api_key_here" \
--H "Content-Type: application/json" \
--d '[
-  {
-    "time": "2025-01-18T19:24:00.948Z",
-    "ship_id": "batch_device",
-    "cargo_id": "temperature",
-    "value": 25.5
-  },
-  {
-    "time": "2025-01-18T19:24:00.948Z", 
-    "ship_id": "batch_device",
-    "cargo_id": "humidity",
-    "value": 60.2
-  }
-]'
+curl -X POST "http://localhost:8000/api/v2/ingest/batch" -H "X-API-Key: your_api_key_here" -H "Content-Type: application/json" -d '[{"time": "2025-01-18T19:24:00.948Z", "ship_id": "batch_device", "cargo_id": "temperature", "value": 25.5}, {"time": "2025-01-18T19:24:00.948Z", "ship_id": "batch_device", "cargo_id": "humidity", "value": 60.2}]'
 ```
 
 ## 📊 Visualization with Grafana
 
 Grafana comes pre-configured with:
 *   **Harbor Scale Datasource** (TimescaleDB connection)
-*   **Comprehensive Telemetry Dashboard** 
+*   **Comprehensive Telemetry Dashboard**
 *   **Ready-to-use panels** for time-series visualization
 
 Log into Grafana at `http://localhost:3000` and start exploring your telemetry data immediately.
 
 ## 🗄️ Data Retention
 
-By default, your telemetry data is kept for **365 days**.  
+By default, your telemetry data is kept for **365 days**.
 Want a different retention period? Just tweak it in [`init.sql`](https://github.com/harborscale/telemetry-harbor-oss/blob/main/init.sql) before starting the stack.
 
 ## 🛠️ SDK Compatibility
@@ -156,7 +131,7 @@ Harbor Scale OSS is fully compatible with all official Harbor Scale SDKs:
 
   * [**Harbor Scale SDKs**](https://docs.harborscale.com/docs/category/sdks/)
 
-Just replace your ingest endpoint with your OSS URL - no code changes needed\!
+Just replace your ingest endpoint with your OSS URL - no code changes needed!
 
 ## ☁️ OSS vs Cloud Comparison
 

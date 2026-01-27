@@ -50,21 +50,13 @@ Once installed, use the `lighthouse` CLI to configure the monitoring job. This c
 **For Harbor Scale Cloud:**
 
 ```bash
-lighthouse --add \
-  --name "server-01" \
-  --harbor-id "YOUR_HARBOR_ID" \
-  --key "YOUR_API_KEY" \
-  --source linux
+sudo lighthouse --add --name "server-01" --harbor-id "YOUR_HARBOR_ID" --key "YOUR_API_KEY" --source linux
 ```
 
 **For Self-Hosted / OSS:**
 
 ```bash
-lighthouse --add \
-  --name "server-01" \
-  --endpoint "http://YOUR_IP:8000" \
-  --key "YOUR_API_KEY" \
-  --source linux
+sudo lighthouse --add --name "server-01" --endpoint "http://YOUR_IP:8000" --key "YOUR_API_KEY" --source linux
 ```
 
 > **Note:** Replace `server-01` with a unique name for this device.
@@ -85,12 +77,7 @@ The `linux` collector works out of the box, but you can customize how it runs us
 To collect data every 5 seconds:
 
 ```bash
-lighthouse --add \
-  --name "high-freq-server" \
-  --harbor-id "123" \
-  --key "xyz" \
-  --source linux \
-  --interval 5
+sudo lighthouse --add --name "high-freq-server" --harbor-id "123" --key "xyz" --source linux --interval 5
 ```
 
 ## Available Metrics
@@ -145,4 +132,3 @@ sudo lighthouse --uninstall
 **Systemd Service Fails to Start**
 
 * If you manually removed files, reinstall using `sudo lighthouse --install`.
-

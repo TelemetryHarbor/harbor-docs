@@ -1,3 +1,4 @@
+
 ---
 sidebar_position: 3
 id: overview
@@ -45,24 +46,28 @@ Everything is done using the `lighthouse` command.
 
 To start monitoring a device on **Harbor Scale Cloud**:
 
+**Linux/macOS:**
 ```bash
-lighthouse --add \
-  --name "server-01" \
-  --harbor-id "123" \
-  --key "hs_live_key_xxx" \
-  --source linux
+sudo lighthouse --add --name "server-01" --harbor-id "123" --key "hs_live_key_xxx" --source linux
+```
+
+**Windows:**
+```powershell
+lighthouse --add --name "server-01" --harbor-id "123" --key "hs_live_key_xxx" --source windows
 ```
 
 ### 2. Add a Monitor (Self-Hosted / OSS) 🏠
 
 To monitor a device on your own **[Harbor Scale OSS](https://github.com/harborscale/telemetry-harbor-oss)** instance:
 
+**Linux/macOS:**
 ```bash
-lighthouse --add \
-  --name "local-server" \
-  --endpoint "http://192.168.1.50:8000" \
-  --key "your_oss_api_key" \
-  --source linux
+sudo lighthouse --add --name "local-server" --endpoint "http://192.168.1.50:8000" --key "your_oss_api_key" --source linux
+```
+
+**Windows:**
+```powershell
+lighthouse --add --name "local-server" --endpoint "http://192.168.1.50:8000" --key "your_oss_api_key" --source windows
 ```
 
 > **Note:** When using `--endpoint`, the `--harbor-id` flag is optional.
@@ -71,25 +76,26 @@ lighthouse --add \
 
 Turn any script into a telemetry stream.
 
+**Linux/macOS:**
 ```bash
-lighthouse --add \
-  --name "weather-script" \
-  --harbor-id "123" \
-  --key "hs_live_key_xxx" \
-  --source exec \
-  --param command="python3 /opt/weather.py"
+sudo lighthouse --add --name "weather-script" --harbor-id "123" --key "hs_live_key_xxx" --source exec --param command="python3 /opt/weather.py"
+```
+
+**Windows:**
+```powershell
+lighthouse --add --name "weather-script" --harbor-id "123" --key "hs_live_key_xxx" --source exec --param command="python C:\scripts\weather.py"
 ```
 
 ### 4. Manage the Agent
 
 | Command | Description |
 | --- | --- |
-| `sudo lighthouse --install` | **Start here.** Installs Lighthouse as a background service. |
+| `sudo lighthouse --install` (Linux/macOS)<br/>`lighthouse --install` (Windows) | **Start here.** Installs Lighthouse as a background service. |
 | `lighthouse --list` | Shows the health status of all running monitors. |
 | `lighthouse --logs "name"` | Shows the debug logs for a specific monitor. |
 | `lighthouse --remove "name"` | Stops and deletes a monitor configuration. |
 | `lighthouse --autoupdate=false` | Disables the automatic 24h update check. |
-| `lighthouse --uninstall` | Removes the service and binary from your system. |
+| `sudo lighthouse --uninstall` (Linux/macOS)<br/>`lighthouse --uninstall` (Windows) | Removes the service and binary from your system. |
 
 ---
 
@@ -103,7 +109,7 @@ When running `lighthouse --add`, you can use these flags to customize behavior:
 | `--harbor-id` | ☁️ Cloud | Your Harbor ID (Required for Cloud). | - |
 | `--endpoint` | 🏠 OSS | Custom API URL (Required for Self-Hosted). | `https://harborscale.com` |
 | `--key` | ❌ No | Your API Key. | - |
-| `--source` | ✅ Yes | Which collector to use (`linux`, `exec`, `uptime`, `docker`, `meshtastic`). | `linux` |
+| `--source` | ✅ Yes | Which collector to use (`linux`, `windows`, `macos`, `exec`, `uptime`, `docker`, `meshtastic`). | `linux` |
 | `--interval` | ❌ No | How often to collect data (in seconds). | `60` |
 | `--batch-size` | ❌ No | Max number of metrics to send in one HTTP request. | `100` |
 | `--param` | ❌ No | Pass specific settings to a collector (e.g., `--param target_url=...`). | - |
@@ -117,47 +123,52 @@ Lighthouse comes with built-in drivers called "Collectors". Choose one using `--
 
 Automatically collects CPU, RAM, Disk Usage, Uptime, and Load Averages.
 
-**Example Command:**
+**Example Command (Linux/macOS):**
 
 ```bash
-lighthouse --add \
-  --name "my-server" \
-  --harbor-id "123" \
-  --key "hs_live_key_xxx" \
-  --source linux
+sudo lighthouse --add --name "my-server" --harbor-id "123" --key "hs_live_key_xxx" --source linux
 ```
 
-* **Note:** On Windows or Mac, simply swap `--source linux` for `--source windows` or `--source macos`.
+**Example Command (Windows):**
+
+```powershell
+lighthouse --add --name "my-server" --harbor-id "123" --key "hs_live_key_xxx" --source windows
+```
+
+* **Note:** Use `--source macos` for Mac systems.
 
 ### 2. Docker Engine (`docker`)
 
 Monitors the local Docker daemon. Captures container state (running/exited), uptime, and resource usage per container.
 
-**Example Command:**
+**Example Command (Linux/macOS):**
 
 ```bash
-lighthouse --add \
-  --name "docker-host" \
-  --harbor-id "123" \
-  --key "hs_live_key_xxx" \
-  --source docker
+sudo lighthouse --add --name "docker-host" --harbor-id "123" --key "hs_live_key_xxx" --source docker
 ```
 
-* **Requirement:** The user running Lighthouse must have permission to access `/var/run/docker.sock` (usually the `docker` group).
+**Example Command (Windows):**
+
+```powershell
+lighthouse --add --name "docker-host" --harbor-id "123" --key "hs_live_key_xxx" --source docker
+```
+
+* **Requirement:** The user running Lighthouse must have permission to access Docker (usually the `docker` group on Linux, or Administrator on Windows).
 
 ### 3. HTTP Uptime (`uptime`)
 
 Monitors website availability, response codes, and latency.
 
-**Example Command:**
+**Example Command (Linux/macOS):**
 
 ```bash
-lighthouse --add \
-  --name "website-monitor" \
-  --harbor-id "123" \
-  --key "hs_live_key_xxx" \
-  --source uptime \
-  --param target_url="https://google.com"
+sudo lighthouse --add --name "website-monitor" --harbor-id "123" --key "hs_live_key_xxx" --source uptime --param target_url="https://google.com"
+```
+
+**Example Command (Windows):**
+
+```powershell
+lighthouse --add --name "website-monitor" --harbor-id "123" --key "hs_live_key_xxx" --source uptime --param target_url="https://google.com"
 ```
 
 * **Optional Params:** `--param timeout_ms=5000` (Set connection timeout in milliseconds).
@@ -166,15 +177,16 @@ lighthouse --add \
 
 Runs **any** shell command or script (Python, Bash, Node, etc.). The script must output JSON to STDOUT.
 
-**Example Command:**
+**Example Command (Linux/macOS):**
 
 ```bash
-lighthouse --add \
-  --name "custom-script" \
-  --harbor-id "123" \
-  --key "hs_live_key_xxx" \
-  --source exec \
-  --param command="python3 /opt/sensor.py"
+sudo lighthouse --add --name "custom-script" --harbor-id "123" --key "hs_live_key_xxx" --source exec --param command="python3 /opt/sensor.py"
+```
+
+**Example Command (Windows):**
+
+```powershell
+lighthouse --add --name "custom-script" --harbor-id "123" --key "hs_live_key_xxx" --source exec --param command="python C:\scripts\sensor.py"
 ```
 
 * **Optional Params:** `--param timeout_ms=10000` (Kill script if it hangs longer than this).
@@ -188,20 +200,21 @@ Ingests telemetry from a Meshtastic USB device. It acts as a gateway, reporting 
 * **Linux / Mac / Pi:** `curl -sL get.harborscale.com/meshtastic | sudo bash`
 * **Windows:** `iwr get.harborscale.com/meshtastic | iex`
 
-**Step B: Add the Monitor**
+**Step B: Add the Monitor (Linux/macOS):**
 
 ```bash
-lighthouse --add \
-  --name "meshtastic-gateway" \
-  --harbor-id "123" \
-  --key "hs_live_key_xxx" \
-  --source exec \
-  --param command="mesh_engine --ttl 3600"
+sudo lighthouse --add --name "meshtastic-gateway" --harbor-id "123" --key "hs_live_key_xxx" --source exec --param command="mesh_engine --ttl 3600"
+```
+
+**Step B: Add the Monitor (Windows):**
+
+```powershell
+lighthouse --add --name "meshtastic-gateway" --harbor-id "123" --key "hs_live_key_xxx" --source exec --param command="mesh_engine --ttl 3600"
 ```
 
 * **Optional Params:**
 * `--ttl <seconds>`: Ignore nodes not heard from in X seconds (Default: 3600).
-* `--port <port>`: Force specific USB serial port (e.g., `/dev/ttyUSB0` or `COM3`).
+* `--port <port>`: Force specific USB serial port (e.g., `/dev/ttyUSB0` on Linux or `COM3` on Windows).
 
 
 ---
@@ -259,12 +272,16 @@ cd harbor-lighthouse
 
 2. **Build:**
 
+**Linux / Mac:**
 ```bash
-# Linux / Mac
 go build -o lighthouse cmd/lighthouse/main.go
+```
 
-# Windows
-GOOS=windows GOARCH=amd64 go build -o lighthouse.exe cmd/lighthouse/main.go
+**Windows:**
+```bash
+set GOOS=windows
+set GOARCH=amd64
+go build -o lighthouse.exe cmd/lighthouse/main.go
 ```
 
 ---

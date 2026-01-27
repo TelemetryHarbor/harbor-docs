@@ -36,26 +36,28 @@ This is useful for:
 
 Use the `lighthouse` CLI to create a new uptime monitor. You must provide the `target_url` parameter.
 
-**For Harbor Scale Cloud:**
+**For Harbor Scale Cloud (Linux/macOS):**
 
 ```bash
-lighthouse --add \
-  --name "my-website" \
-  --harbor-id "YOUR_HARBOR_ID" \
-  --key "YOUR_API_KEY" \
-  --source uptime \
-  --param target_url="[https://harborscale.com](https://harborscale.com)"
+sudo lighthouse --add --name "my-website" --harbor-id "YOUR_HARBOR_ID" --key "YOUR_API_KEY" --source uptime --param target_url="https://harborscale.com"
 ```
 
-**For Self-Hosted / OSS:**
+**For Harbor Scale Cloud (Windows):**
+
+```powershell
+lighthouse --add --name "my-website" --harbor-id "YOUR_HARBOR_ID" --key "YOUR_API_KEY" --source uptime --param target_url="https://harborscale.com"
+```
+
+**For Self-Hosted / OSS (Linux/macOS):**
 
 ```bash
-lighthouse --add \
-  --name "internal-api" \
-  --endpoint "http://YOUR_IP:8000" \
-  --key "YOUR_API_KEY" \
-  --source uptime \
-  --param target_url="[http://192.168.1.50:3000/health](http://192.168.1.50:3000/health)"
+sudo lighthouse --add --name "internal-api" --endpoint "http://YOUR_IP:8000" --key "YOUR_API_KEY" --source uptime --param target_url="http://192.168.1.50:3000/health"
+```
+
+**For Self-Hosted / OSS (Windows):**
+
+```powershell
+lighthouse --add --name "internal-api" --endpoint "http://YOUR_IP:8000" --key "YOUR_API_KEY" --source uptime --param target_url="http://192.168.1.50:3000/health"
 ```
 
 > **Note:** The `--name` you choose will identify this specific check in your dashboard.
@@ -75,14 +77,14 @@ The `uptime` collector uses the `--param` flag to pass specific settings. You ca
 
 To monitor a slow internal service and give it 10 seconds to respond:
 
+**Linux/macOS:**
 ```bash
-lighthouse --add \
-  --name "slow-service" \
-  --harbor-id "123" \
-  --key "xyz" \
-  --source uptime \
-  --param target_url="http://local-service" \
-  --param timeout_ms=10000
+sudo lighthouse --add --name "slow-service" --harbor-id "123" --key "xyz" --source uptime --param target_url="http://local-service" --param timeout_ms=10000
+```
+
+**Windows:**
+```powershell
+lighthouse --add --name "slow-service" --harbor-id "123" --key "xyz" --source uptime --param target_url="http://local-service" --param timeout_ms=10000
 ```
 
 ---
@@ -107,7 +109,7 @@ The collector reports the following data points for every check:
 **"Monitor is Unhealthy" or "Connection Refused"**
 
 * **Cause:** The machine running Lighthouse cannot reach the `target_url`.
-* **Fix:** Try running `curl -I <url>` from the terminal on the same machine to verify connectivity.
+* **Fix:** Try running `curl -I <url>` (Linux/Mac) or `Invoke-WebRequest -Uri <url> -Method Head` (Windows) from the terminal on the same machine to verify connectivity.
 
 **"Timeout" errors on valid sites**
 

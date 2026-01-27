@@ -54,28 +54,28 @@ iwr get.harborscale.com/meshtastic | iex
 
 Use the `lighthouse` command to configure the gateway. This will register the agent to start the `mesh_engine` automatically.
 
-**For Harbor Scale Cloud:**
+**For Harbor Scale Cloud (Linux/macOS):**
 
 ```bash
-lighthouse --add \
-  --name "meshtastic-gateway" \
-  --harbor-id "YOUR_HARBOR_ID" \
-  --key "YOUR_API_KEY" \
-  --source exec \
-  --param command="mesh_engine --ttl 3600"
-
+sudo lighthouse --add --name "meshtastic-gateway" --harbor-id "YOUR_HARBOR_ID" --key "YOUR_API_KEY" --source exec --param command="mesh_engine --ttl 3600"
 ```
 
-**For Self-Hosted / OSS:**
+**For Harbor Scale Cloud (Windows):**
+
+```powershell
+lighthouse --add --name "meshtastic-gateway" --harbor-id "YOUR_HARBOR_ID" --key "YOUR_API_KEY" --source exec --param command="mesh_engine --ttl 3600"
+```
+
+**For Self-Hosted / OSS (Linux/macOS):**
 
 ```bash
-lighthouse --add \
-  --name "meshtastic-gateway" \
-  --endpoint "http://YOUR_IP:8000" \
-  --key "YOUR_OSS_KEY" \
-  --source exec \
-  --param command="mesh_engine --ttl 3600"
+sudo lighthouse --add --name "meshtastic-gateway" --endpoint "http://YOUR_IP:8000" --key "YOUR_OSS_KEY" --source exec --param command="mesh_engine --ttl 3600"
+```
 
+**For Self-Hosted / OSS (Windows):**
+
+```powershell
+lighthouse --add --name "meshtastic-gateway" --endpoint "http://YOUR_IP:8000" --key "YOUR_OSS_KEY" --source exec --param command="mesh_engine --ttl 3600"
 ```
 
 > **Note:** Replace `YOUR_HARBOR_ID`, `YOUR_API_KEY`, and `YOUR_OSS_KEY` with your actual credentials.
@@ -93,10 +93,16 @@ By default, the engine attempts to auto-detect the Meshtastic device. If you hav
 * **Linux/Mac:** `mesh_engine --port /dev/ttyUSB0`
 * **Windows:** `mesh_engine --port COM3`
 
-**Example Update:**
+**Example Update (Linux/macOS):**
 
 ```bash
 --param command="mesh_engine --port /dev/ttyUSB0 --ttl 3600"
+```
+
+**Example Update (Windows):**
+
+```powershell
+--param command="mesh_engine --port COM3 --ttl 3600"
 ```
 
 ### Adjusting Node TTL
@@ -116,13 +122,14 @@ The `--ttl` (Time To Live) flag determines how long a node remains "active" in t
 sudo usermod -a -G dialout $USER
 ```
 
-
 *Restart the computer after running this command.*
+
+* **Permission Denied (Windows):** Run PowerShell as Administrator.
+
 * **Device Not Found:**
 1. Check your USB cable (ensure it is a data cable, not just power).
 2. Verify the device shows up in `/dev/` (Linux/Mac) or Device Manager (Windows).
 3. Try explicitly setting the `--port` flag as shown above.
-
 
 * **No Data in Dashboard:**
 Run the logs command to see what the engine is doing:
@@ -131,4 +138,3 @@ lighthouse --logs "meshtastic-gateway"
 ```
 
 You should see JSON output representing the nodes in your mesh.
-
