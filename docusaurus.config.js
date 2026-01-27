@@ -89,7 +89,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // --- SEO & SOCIAL SHARING ---
-      image: 'img/social-card.jpg', // Ensure this image is high quality (1200x630px)
+      image: 'img/social-card.png', // Ensure this image is high quality (1200x630px)
       metadata: [
         // SEO: Expanded keywords for better discoverability
         { name: 'keywords', content: 'telemetry, iot, data platform, real-time analytics, visualization, harbor, api, sdk, developer tools, time-series data, mqtt, http' },
@@ -106,7 +106,7 @@ const config = {
         { name: 'twitter:title', content: 'Harbor Scale Documentation' },
         { name: 'twitter:description', content: 'The developer-first platform for real-time IoT telemetry and visualization.' },
         { name: 'twitter:site', content: '@harborscale' }, 
-        { name: 'twitter:image', content: 'https://docs.harborscale.com/img/social-card.jpg' },
+        { name: 'twitter:image', content: 'https://docs.harborscale.com/img/social-card.png' },
       ],
 
       // --- UI & APPEARANCE ---
