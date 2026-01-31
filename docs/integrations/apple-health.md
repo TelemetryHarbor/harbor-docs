@@ -202,7 +202,6 @@ The iOS Shortcuts framework can export additional Apple Health or device metrics
 
 ```json
 {
-  "time": "2024-11-18T19:24:00.948Z",
   "ship_id": "iPhone_Health",
   "cargo_id": "HeartRate",
   "value": 72

@@ -87,7 +87,7 @@ print("Successfully sent batch!", batch_response)
 ## GPS and Cargo Data Rules
 
 When sending GPS coordinates, send `latitude` and `longitude` as separate readings with:
-*   The same `ship_id` and `timestamp`.
+*   The same `ship_id` and `time`.
 *   Distinct `cargo_id`s `"latitude"` and `"longitude"`.
 
 This allows proper grouping in the backend for time-series queries.
@@ -100,18 +100,18 @@ This allows proper grouping in the backend for time-series queries.
     "ship_id": "MV-Explorer",
     "cargo_id": "latitude",
     "value": 41.123,
-    "timestamp": "2025-07-17T10:00:00Z"
+    "time": "2025-07-17T10:00:00Z"
   },
   {
     "ship_id": "MV-Explorer",
     "cargo_id": "longitude",
     "value": 29.456,
-    "timestamp": "2025-07-17T10:00:00Z"
+    "time": "2025-07-17T10:00:00Z"
   }
 ]
 ```
 
-> ✅ This enables SQL queries to reconstruct full GPS points by grouping on `ship_id` and `timestamp`.
+> ✅ This enables SQL queries to reconstruct full GPS points by grouping on `ship_id` and `time`.
 
 **Query example (PostgreSQL/TimescaleDB):**
 

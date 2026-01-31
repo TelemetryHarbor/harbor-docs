@@ -30,7 +30,7 @@ Every piece of data sent to Harbor follows this simple JSON structure:
 
 | Field | Type | Description |
 | :--- | :--- | :--- |
-| `time` | `timestamp` | When the event happened. |
+| `time` | `timestamp` | When the event happened.(Optional) |
 | `ship_id` | `text` | The device name (e.g., `sensor-01`). |
 | `cargo_id` | `text` | The metric name (e.g., `temperature`). |
 | `value` | `double` | The numerical reading. |

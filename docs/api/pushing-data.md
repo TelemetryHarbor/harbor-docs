@@ -4,16 +4,20 @@ title: Pushing Data (HTTP API)
 description: Technical reference for the General Harbor ingestion endpoints.
 ---
 # Pushing Telemetry Data
+
 This reference is for developers building custom API integrations (Path D).
 :::tip
 If you just want to connect a standard device (ESP32, Server, etc.), use the **Connect Wizard** in your dashboard. It generates the correct code and URLs for you automatically.
 :::
+
 ## 1. General Harbor Endpoints
+
 These endpoints accept standard JSON payloads.
 **Base URL (Shared Cloud):**
 `https://harborscale.com/api/v2/ingest`
 **Base URL (Enterprise):**
 `https://[YOUR_TENANT].harbor.harborscale.com/api/v2/ingest`
+
 ---
 ### Single Data Point
 Use this for low-frequency events or simple testing.
@@ -25,7 +29,6 @@ Use this for low-frequency events or simple testing.
 **Body:**
 ```json
 {
-"time": "2024-01-01T12:00:00.000Z",
 "ship_id": "sensor-01",
 "cargo_id": "temperature",
 "value": 24.5
@@ -33,7 +36,7 @@ Use this for low-frequency events or simple testing.
 ```
 **cURL Example:**
 ```bash
-curl -X POST "https://harborscale.com/api/v2/ingest/YOUR_HARBOR_ID" -H "X-API-Key: YOUR_API_KEY" -H "Content-Type: application/json" -d '{"time": "2024-11-18T19:24:00.948Z", "ship_id": "manual_test", "cargo_id": "test_metric", "value": 100}'
+curl -X POST "https://harborscale.com/api/v2/ingest/YOUR_HARBOR_ID" -H "X-API-Key: YOUR_API_KEY" -H "Content-Type: application/json" -d '{"ship_id": "manual_test", "cargo_id": "test_metric", "value": 100}'
 ```
 ---
 ### Batch Ingestion (Recommended)
@@ -45,13 +48,11 @@ A JSON Array `[]` of data point objects.
 ```json
 [
   {
-"time": "2024-11-18T12:00:00Z",
 "ship_id": "sensor-01",
 "cargo_id": "temperature",
 "value": 24.5
   },
   {
-"time": "2024-11-18T12:00:00Z",
 "ship_id": "sensor-01",
 "cargo_id": "humidity",
 "value": 60.2
@@ -60,7 +61,7 @@ A JSON Array `[]` of data point objects.
 ```
 **cURL Example:**
 ```bash
-curl -X POST "https://harborscale.com/api/v2/ingest/YOUR_HARBOR_ID/batch" -H "X-API-Key: YOUR_API_KEY" -H "Content-Type: application/json" -d '[{"ship_id": "s1", "cargo_id": "temp", "value": 20, "time": "..."}, {"ship_id": "s1", "cargo_id": "hum", "value": 50, "time": "..."}]'
+curl -X POST "https://harborscale.com/api/v2/ingest/YOUR_HARBOR_ID/batch" -H "X-API-Key: YOUR_API_KEY" -H "Content-Type: application/json" -d '[{"ship_id": "s1", "cargo_id": "temp", "value": 20}, {"ship_id": "s1", "cargo_id": "hum", "value": 50}]'
 ```
 ---
 ## 2. The Things Network (TTN) Harbor
@@ -81,4 +82,4 @@ curl -X POST "https://harborscale.com/api/v2/ingest/YOUR_HARBOR_ID/batch" -H "X-
 | `401` | Unauthorized | Check your `X-API-Key` header. |
 | `400` | Bad Request | Check your JSON syntax or data types. |
 | `429` | Too Many Requests | You exceeded your Harbor's rate limit. |
-```
+

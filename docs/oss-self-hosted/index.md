@@ -103,13 +103,13 @@ Harbor Scale OSS supports direct ingestion from TTN v3 Webhooks. We automaticall
 **Single Data Point:**
 
 ```bash
-curl -X POST "http://localhost:8000/api/v2/ingest/" -H "X-API-Key: your_api_key_here" -H "Content-Type: application/json" -d '{"time": "2025-01-18T19:24:00.948Z", "ship_id": "test_device_single", "cargo_id": "test_metric", "value": 123.45}'
+curl -X POST "http://localhost:8000/api/v2/ingest/" -H "X-API-Key: your_api_key_here" -H "Content-Type: application/json" -d '{"ship_id": "test_device_single", "cargo_id": "test_metric", "value": 123.45}'
 ```
 
 **Batch Data:**
 
 ```bash
-curl -X POST "http://localhost:8000/api/v2/ingest/batch" -H "X-API-Key: your_api_key_here" -H "Content-Type: application/json" -d '[{"time": "2025-01-18T19:24:00.948Z", "ship_id": "batch_device", "cargo_id": "temperature", "value": 25.5}, {"time": "2025-01-18T19:24:00.948Z", "ship_id": "batch_device", "cargo_id": "humidity", "value": 60.2}]'
+curl -X POST "http://localhost:8000/api/v2/ingest/batch" -H "X-API-Key: your_api_key_here" -H "Content-Type: application/json" -d '[{"ship_id": "batch_device", "cargo_id": "temperature", "value": 25.5}, {"ship_id": "batch_device", "cargo_id": "humidity", "value": 60.2}]'
 ```
 
 ## 📊 Visualization with Grafana

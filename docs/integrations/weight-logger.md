@@ -79,7 +79,6 @@ Each run creates a **single timestamped log entry**, ensuring no duplicates.
 
 ```json
 {
-  "time": "2025-09-23T19:24:00.948Z",
   "ship_id": "iPhone_Health",
   "cargo_id": "Weight_kg",
   "value": 72.4

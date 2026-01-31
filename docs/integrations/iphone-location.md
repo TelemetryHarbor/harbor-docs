@@ -213,7 +213,6 @@ The iOS Shortcuts framework can capture additional iPhone data:
 
 ```json
 {
-  "time": "2024-11-18T19:24:00.948Z",
   "ship_id": "iPhone_Device_ID",
   "cargo_id": "Data_Label",
   "value": 0
